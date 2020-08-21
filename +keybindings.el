@@ -30,7 +30,9 @@
        :desc "evil-shift-left"            "h"      #'evil-shift-left
        :desc "evil-shift-right"           "l"      #'evil-shift-right
        :desc "beginning-of-defun"         "b"      #'beginning-of-defun
-       :desc "end-of-defun"               "e"      #'end-of-defun))
+       :desc "end-of-defun"               "e"      #'end-of-defun
+       :desc "vr/replace"                 "r"      #'vr/replace))
+
 
 ;; Efficient typing -------------------------------------
 (require 'general)
