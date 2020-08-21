@@ -1,5 +1,37 @@
 ;;; +keybindings.el -*- lexical-binding: t; -*-
 
+;; Keybindings --------------------------------------------
+;; evil-escape
+(setq-default evil-escape-key-sequence "fd")
+
+;; emacs style cursor movement
+(define-key evil-normal-state-map (kbd "C-e") 'evil-end-of-line)
+(define-key evil-normal-state-map (kbd "m") 'evil-jump-item)
+(define-key evil-normal-state-map (kbd "C-j") 'transpose-words)
+(define-key evil-visual-state-map (kbd "C-e") 'evil-end-of-line)
+
+;; leader key
+(map! :leader
+      :desc "winum-select-window-1"       "1"      #'winum-select-window-1
+      :desc "winum-select-window-2"       "2"      #'winum-select-window-2
+      :desc "winum-select-window-3"       "3"      #'winum-select-window-3
+      :desc "winum-select-window-4"       "4"      #'winum-select-window-4
+      :desc "M-x"                         "SPC"    #'execute-extended-command
+      :desc "Find file in project"        ":"      #'projectile-find-file
+      :desc "Clear highlight"             "."      #'evil-ex-nohighlight
+      (:prefix-map ("b" . "buffer")
+       (:when (featurep! :ui workspaces)
+        :desc "Switch workspace buffer"   "B"      #'persp-switch-to-buffer
+        :desc "Switch buffer"             "b"      #'switch-to-buffer)
+       (:unless (featurep! :ui workspaces)
+        :desc "Switch buffer"             "b"      #'switch-to-buffer)
+       :desc "eval buffer"                "e"      #'eval-buffer)
+      (:prefix-map ("e" . "text")
+       :desc "evil-shift-left"            "h"      #'evil-shift-left
+       :desc "evil-shift-right"           "l"      #'evil-shift-right
+       :desc "beginning-of-defun"         "b"      #'beginning-of-defun
+       :desc "end-of-defun"               "e"      #'end-of-defun))
+
 ;; Efficient typing -------------------------------------
 (require 'general)
 (general-evil-setup t)
@@ -164,31 +196,3 @@
   (general-key-dispatch 'self-insert-command
   :timeout 0.25
   "v" 'p-insert-hash))
-
-
-;; Keybindings --------------------------------------------
-;; evil-escape
-(setq-default evil-escape-key-sequence "fd")
-
-;; emacs style cursor movement
-(define-key evil-normal-state-map (kbd "C-e") 'evil-end-of-line)
-(define-key evil-normal-state-map (kbd "m") 'evil-jump-item)
-(define-key evil-normal-state-map (kbd "C-j") 'transpose-words)
-(define-key evil-visual-state-map (kbd "C-e") 'evil-end-of-line)
-
-;; leader key
-(map! :leader
-      :desc "winum-select-window-1"       "1"      #'winum-select-window-1
-      :desc "winum-select-window-2"       "2"      #'winum-select-window-2
-      :desc "winum-select-window-3"       "3"      #'winum-select-window-3
-      :desc "winum-select-window-4"       "4"      #'winum-select-window-4
-      :desc "M-x"                         "SPC"    #'execute-extended-command
-      :desc "Find file in project"        ":"      #'projectile-find-file
-      :desc "Clear highlight"             "."      #'evil-ex-nohighlight
-      (:prefix-map ("b" . "buffer")
-       (:when (featurep! :ui workspaces)
-        :desc "Switch workspace buffer" "B" #'persp-switch-to-buffer
-        :desc "Switch buffer"           "b" #'switch-to-buffer)
-       (:unless (featurep! :ui workspaces)
-        :desc "Switch buffer"           "b" #'switch-to-buffer)
-       :desc "eval buffer"              "e" #'eval-buffer))

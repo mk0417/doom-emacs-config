@@ -3,7 +3,7 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
-(load! "+python")
+(load! "+prog")
 (load! "+ui")
 (load! "+text")
 (load! "+keybindings")
@@ -28,22 +28,13 @@
   (setq evil-ex-substitute-global t))
 
 
+;; Visual-regexp ------------------------------------------------
+(after! visual-regexp
+  (require 'visual-regexp))
+
+
 ;; Ivy -------------------------------------------------
 (setq ivy-read-action-function #'ivy-hydra-read-action)
-
-
-;; ESS ---------------------------------------------------
-(after! ess
-  (setq ess-ask-for-ess-directory nil))
-
-(general-create-definer p-ess-leader-def
-  :prefix ","
-  :states '(normal visual)
-  :keymaps 'ess-mode-map)
-(p-ess-leader-def
-  "rl" 'ess-eval-line
-  "rr" 'ess-eval-region
-  "a" 'ess-cycle-assign)
 
 
 ;; Porjectile --------------------------------------------

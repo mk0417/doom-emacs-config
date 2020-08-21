@@ -45,3 +45,18 @@
   :keymaps 'python-mode-map)
 (p-python-leader-visual-def
   "rr" 'elpy-shell-send-region-or-buffer)
+
+
+;; ESS ---------------------------------------------------
+
+(after! ess
+  (setq ess-ask-for-ess-directory nil))
+
+(general-create-definer p-ess-leader-def
+  :prefix ","
+  :states '(normal visual)
+  :keymaps 'ess-mode-map)
+(p-ess-leader-def
+  "rl" 'ess-eval-line
+  "rr" 'ess-eval-region
+  "a" 'ess-cycle-assign)
