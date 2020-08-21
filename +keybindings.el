@@ -8,6 +8,8 @@
 (define-key evil-normal-state-map (kbd "C-e") 'evil-end-of-line)
 (define-key evil-normal-state-map (kbd "m") 'evil-jump-item)
 (define-key evil-normal-state-map (kbd "C-j") 'transpose-words)
+(define-key evil-normal-state-map (kbd "C-;") 'iedit-mode-toggle-on-function)
+(define-key evil-normal-state-map (kbd "s-;") 'iedit-mode)
 (define-key evil-visual-state-map (kbd "C-e") 'evil-end-of-line)
 
 ;; leader key
@@ -31,7 +33,10 @@
        :desc "evil-shift-right"           "l"      #'evil-shift-right
        :desc "beginning-of-defun"         "b"      #'beginning-of-defun
        :desc "end-of-defun"               "e"      #'end-of-defun
-       :desc "vr/replace"                 "r"      #'vr/replace))
+       :desc "vr/replace"                 "r"      #'vr/replace)
+      (:prefix-map ("g" . "git")
+       :desc "jump-to-next-hunk"          "n"      #'git-gutter:next-hunk
+       :desc "jump-to-previous-hunk"      "p"      #'git-gutter:previous-hunk))
 
 
 ;; Efficient typing -------------------------------------

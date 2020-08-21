@@ -37,8 +37,12 @@
 (setq ivy-read-action-function #'ivy-hydra-read-action)
 
 
-;; Porjectile --------------------------------------------
+;; Projectile --------------------------------------------
 (setq projectile-project-search-path '("~/Git/" "~/project/" "~/working/"))
+
+
+;; iedit ---------------------------------------------
+(require 'iedit)
 
 
 ;; Misc ------------------------------------------------
