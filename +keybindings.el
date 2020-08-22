@@ -1,6 +1,11 @@
 ;;; +keybindings.el -*- lexical-binding: t; -*-
 
 ;; Keybindings --------------------------------------------
+
+;; MacOS meta
+(setq ns-option-modifier nil
+      ns-right-option-modifier 'meta)
+
 ;; evil-escape
 (setq-default evil-escape-key-sequence "fd")
 
