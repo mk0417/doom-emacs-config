@@ -28,7 +28,7 @@
   (setq evil-ex-substitute-global t))
 
 
-;; Visual-regexp ------------------------------------------------
+;; Visual-regexp ---------------------------------------
 (after! visual-regexp
   (require 'visual-regexp))
 
@@ -45,14 +45,29 @@
 (require 'iedit)
 
 
+;; evil-matchit ----------------------------------------
+(require 'evil-matchit)
+(after! evil-matchit
+  (setq evilmi-shortcut "m")
+  (global-evil-matchit-mode 1))
+
+
 ;; Misc ------------------------------------------------
+(setq user-full-name "Peng"
+      user-mail-address "pengdata1@gmail.com")
+
+;; dashboard default directory
 (setq +doom-dashboard-pwd-policy "~/")
 
+;; activity-watch
 (global-activity-watch-mode)
 
+;; disable flyspell for git commit
 (remove-hook! '(git-commit-mode-hook) #'flyspell-mode)
 
-(google-this-mode 1)
+;; google this
+(after! google-this
+  (google-this-mode 1))
 
 ;; trash
 (setq trash-directory "~/.Trash"

@@ -6,38 +6,44 @@
 
 ;; emacs style cursor movement
 (define-key evil-normal-state-map (kbd "C-e") 'evil-end-of-line)
-(define-key evil-normal-state-map (kbd "m") 'evil-jump-item)
 (define-key evil-normal-state-map (kbd "C-j") 'transpose-words)
 (define-key evil-normal-state-map (kbd "C-;") 'iedit-mode-toggle-on-function)
 (define-key evil-normal-state-map (kbd "s-;") 'iedit-mode)
 (define-key evil-visual-state-map (kbd "C-e") 'evil-end-of-line)
+(define-key evil-visual-state-map (kbd "v")   'er/expand-region)
 
 ;; leader key
 (map! :leader
-      :desc "winum-select-window-1"       "1"      #'winum-select-window-1
-      :desc "winum-select-window-2"       "2"      #'winum-select-window-2
-      :desc "winum-select-window-3"       "3"      #'winum-select-window-3
-      :desc "winum-select-window-4"       "4"      #'winum-select-window-4
-      :desc "M-x"                         "SPC"    #'execute-extended-command
-      :desc "Find file in project"        ":"      #'projectile-find-file
-      :desc "Clear highlight"             "."      #'evil-ex-nohighlight
+      :desc "winum-select-window-1"                "1"      #'winum-select-window-1
+      :desc "winum-select-window-2"                "2"      #'winum-select-window-2
+      :desc "winum-select-window-3"                "3"      #'winum-select-window-3
+      :desc "winum-select-window-4"                "4"      #'winum-select-window-4
+      :desc "M-x"                                  "SPC"    #'execute-extended-command
+      :desc "Find file in project"                 ":"      #'projectile-find-file
+      :desc "Clear highlight"                      "."      #'evil-ex-nohighlight
       (:prefix-map ("b" . "buffer")
        (:when (featurep! :ui workspaces)
-        :desc "Switch workspace buffer"   "B"      #'persp-switch-to-buffer
-        :desc "Switch buffer"             "b"      #'switch-to-buffer)
+        :desc "Switch workspace buffer"            "B"      #'persp-switch-to-buffer
+        :desc "Switch buffer"                      "b"      #'switch-to-buffer)
+        :desc "narrow region"                      "n"      #'+evil:narrow-buffer
+        :desc "widen"                              "w"      #'widen
        (:unless (featurep! :ui workspaces)
-        :desc "Switch buffer"             "b"      #'switch-to-buffer)
-       :desc "eval buffer"                "e"      #'eval-buffer)
+        :desc "Switch buffer"                      "b"      #'switch-to-buffer)
+       :desc "eval buffer"                         "e"      #'eval-buffer)
       (:prefix-map ("e" . "text")
-       :desc "evil-shift-left"            "h"      #'evil-shift-left
-       :desc "evil-shift-right"           "l"      #'evil-shift-right
-       :desc "beginning-of-defun"         "b"      #'beginning-of-defun
-       :desc "end-of-defun"               "e"      #'end-of-defun
-       :desc "vr/replace"                 "r"      #'vr/replace)
+       :desc "evil-shift-left"                     "h"      #'evil-shift-left
+       :desc "evil-shift-right"                    "l"      #'evil-shift-right
+       :desc "beginning-of-defun"                  "b"      #'beginning-of-defun
+       :desc "end-of-defun"                        "e"      #'end-of-defun
+       :desc "vr/replace"                          "r"      #'vr/replace
+       :desc "evilmi-select-items"                 "s"      #'evilmi-select-items)
       (:prefix-map ("g" . "git")
-       :desc "jump-to-next-hunk"          "n"      #'git-gutter:next-hunk
-       :desc "jump-to-previous-hunk"      "p"      #'git-gutter:previous-hunk))
-
+       :desc "jump-to-next-hunk"                   "n"      #'git-gutter:next-hunk
+       :desc "jump-to-previous-hunk"               "p"      #'git-gutter:previous-hunk)
+      (:prefix-map ("s" . "search")
+       :desc "swiper-isearch-thing-at-point"       "S"      #'swiper-isearch-thing-at-point
+       :desc "search-project-at-point"             "a"      #'+default/search-project-for-symbol-at-point
+       :desc "google-this"                         "g"      #'google-this))
 
 ;; Efficient typing -------------------------------------
 (require 'general)
