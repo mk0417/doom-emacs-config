@@ -10,22 +10,22 @@
 
 
 ;; Company -------------------------------------------------
-(after! company
- (setq company-idle-delay 0.05
-       company-minimum-prefix-length 1)
- (set-company-backend! '(prog-mode text-mode conf-mode)
-   '(company-capf
-     company-files
-     company-keywords
-     company-abbrev
-     company-dabbrev
-     company-dabbrev-code)))
+;; (after! company
+;;  (setq company-idle-delay 0.05
+;;        company-minimum-prefix-length 1)
+;;  (set-company-backend! '(prog-mode text-mode conf-mode)
+;;    '(company-capf
+;;      company-files
+;;      company-keywords
+;;      company-abbrev
+;;      company-dabbrev
+;;      company-dabbrev-code)))
 
 
 ;; Evil ------------------------------------------------
-(after! evil
-  (setq-default evil-ex-search-persistent-highlight nil)
-  (setq evil-ex-substitute-global t))
+;; (after! evil
+;;   (setq-default evil-ex-search-persistent-highlight nil)
+;;   (setq evil-ex-substitute-global t))
 
 
 ;; Visual-regexp ---------------------------------------
@@ -50,6 +50,12 @@
 (after! evil-matchit
   (setq evilmi-shortcut "m")
   (global-evil-matchit-mode 1))
+
+
+;; lsp ---------------------------------------------
+;; https://github.com/emacs-lsp/lsp-mode/issues/1903
+(setq lsp-diagnostic-package :none)
+(setq sp-enable-symbol-highlighting nil)
 
 
 ;; Misc ------------------------------------------------

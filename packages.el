@@ -35,9 +35,9 @@
 ;; If you'd like to disable a package included with Doom, you can do so here
 ;; with the `:disable' property:
 ;(package! builtin-package :disable t)
-(disable-packages!
- anaconda-mode
- company-anaconda)
+;; (disable-packages!
+;;  anaconda-mode
+;;  company-anaconda)
 
 ;; You can override the recipe of a built in package without having to specify
 ;; all the properties for `:recipe'. These will inherit the rest of its recipe

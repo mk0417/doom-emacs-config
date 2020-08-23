@@ -16,13 +16,14 @@
 ;; startup time is reduced to 1.5s from 2.5s
 (after! python
   (elpy-enable)
-  ;; disable flymake in Python
-  ;; https://github.com/jorgenschaefer/elpy/issues/828
-  (remove-hook 'elpy-modules 'elpy-module-flymake)
   ;; Solve issue: send-region shows ^G
   ;; https://github.com/jorgenschaefer/elpy/issues/1550#issuecomment-478448647
   (setq python-shell-interpreter "ipython"
-        python-shell-interpreter-args "--simple-prompt -c exec('__import__(\\'readline\\')') -i")
+        python-shell-interpreter-args "--simple-prompt -c exec('__import__(\\'readline\\')') -i"
+        python-shell-prompt-detect-failure-warning nil)
+  ;; disable flymake in Python
+  ;; https://github.com/jorgenschaefer/elpy/issues/828
+  (remove-hook 'elpy-modules 'elpy-module-flymake)
   ;; disable highlight indentation
   ;; https://stackoverflow.com/questions/45214116/how-to-disable-emacs-elpy-vertical-guide-lines-for-indentation
   (add-hook 'elpy-mode-hook (lambda () (highlight-indentation-mode -1)))
