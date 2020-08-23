@@ -14,6 +14,8 @@
 (define-key evil-normal-state-map (kbd "C-j") 'transpose-words)
 (define-key evil-normal-state-map (kbd "C-;") 'iedit-mode-toggle-on-function)
 (define-key evil-normal-state-map (kbd "s-;") 'iedit-mode)
+(define-key evil-normal-state-map (kbd "gn") 'git-gutter:next-hunk)
+(define-key evil-normal-state-map (kbd "gp") 'git-gutter:previous-hunk)
 (define-key evil-visual-state-map (kbd "C-e") 'evil-end-of-line)
 (define-key evil-visual-state-map (kbd "v")   'er/expand-region)
 
@@ -42,13 +44,14 @@
        :desc "end-of-defun"                        "e"      #'end-of-defun
        :desc "vr/replace"                          "r"      #'vr/replace
        :desc "evilmi-select-items"                 "s"      #'evilmi-select-items)
-      (:prefix-map ("g" . "git")
-       :desc "jump-to-next-hunk"                   "n"      #'git-gutter:next-hunk
-       :desc "jump-to-previous-hunk"               "p"      #'git-gutter:previous-hunk)
       (:prefix-map ("s" . "search")
        :desc "swiper-isearch-thing-at-point"       "S"      #'swiper-isearch-thing-at-point
        :desc "search-project-at-point"             "a"      #'+default/search-project-for-symbol-at-point
-       :desc "google-this"                         "g"      #'google-this))
+       :desc "google-this"                         "g"      #'google-this)
+      (:prefix-map ("n" . "notes")
+       :desc "new deft file"                       "D"      #'deft-new-file))
+
+(setq doom-localleader-key ";")
 
 ;; Efficient typing -------------------------------------
 (require 'general)

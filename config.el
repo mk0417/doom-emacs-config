@@ -75,6 +75,7 @@
 
 ;; maximum number of recent saved items
 (setq recentf-max-saved-items 50)
+(setq recentf-max-menu-items 50)
 
 
 ;; First input delay ------------------------------------

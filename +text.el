@@ -2,8 +2,7 @@
 
 ;; Org ---------------------------------------------------
 
-(setq org-directory (expand-file-name "~/org")
-      org-agenda-files (list org-directory))
+(setq org-agenda-files '("~/org" "~/org/notes/" "~/org/roam/"))
 
 (after! org
   (require 'org-bullets)
