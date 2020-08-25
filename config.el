@@ -55,7 +55,7 @@
 ;; lsp ---------------------------------------------
 ;; https://github.com/emacs-lsp/lsp-mode/issues/1903
 (setq lsp-diagnostic-package :none)
-(setq sp-enable-symbol-highlighting nil)
+(setq lsp-enable-symbol-highlighting nil)
 
 
 ;; Misc ------------------------------------------------
