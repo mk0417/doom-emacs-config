@@ -2,16 +2,6 @@
 
 ;; Python --------------------------------------------------
 
-;; Send current line
-(defun p-elpy-shell-send-line ()
-  (interactive)
-  (progn
-    (end-of-line)
-    (set-mark (line-beginning-position)))
-  (elpy-shell-send-region-or-buffer)
-  (beginning-of-line)
-  (keyboard-quit))
-
 ;; enable elpy after python mode
 ;; startup time is reduced to 1.5s from 2.5s
 (after! python
@@ -30,6 +20,16 @@
   (add-hook 'python-mode-hook 'fci-mode)
   (setq elpy-rpc-virtualenv-path 'current)
   (define-key python-mode-map "\C-c\C-j" 'p-elpy-shell-send-line))
+
+;; Send current line
+(defun p-elpy-shell-send-line ()
+  (interactive)
+  (progn
+    (end-of-line)
+    (set-mark (line-beginning-position)))
+  (elpy-shell-send-region-or-buffer)
+  (beginning-of-line)
+  (keyboard-quit))
 
 (general-create-definer p-python-leader-normal-def
   :prefix ","

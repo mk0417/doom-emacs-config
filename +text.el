@@ -2,16 +2,60 @@
 
 ;; Org ---------------------------------------------------
 
-(setq org-agenda-files '("~/org" "~/org/notes/" "~/org/roam/"))
+(setq org-directory "~/org"
+      org-agenda-files '("~/org" "~/org/journal" "~/org/roam/")
+      org-roam-directory "~/org-roam"
+      org-journal-dir "~/org/journal"
+      org-journal-date-format "%A, %d %B %Y"
+      org-journal-file-format "%Y-%m-%d.org"
+      org-journal-file-type 'monthly)
 
 (after! org
-  (require 'org-bullets)
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+  (setq org-superstar-remove-leading-stars t
+        org-superstar-headline-bullets-list '("◉" "○" "▷")
+        org-superstar-item-bullet-alist
+        '((?+ . ?•)
+          (?* . ?➤)
+          (?- . ?–)))
+  (setq org-tree-slide-breadcrumbs nil
+        org-tree-slide-header nil
+        org-tree-slide-slide-in-effect nil
+        org-tree-slide-heading-emphasis nil
+        org-tree-slide-cursor-init t
+        org-tree-slide-modeline-display nil
+        org-tree-slide-skip-done nil
+        org-tree-slide-skip-comments t
+        org-tree-slide-fold-subtrees-skipped t
+        org-tree-slide-skip-outline-level 8
+        org-tree-slide-never-touch-face t
+        org-tree-slide-activate-message
+        (propertize "Presentation mode ON" 'face 'success)
+        org-tree-slide-deactivate-message
+        (propertize "Presentation mode OFF" 'face 'error))
+  (setq org-roam-server-host "127.0.0.1"
+        org-roam-server-port 8080
+        org-roam-server-authenticate nil
+        org-roam-server-export-inline-images t
+        org-roam-server-serve-files nil
+        org-roam-server-served-file-extensions '("pdf" "mp4" "ogv")
+        org-roam-server-network-poll t
+        org-roam-server-network-arrows nil
+        org-roam-server-network-label-truncate t
+        org-roam-server-network-label-truncate-length 60
+        org-roam-server-network-label-wrap-length 20)
+  (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1))))
 
-;; latex beamer
+(setq org-capture-templates
+        '(("m" "Meeting and event" entry
+           (file+headline "meeting.org" "Meetings, events, and appointments")
+           "* %^{Scope of meeting|Staff meeting: |Student meeting: |Event:} %^{Title} %^g\nSCHEDULED: %^t\n")
+          ("t" "TODO" entry
+           (file+headline "todo.org" "Todo and task")
+           "* TODO [#A] %^{Title} \nSCHEDULED: %^t\n")))
+
+;; latex
 (unless (boundp 'org-export-latex-classes)
   (setq org-export-latex-classes nil))
-
 (add-to-list 'org-export-latex-classes
   ;; beamer class, for presentations
   '("beamer"
@@ -46,5 +90,18 @@
 
 
 ;; Deft -------------------------------------------------
-(setq deft-extensions '("org" "txt" "md"))
-(setq deft-directory "~/org/notes")
+(setq deft-directory "~/org/journal"
+    deft-use-filename-as-title nil
+    deft-use-filter-string-for-filename t
+    deft-auto-save-interval -1
+    deft-extensions '("org" "txt" "md")
+    deft-file-naming-rules
+    '((noslash . "-")
+    (nospace . "-")
+    (case-fn . downcase)))
+
+
+;; olivetti ------------------------------------------------------------------
+(setq olivetti-body-width 0.7
+      olivetti-minimum-body-width 80
+      olivetti-recall-visual-line-mode-entry-state t)

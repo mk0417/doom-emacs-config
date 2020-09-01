@@ -6,18 +6,21 @@
 (setq ns-option-modifier nil
       ns-right-option-modifier 'meta)
 
-;; evil-escape
-(setq-default evil-escape-key-sequence "fd")
-
-;; emacs style cursor movement
+;; non-leader keybindings
 (define-key evil-normal-state-map (kbd "C-e") 'evil-end-of-line)
 (define-key evil-normal-state-map (kbd "C-j") 'transpose-words)
 (define-key evil-normal-state-map (kbd "C-;") 'iedit-mode-toggle-on-function)
 (define-key evil-normal-state-map (kbd "s-;") 'iedit-mode)
 (define-key evil-normal-state-map (kbd "gn") 'git-gutter:next-hunk)
 (define-key evil-normal-state-map (kbd "gp") 'git-gutter:previous-hunk)
+(define-key evil-normal-state-map (kbd ";l") 'evil-shift-right)
+(define-key evil-normal-state-map (kbd ";h") 'evil-shift-left)
 (define-key evil-visual-state-map (kbd "C-e") 'evil-end-of-line)
 (define-key evil-visual-state-map (kbd "v")   'er/expand-region)
+(define-key evil-visual-state-map (kbd ";l") 'evil-shift-right)
+(define-key evil-visual-state-map (kbd ";h") 'evil-shift-left)
+(global-set-key (kbd "C-x k") 'kill-this-buffer)
+(global-set-key (kbd "C-c c") 'org-capture)
 
 ;; leader key
 (map! :leader
@@ -27,7 +30,6 @@
       :desc "winum-select-window-4"                "4"      #'winum-select-window-4
       :desc "M-x"                                  "SPC"    #'execute-extended-command
       :desc "Find file in project"                 ":"      #'projectile-find-file
-      :desc "Clear highlight"                      "."      #'evil-ex-nohighlight
       (:prefix-map ("b" . "buffer")
        (:when (featurep! :ui workspaces)
         :desc "Switch workspace buffer"            "B"      #'persp-switch-to-buffer
@@ -36,10 +38,8 @@
         :desc "widen"                              "w"      #'widen
        (:unless (featurep! :ui workspaces)
         :desc "Switch buffer"                      "b"      #'switch-to-buffer)
-       :desc "eval buffer"                         "e"      #'eval-buffer)
+        :desc "eval buffer"                        "e"      #'eval-buffer)
       (:prefix-map ("e" . "text")
-       :desc "evil-shift-left"                     "h"      #'evil-shift-left
-       :desc "evil-shift-right"                    "l"      #'evil-shift-right
        :desc "beginning-of-defun"                  "b"      #'beginning-of-defun
        :desc "end-of-defun"                        "e"      #'end-of-defun
        :desc "vr/replace"                          "r"      #'vr/replace
@@ -47,11 +47,19 @@
       (:prefix-map ("s" . "search")
        :desc "swiper-isearch-thing-at-point"       "S"      #'swiper-isearch-thing-at-point
        :desc "search-project-at-point"             "a"      #'+default/search-project-for-symbol-at-point
-       :desc "google-this"                         "g"      #'google-this)
+       :desc "google-this"                         "g"      #'google-this
+       :desc "counsel-yank-pop"                    "h"      #'counsel-yank-pop)
       (:prefix-map ("n" . "notes")
-       :desc "new deft file"                       "D"      #'deft-new-file))
+       :desc "new deft file"                       "D"      #'deft-new-file
+       :desc "olivetti"                            "O"      #'olivetti-mode
+       :desc "org-tree-slide-mode"                 "p"      #'org-tree-slide-mode)
+      (:prefix-map ("i" . "insert")
+       :desc "insert uk date"                      "k"      #'p-insert-uk-date
+       :desc "insert date"                         "d"      #'p-insert-date))
 
-(setq doom-localleader-key ";")
+;; local-leader
+(setq doom-localleader-key ",")
+
 
 ;; Efficient typing -------------------------------------
 (require 'general)

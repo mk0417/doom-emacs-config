@@ -10,16 +10,29 @@
 
 
 ;; Company -------------------------------------------------
-;; (after! company
-;;  (setq company-idle-delay 0.05
-;;        company-minimum-prefix-length 1)
-;;  (set-company-backend! '(prog-mode text-mode conf-mode)
-;;    '(company-capf
-;;      company-files
-;;      company-keywords
-;;      company-abbrev
-;;      company-dabbrev
-;;      company-dabbrev-code)))
+(after! company
+ ;; (setq company-idle-delay 0.05
+ ;;       company-minimum-prefix-length 1)
+ (set-company-backend! '(prog-mode text-mode conf-mode)
+   '(company-capf
+     company-files
+     company-keywords
+     company-abbrev
+     company-dabbrev
+     company-dabbrev-code)))
+
+;; fix bug when use company and fci-mode together
+;; https://github.com/company-mode/company-mode/issues/180
+(defvar-local company-fci-mode-on-p nil)
+(defun company-turn-off-fci (&rest ignore)
+  (when (boundp 'fci-mode)
+    (setq company-fci-mode-on-p fci-mode)
+    (when fci-mode (fci-mode -1))))
+(defun company-maybe-turn-on-fci (&rest ignore)
+  (when company-fci-mode-on-p (fci-mode 1)))
+(add-hook 'company-completion-started-hook 'company-turn-off-fci)
+(add-hook 'company-completion-finished-hook 'company-maybe-turn-on-fci)
+(add-hook 'company-completion-cancelled-hook 'company-maybe-turn-on-fci)
 
 
 ;; Evil ------------------------------------------------
@@ -54,7 +67,6 @@
 
 ;; lsp ---------------------------------------------
 ;; https://github.com/emacs-lsp/lsp-mode/issues/1903
-(setq lsp-diagnostic-package :none)
 (setq lsp-enable-symbol-highlighting nil)
 
 
@@ -82,6 +94,18 @@
 ;; maximum number of recent saved items
 (setq recentf-max-saved-items 50)
 (setq recentf-max-menu-items 50)
+
+;; snippets
+(setq yas-snippet-dirs '("~/.emacs.snippets"))
+
+;; insert date
+(defun p-insert-uk-date ()
+  (interactive)
+  (insert (format-time-string "%d-%m-%Y")))
+
+(defun p-insert-date ()
+  (interactive)
+  (insert (format-time-string "%Y-%m-%d")))
 
 
 ;; First input delay ------------------------------------

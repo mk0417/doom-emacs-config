@@ -4,7 +4,6 @@
 
 ;; theme
 (setq doom-theme 'doom-one)
-
 ;; (setq srcery-invert-region nil)
 ;; (setq doom-theme 'srcery)
 

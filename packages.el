@@ -13,11 +13,14 @@
 (package! fill-column-indicator)
 (package! srcery-theme)
 (package! activity-watch-mode)
-(package! org-bullets)
+(package! org-superstar)
 (package! google-this)
 (package! visual-regexp)
 (package! iedit)
 (package! evil-matchit)
+(package! org-tree-slide)
+(package! olivetti)
+(package! org-roam-server)
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
