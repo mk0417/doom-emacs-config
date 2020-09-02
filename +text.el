@@ -52,7 +52,13 @@
           ("t" "TODO" entry
            (file+headline "todo.org" "Todo and task")
            "* TODO [#A] %^{Title} \nSCHEDULED: %^t\n")))
-  (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1))))
+  (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
+  ;; keybindings
+  ;; cause warning of `failed to load org package incrementally' if move out of after! org
+  (map! :localleader
+        (:map org-mode-map
+         :desc "next slide"  "l"  #'org-tree-slide-move-next-tree
+         :desc "next slide"  "h"  #'org-tree-slide-move-previous-tree)))
 
 ;; latex
 (unless (boundp 'org-export-latex-classes)
@@ -88,12 +94,6 @@
        "\\end{frame}"
        "\\begin{frame}[fragile]\\frametitle{%s}"
        "\\end{frame}")))
-
-;; keybindings
-(map! :localleader
-      (:map org-mode-map
-      :desc "next slide"  "l"  #'org-tree-slide-move-next-tree
-      :desc "next slide"  "h"  #'org-tree-slide-move-previous-tree))
 
 
 ;; Deft -------------------------------------------------
