@@ -14,7 +14,6 @@
 (package! srcery-theme)
 (package! activity-watch-mode)
 (package! org-superstar)
-(package! google-this)
 (package! visual-regexp)
 (package! iedit)
 (package! evil-matchit)
