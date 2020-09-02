@@ -11,15 +11,13 @@
 
 ;; Company -------------------------------------------------
 (after! company
- ;; (setq company-idle-delay 0.05
- ;;       company-minimum-prefix-length 1)
- (set-company-backend! '(prog-mode text-mode conf-mode)
-   '(company-capf
-     company-files
-     company-keywords
-     company-abbrev
-     company-dabbrev
-     company-dabbrev-code)))
+  (set-company-backend! '(prog-mode text-mode conf-mode)
+    '(company-capf
+      company-files
+      company-keywords
+      company-abbrev
+      company-dabbrev
+      company-dabbrev-code)))
 
 ;; fix bug when use company and fci-mode together
 ;; https://github.com/company-mode/company-mode/issues/180

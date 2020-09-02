@@ -13,13 +13,13 @@
 (define-key evil-normal-state-map (kbd "s-;") 'iedit-mode)
 (define-key evil-normal-state-map (kbd "gn") 'git-gutter:next-hunk)
 (define-key evil-normal-state-map (kbd "gp") 'git-gutter:previous-hunk)
-(define-key evil-normal-state-map (kbd ";l") 'evil-shift-right)
-(define-key evil-normal-state-map (kbd ";h") 'evil-shift-left)
+(define-key evil-normal-state-map (kbd "gl") 'evil-shift-right)
+(define-key evil-normal-state-map (kbd "gh") 'evil-shift-left)
 (define-key evil-normal-state-map (kbd "C-0") 'doom/reset-font-size)
 (define-key evil-visual-state-map (kbd "C-e") 'evil-end-of-line)
 (define-key evil-visual-state-map (kbd "v")   'er/expand-region)
-(define-key evil-visual-state-map (kbd ";l") 'evil-shift-right)
-(define-key evil-visual-state-map (kbd ";h") 'evil-shift-left)
+(define-key evil-visual-state-map (kbd "gl") 'evil-shift-right)
+(define-key evil-visual-state-map (kbd "gh") 'evil-shift-left)
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 (global-set-key (kbd "C-c c") 'org-capture)
 
@@ -40,7 +40,8 @@
        (:unless (featurep! :ui workspaces)
         :desc "Switch buffer"                      "b"      #'switch-to-buffer)
        :desc "eval buffer"                         "e"      #'eval-buffer
-       :desc "switch to dashboard"                 "s"      #'+doom-dashboard/open)
+       :desc "switch to dashboard"                 "s"      #'+doom-dashboard/open
+       :desc "kill buffer and window"              "D"      #'kill-buffer-and-window)
       (:prefix-map ("e" . "text")
        :desc "beginning-of-defun"                  "b"      #'beginning-of-defun
        :desc "end-of-defun"                        "e"      #'end-of-defun
@@ -60,7 +61,7 @@
        :desc "insert date"                         "d"      #'p-insert-date))
 
 ;; local-leader
-(setq doom-localleader-key ",")
+(setq doom-localleader-key ";")
 
 
 ;; Efficient typing -------------------------------------
