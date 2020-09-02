@@ -43,15 +43,16 @@
         org-roam-server-network-label-truncate t
         org-roam-server-network-label-truncate-length 60
         org-roam-server-network-label-wrap-length 20)
-  (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1))))
-
-(setq org-capture-templates
+  ;; overwrite default templates
+  ;; does not work if move it out of after! org
+  (setq org-capture-templates
         '(("m" "Meeting and event" entry
            (file+headline "meeting.org" "Meetings, events, and appointments")
            "* %^{Scope of meeting|Staff meeting: |Student meeting: |Event:} %^{Title} %^g\nSCHEDULED: %^t\n")
           ("t" "TODO" entry
            (file+headline "todo.org" "Todo and task")
            "* TODO [#A] %^{Title} \nSCHEDULED: %^t\n")))
+  (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1))))
 
 ;; latex
 (unless (boundp 'org-export-latex-classes)
@@ -87,6 +88,12 @@
        "\\end{frame}"
        "\\begin{frame}[fragile]\\frametitle{%s}"
        "\\end{frame}")))
+
+;; keybindings
+(map! :localleader
+      (:map org-mode-map
+      :desc "next slide"  "l"  #'org-tree-slide-move-next-tree
+      :desc "next slide"  "h"  #'org-tree-slide-move-previous-tree))
 
 
 ;; Deft -------------------------------------------------
