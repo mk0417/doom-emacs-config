@@ -182,3 +182,12 @@
        :config
        ;;literate
        (default +bindings +smartparens))
+
+
+;; j and k in visual line in org mode
+;; https://www.baty.net/2020/respecting-visual-lines-in-doom-emacs/
+;; does not work if add below to config.el
+(use-package-hook! evil
+  :pre-init
+  (setq evil-respect-visual-line-mode t)
+  t)
