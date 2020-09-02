@@ -15,6 +15,7 @@
 (define-key evil-normal-state-map (kbd "gp") 'git-gutter:previous-hunk)
 (define-key evil-normal-state-map (kbd ";l") 'evil-shift-right)
 (define-key evil-normal-state-map (kbd ";h") 'evil-shift-left)
+(define-key evil-normal-state-map (kbd "C-0") 'doom/reset-font-size)
 (define-key evil-visual-state-map (kbd "C-e") 'evil-end-of-line)
 (define-key evil-visual-state-map (kbd "v")   'er/expand-region)
 (define-key evil-visual-state-map (kbd ";l") 'evil-shift-right)
@@ -34,11 +35,12 @@
        (:when (featurep! :ui workspaces)
         :desc "Switch workspace buffer"            "B"      #'persp-switch-to-buffer
         :desc "Switch buffer"                      "b"      #'switch-to-buffer)
-        :desc "narrow region"                      "n"      #'+evil:narrow-buffer
-        :desc "widen"                              "w"      #'widen
+       :desc "narrow region"                       "n"      #'+evil:narrow-buffer
+       :desc "widen"                               "w"      #'widen
        (:unless (featurep! :ui workspaces)
         :desc "Switch buffer"                      "b"      #'switch-to-buffer)
-        :desc "eval buffer"                        "e"      #'eval-buffer)
+       :desc "eval buffer"                         "e"      #'eval-buffer
+       :desc "switch to dashboard"                 "s"      #'+doom-dashboard/open)
       (:prefix-map ("e" . "text")
        :desc "beginning-of-defun"                  "b"      #'beginning-of-defun
        :desc "end-of-defun"                        "e"      #'end-of-defun
@@ -47,7 +49,7 @@
       (:prefix-map ("s" . "search")
        :desc "swiper-isearch-thing-at-point"       "S"      #'swiper-isearch-thing-at-point
        :desc "search-project-at-point"             "a"      #'+default/search-project-for-symbol-at-point
-       :desc "google-this"                         "g"      #'google-this
+       :desc "counsel-file-jump"                   "g"      #'counsel-file-jump
        :desc "counsel-yank-pop"                    "h"      #'counsel-yank-pop)
       (:prefix-map ("n" . "notes")
        :desc "new deft file"                       "D"      #'deft-new-file
