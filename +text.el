@@ -10,6 +10,18 @@
       org-journal-file-format "%Y-%m-%d.org"
       org-journal-file-type 'monthly)
 
+(defun p-org-presentation-on ()
+  (interactive)
+  (progn
+    (org-tree-slide-mode 1)
+    (olivetti-mode 1)))
+
+(defun p-org-presentation-off ()
+  (interactive)
+  (progn
+    (org-tree-slide-mode -1)
+    (olivetti-mode -1)))
+
 (after! org
   (setq org-superstar-remove-leading-stars t
         org-superstar-headline-bullets-list '("◉" "○" "▷")
@@ -57,16 +69,17 @@
   ;; cause warning of `failed to load org package incrementally' if move out of after! org
   (map! :localleader
         (:map org-mode-map
-         :desc "next slide"  "l"  #'org-tree-slide-move-next-tree
-         :desc "next slide"  "h"  #'org-tree-slide-move-previous-tree)))
-
-;; latex
-(unless (boundp 'org-export-latex-classes)
-  (setq org-export-latex-classes nil))
-(add-to-list 'org-export-latex-classes
-  ;; beamer class, for presentations
-  '("beamer"
-     "\\documentclass[11pt]{beamer}\n
+         :desc "next slide"                 "l"         #'org-tree-slide-move-next-tree
+         :desc "next slide"                 "h"         #'org-tree-slide-move-previous-tree
+         :desc "presentation mode on"       "j"         #'p-org-presentation-on
+         :desc "presentation mode off"      "J"         #'p-org-presentation-off))
+  ;; latex
+  (unless (boundp 'org-export-latex-classes)
+    (setq org-export-latex-classes nil))
+  (add-to-list 'org-export-latex-classes
+               ;; beamer class, for presentations
+               '("beamer"
+                 "\\documentclass[11pt]{beamer}\n
       \\mode<{{{beamermode}}}>\n
       \\usetheme{{{{beamertheme}}}}\n
       \\usecolortheme{{{{beamercolortheme}}}}\n
@@ -89,11 +102,12 @@
       \\institute{{{{beamerinstitute}}}}\n
        \\subject{{{{beamersubject}}}}\n"
 
-     ("\\section{%s}" . "\\section*{%s}")
-     ("\\begin{frame}[fragile]\\frametitle{%s}"
-       "\\end{frame}"
-       "\\begin{frame}[fragile]\\frametitle{%s}"
-       "\\end{frame}")))
+                 ("\\section{%s}" . "\\section*{%s}")
+                 ("\\begin{frame}[fragile]\\frametitle{%s}"
+                  "\\end{frame}"
+                  "\\begin{frame}[fragile]\\frametitle{%s}"
+                  "\\end{frame}"))))
+
 
 
 ;; Deft -------------------------------------------------

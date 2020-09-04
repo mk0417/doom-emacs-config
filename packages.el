@@ -10,7 +10,6 @@
 ;(package! some-package)
 
 (package! elpy)
-(package! fill-column-indicator)
 (package! srcery-theme)
 (package! activity-watch-mode)
 (package! org-superstar)

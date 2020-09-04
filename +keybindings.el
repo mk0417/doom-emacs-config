@@ -15,7 +15,9 @@
 (define-key evil-normal-state-map (kbd "gp") 'git-gutter:previous-hunk)
 (define-key evil-normal-state-map (kbd "gl") 'evil-shift-right)
 (define-key evil-normal-state-map (kbd "gh") 'evil-shift-left)
-(define-key evil-normal-state-map (kbd "C-0") 'doom/reset-font-size)
+(define-key evil-normal-state-map (kbd "zi") 'doom/increase-font-size)
+(define-key evil-normal-state-map (kbd "zo") 'doom/decrease-font-size)
+(define-key evil-normal-state-map (kbd "zz") 'doom/reset-font-size)
 (define-key evil-visual-state-map (kbd "C-e") 'evil-end-of-line)
 (define-key evil-visual-state-map (kbd "v")   'er/expand-region)
 (define-key evil-visual-state-map (kbd "gl") 'evil-shift-right)
@@ -55,10 +57,12 @@
       (:prefix-map ("n" . "notes")
        :desc "new deft file"                       "D"      #'deft-new-file
        :desc "olivetti"                            "O"      #'olivetti-mode
-       :desc "org-tree-slide-mode"                 "p"      #'org-tree-slide-mode)
+       :desc "org-tree-slide-mode"                 "p"      #'org-tree-slide-mode
+       :desc "open journal file"                   "jo"     #'org-journal-open-current-journal-file)
       (:prefix-map ("i" . "insert")
        :desc "insert uk date"                      "k"      #'p-insert-uk-date
        :desc "insert date"                         "d"      #'p-insert-date))
+
 
 ;; local-leader
 (setq doom-localleader-key ";")

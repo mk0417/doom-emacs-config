@@ -23,8 +23,8 @@
 (setq doom-font (font-spec :family "Cascadia Mono" :size 12 :weight 'semi-light)
       doom-variable-pitch-font (font-spec :family "Cascadia Mono" :size 12))
 
-;; fci rule
-(setq fci-rule-column 80)
+;; column indicator
+(setq-default display-fill-column-indicator-column 80)
 
 ;; change cursor color
 ;; https://github.com/hlissner/doom-emacs/issues/1848
@@ -39,8 +39,8 @@
             (insert (propertize (+doom-dashboard--center +doom-dashboard--width line)
                                 'face 'doom-dashboard-banner) " ")
             (insert "\n"))
-          '("Hello Peng, welcome to EMACS\n\n\n"))
-    ))
+          '("Hello Peng, welcome to EMACS\n\n\n"))))
+
 (defun doom-dashboard-widget-footer ()
   (insert "\n"))
 (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)

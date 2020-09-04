@@ -12,31 +12,12 @@
 ;; Company -------------------------------------------------
 (after! company
   (set-company-backend! '(prog-mode text-mode conf-mode)
-    '(company-capf
-      company-files
+    '(company-files
+      company-capf
       company-keywords
-      company-abbrev
       company-dabbrev
-      company-dabbrev-code)))
-
-;; fix bug when use company and fci-mode together
-;; https://github.com/company-mode/company-mode/issues/180
-(defvar-local company-fci-mode-on-p nil)
-(defun company-turn-off-fci (&rest ignore)
-  (when (boundp 'fci-mode)
-    (setq company-fci-mode-on-p fci-mode)
-    (when fci-mode (fci-mode -1))))
-(defun company-maybe-turn-on-fci (&rest ignore)
-  (when company-fci-mode-on-p (fci-mode 1)))
-(add-hook 'company-completion-started-hook 'company-turn-off-fci)
-(add-hook 'company-completion-finished-hook 'company-maybe-turn-on-fci)
-(add-hook 'company-completion-cancelled-hook 'company-maybe-turn-on-fci)
-
-
-;; Evil ------------------------------------------------
-;; (after! evil
-;;   (setq-default evil-ex-search-persistent-highlight nil)
-;;   (setq evil-ex-substitute-global t))
+      company-dabbrev-code
+      company-abbrev)))
 
 
 ;; Visual-regexp ---------------------------------------
@@ -63,11 +44,6 @@
   (global-evil-matchit-mode 1))
 
 
-;; lsp ---------------------------------------------
-;; https://github.com/emacs-lsp/lsp-mode/issues/1903
-(setq lsp-enable-symbol-highlighting nil)
-
-
 ;; Misc ------------------------------------------------
 (setq user-full-name "Peng"
       user-mail-address "pengdata1@gmail.com")
@@ -80,10 +56,6 @@
 
 ;; disable flyspell for git commit
 (remove-hook! '(git-commit-mode-hook) #'flyspell-mode)
-
-;; google this
-(after! google-this
-  (google-this-mode 1))
 
 ;; trash
 (setq trash-directory "~/.Trash"
