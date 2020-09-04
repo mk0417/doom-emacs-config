@@ -15,9 +15,6 @@
 (define-key evil-normal-state-map (kbd "gp") 'git-gutter:previous-hunk)
 (define-key evil-normal-state-map (kbd "gl") 'evil-shift-right)
 (define-key evil-normal-state-map (kbd "gh") 'evil-shift-left)
-(define-key evil-normal-state-map (kbd "zi") 'doom/increase-font-size)
-(define-key evil-normal-state-map (kbd "zo") 'doom/decrease-font-size)
-(define-key evil-normal-state-map (kbd "zz") 'doom/reset-font-size)
 (define-key evil-visual-state-map (kbd "C-e") 'evil-end-of-line)
 (define-key evil-visual-state-map (kbd "v")   'er/expand-region)
 (define-key evil-visual-state-map (kbd "gl") 'evil-shift-right)
@@ -63,9 +60,17 @@
        :desc "insert uk date"                      "k"      #'p-insert-uk-date
        :desc "insert date"                         "d"      #'p-insert-date))
 
-
 ;; local-leader
 (setq doom-localleader-key ";")
+
+;; dired mode
+(map! :localleader
+      (:map dired-mode-map
+       :desc "dired-downcase"                             "l"      #'dired-downcase
+       :desc "dired-upcase"                               "u"      #'dired-upcase
+       :desc "dired-mark-files-regexp"                    "f"      #'dired-mark-files-regexp
+       :desc "dired-mark-files-containing-regexp"         "c"      #'dired-mark-files-containing-regexp
+       :desc "dired-up-directory"                         "p"      #'dired-up-directory))
 
 
 ;; Efficient typing -------------------------------------
