@@ -60,7 +60,7 @@
   (setq org-capture-templates
         '(("m" "Meeting and event" entry
            (file+headline "meeting.org" "Meetings, events, and appointments")
-           "* %^{Scope of meeting|Staff meeting: |Student meeting: |Event:} %^{Title} %^g\nSCHEDULED: %^t\n")
+           "* %^{Scope of meeting|Event: |Research discussion: |Staff meeting: |Student meeting: } %^{Title} %^g\nSCHEDULED: %^t\n")
           ("t" "TODO" entry
            (file+headline "todo.org" "Todo and task")
            "* TODO [#A] %^{Title} \nSCHEDULED: %^t\n")))
