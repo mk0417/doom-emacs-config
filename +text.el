@@ -65,6 +65,9 @@
            (file+headline "todo.org" "Todo and task")
            "* TODO [#A] %^{Title} \nSCHEDULED: %^t\n")))
   (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
+  ;; disable line number in org mode
+  ;; https://github.com/hlissner/doom-emacs/issues/827#issuecomment-653784466
+  (add-hook! 'org-mode-hook #'doom-disable-line-numbers-h)
   ;; keybindings
   ;; cause warning of `failed to load org package incrementally' if move out of after! org
   (map! :localleader
@@ -107,7 +110,6 @@
                   "\\end{frame}"
                   "\\begin{frame}[fragile]\\frametitle{%s}"
                   "\\end{frame}"))))
-
 
 
 ;; Deft -------------------------------------------------
