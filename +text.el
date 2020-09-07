@@ -8,7 +8,8 @@
       org-journal-dir "~/org/journal"
       org-journal-date-format "%A, %d %B %Y"
       org-journal-file-format "%Y-%m-%d.org"
-      org-journal-file-type 'monthly)
+      org-journal-file-type 'monthly
+      org-journal-enable-agenda-integration t)
 
 (defun p-org-presentation-on ()
   (interactive)
