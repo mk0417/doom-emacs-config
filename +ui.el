@@ -4,8 +4,9 @@
 
 ;; theme
 ;; (setq doom-theme 'doom-one)
-(setq srcery-invert-region nil)
-(setq doom-theme 'srcery)
+(setq doom-theme 'doom-old-hope)
+;; (setq srcery-invert-region nil)
+;; (setq doom-theme 'srcery)
 
 ;; maximize window at startup
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
