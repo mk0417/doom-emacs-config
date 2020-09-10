@@ -69,6 +69,7 @@
   ;; disable line number in org mode
   ;; https://github.com/hlissner/doom-emacs/issues/827#issuecomment-653784466
   (add-hook! 'org-mode-hook #'doom-disable-line-numbers-h)
+  (add-hook 'text-mode-hook 'pandoc-mode)
   ;; keybindings
   ;; cause warning of `failed to load org package incrementally' if move out of after! org
   (map! :localleader

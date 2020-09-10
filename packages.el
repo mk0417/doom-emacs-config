@@ -19,6 +19,7 @@
 (package! org-tree-slide)
 (package! olivetti)
 (package! org-roam-server)
+(package! pandoc-mode)
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
