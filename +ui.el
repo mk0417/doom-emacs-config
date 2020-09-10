@@ -3,10 +3,16 @@
 ;; UI ----------------------------------------------------
 
 ;; theme
-;; (setq doom-theme 'doom-one)
-(setq doom-theme 'doom-old-hope)
+;; use `load-theme' instead of `setq doom-theme'
+;; otherwise `set-face-attribute' does not work
+;; https://github.com/hlissner/doom-emacs/issues/2194#issuecomment-565844321
+;; (load-theme 'doom-one t)
+(load-theme 'doom-tomorrow-night t)
 ;; (setq srcery-invert-region nil)
-;; (setq doom-theme 'srcery)
+;; (load-theme 'srcery t)
+
+;; selected text color
+(set-face-attribute 'region nil :background "#666666" :foreground "#ffffa3")
 
 ;; maximize window at startup
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
@@ -32,6 +38,22 @@
 (setq evil-normal-state-cursor '(box "#cf5a65")
       evil-insert-state-cursor '(bar "#cf5a65")
       evil-visual-state-cursor '(hollow "#cf5a65"))
+
+;; company tooltip color
+(after! company
+  (custom-set-faces
+   '(company-preview-common
+     ((t (:inherit company-preview))))
+   '(company-tooltip
+     ((t (:background "#ffffa3" :foreground "black"))))
+   '(company-tooltip-selection
+     ((t (:background "steelblue" :foreground "white"))))
+   '(company-tooltip-common
+     ((((type x)) (:inherit company-tooltip :weight bold))
+      (t (:inherit company-tooltip))))
+   '(company-tooltip-common-selection
+     ((((type x)) (:inherit company-tooltip-selection :weight bold))
+      (t (:inherit company-tooltip-selection))))))
 
 ;; banner
 (defun doom-dashboard-widget-banner ()
