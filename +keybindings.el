@@ -56,8 +56,13 @@
       (:prefix-map ("n" . "notes")
        :desc "new deft file"                       "D"      #'deft-new-file
        :desc "olivetti"                            "O"      #'olivetti-mode
-       :desc "org-tree-slide-mode"                 "p"      #'org-tree-slide-mode
-       :desc "open journal file"                   "jo"     #'org-journal-open-current-journal-file)
+       :desc "org-tree-slide-mode"                 "P"      #'org-tree-slide-mode
+       :desc "open journal file"                   "jo"     #'org-journal-open-current-journal-file
+       (:prefix ("p" . "pandoc")
+        :desc "pandoc-set-format"                  "f"      #'pandoc-set-write
+        :desc "pandoc-set-output-name"             "n"      #'pandoc-set-output
+        :desc "pandoc-set-output-directory"        "d"      #'pandoc-set-output-dir
+        :desc "pandoc-run"                         "r"      #'pandoc-run-pandoc))
       (:prefix-map ("i" . "insert")
        :desc "insert uk date"                      "k"      #'p-insert-uk-date
        :desc "insert date"                         "d"      #'p-insert-date)
