@@ -3,7 +3,7 @@
 ;; Org ---------------------------------------------------
 
 (setq org-directory "~/org"
-      org-agenda-files "~/org"
+      org-agenda-files '("~/org/")
       org-roam-directory "~/org/roam"
       org-journal-dir "~/org/journal"
       org-journal-date-format "%A, %d %B %Y"
