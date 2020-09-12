@@ -21,6 +21,9 @@
   (define-key evil-visual-state-map (kbd "gl") 'evil-shift-right)
   (define-key evil-visual-state-map (kbd "gh") 'evil-shift-left))
 
+(after! dired
+  (define-key dired-mode-map (kbd "C-c <return>") 'p-open-in-external-app))
+
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 (global-set-key (kbd "C-c c") 'org-capture)
 

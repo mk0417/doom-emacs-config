@@ -77,6 +77,28 @@
   (interactive)
   (insert (format-time-string "%Y-%m-%d")))
 
+;; open from external app (Xah Lee)
+;; http://ergoemacs.org/emacs/emacs_dired_open_file_in_ext_apps.html
+(defun p-open-in-external-app (&optional @fname)
+  (interactive)
+  (let* (
+         ($file-list
+          (if @fname
+              (progn (list @fname))
+            (if (string-equal major-mode "dired-mode")
+                (dired-get-marked-files)
+              (list (buffer-file-name)))))
+         ($do-it-p (if (<= (length $file-list) 5)
+                       t
+                     (y-or-n-p "Open more than 5 files? "))))
+    (when $do-it-p
+      (cond
+       ((string-equal system-type "darwin")
+        (mapc
+         (lambda ($fpath)
+           (shell-command
+            (concat "open " (shell-quote-argument $fpath))))  $file-list))))))
+
 
 ;; First input delay ------------------------------------
 ;; https://github.com/hlissner/doom-emacs/issues/3399
