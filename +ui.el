@@ -45,7 +45,7 @@
    '(company-preview-common
      ((t (:inherit company-preview))))
    '(company-tooltip
-     ((t (:background "#ffffa3" :foreground "black"))))
+     ((t (:background "#ffee89" :foreground "black"))))
    '(company-tooltip-selection
      ((t (:background "steelblue" :foreground "white"))))
    '(company-tooltip-common
@@ -127,10 +127,10 @@
       'help-echo "Buffer is read-only"))))
    "] "
     ;; add the time, with the date and the emacs uptime in the tooltip
-    '(:eval (propertize (format-time-string "%H:%M  %a-%d-%m-%Y")
-              'help-echo
-              (concat (format-time-string "%c; ")
-                      (emacs-uptime "Uptime:%hh"))))
+    ;; '(:eval (propertize (format-time-string "%H:%M %a-%d-%m-%Y")
+    ;;           'help-echo
+    ;;           (concat (format-time-string "%c; ")
+    ;;                   (emacs-uptime "Uptime:%hh"))))
     " --"
     ;; minor-mode-alist
     "%-"))
