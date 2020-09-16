@@ -33,15 +33,9 @@
 (setq projectile-project-search-path '("~/Git/" "~/project/" "~/working/"))
 
 
-;; iedit ---------------------------------------------
-(require 'iedit)
-
-
 ;; evil-matchit ----------------------------------------
-(require 'evil-matchit)
-(after! evil-matchit
-  (setq evilmi-shortcut "m")
-  (global-evil-matchit-mode 1))
+(setq evilmi-shortcut "m")
+(add-hook 'prog-mode-hook 'evil-matchit-mode)
 
 
 ;; Misc ------------------------------------------------
