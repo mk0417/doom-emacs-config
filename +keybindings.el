@@ -74,7 +74,9 @@
        :desc "insert uk date"                      "k"      #'p-insert-uk-date
        :desc "insert date"                         "d"      #'p-insert-date)
       (:prefix-map ("f" . "file")
-       :desc "dired jump"                          "j"      #'dired-jump))
+       :desc "dired jump"                          "j"      #'dired-jump)
+      (:prefix-map ("t" . "toggle")
+       :desc "maximize frame"                      "m"      #'toggle-frame-maximized))
 
 ;; local-leader
 (setq doom-localleader-key ";")
