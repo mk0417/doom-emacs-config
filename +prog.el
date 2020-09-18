@@ -63,7 +63,6 @@
 
 
 ;; ESS ---------------------------------------------------
-
 (after! ess
   (setq ess-ask-for-ess-directory nil)
   (general-create-definer p-ess-leader-def
