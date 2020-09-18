@@ -86,6 +86,8 @@
       (:map dired-mode-map
        :desc "dired-downcase"                             "l"      #'dired-downcase
        :desc "dired-upcase"                               "u"      #'dired-upcase
+       :desc "dired-create-empty-file"                    "n"      #'dired-create-empty-file
+       :desc "dired-create-directory"                     "a"      #'dired-create-directory
        :desc "dired-mark-files-regexp"                    "f"      #'dired-mark-files-regexp
        :desc "dired-mark-files-containing-regexp"         "c"      #'dired-mark-files-containing-regexp
        :desc "dired-up-directory"                         "p"      #'dired-up-directory))
