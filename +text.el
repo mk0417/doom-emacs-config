@@ -74,10 +74,16 @@
   ;; cause warning of `failed to load org package incrementally' if move out of after! org
   (map! :localleader
         (:map org-mode-map
-         :desc "next slide"                 "l"         #'org-tree-slide-move-next-tree
-         :desc "next slide"                 "h"         #'org-tree-slide-move-previous-tree
-         :desc "presentation mode on"       "j"         #'p-org-presentation-on
-         :desc "presentation mode off"      "J"         #'p-org-presentation-off))
+         ;; presentation mode
+         :desc "next slide"                             "l"         #'org-tree-slide-move-next-tree
+         :desc "next slide"                             "h"         #'org-tree-slide-move-previous-tree
+         :desc "presentation mode on"                   "j"         #'p-org-presentation-on
+         :desc "presentation mode off"                  "J"         #'p-org-presentation-off
+         ;; flyspell
+         :prefix ("w" . "flyspell")
+         :desc "flyspell-buffer"                        "b"         #'flyspell-buffer
+         :desc "evil-next-flyspell-error"               "n"         #'evil-next-flyspell-error
+         :desc "evil-prev-flyspell-error"               "p"         #'evil-prev-flyspell-error))
   ;; latex
   (unless (boundp 'org-export-latex-classes)
     (setq org-export-latex-classes nil))
