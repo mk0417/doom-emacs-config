@@ -30,6 +30,9 @@
 
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 (global-set-key (kbd "C-c c") 'org-capture)
+(global-set-key (kbd "s-C-i") (lambda () (interactive) (p-adjust-opacity nil -2)))
+(global-set-key (kbd "s-C-o") (lambda () (interactive) (p-adjust-opacity nil 2)))
+(global-set-key (kbd "s-C-u") (lambda () (interactive) (modify-frame-parameters nil `((alpha . 100)))))
 
 ;; leader key
 (map! :leader
