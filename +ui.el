@@ -6,7 +6,8 @@
 ;; use `load-theme' instead of `setq doom-theme'
 ;; otherwise `set-face-attribute' does not work
 ;; https://github.com/hlissner/doom-emacs/issues/2194#issuecomment-565844321
-(load-theme 'doom-one t)
+;; (load-theme 'doom-one t)
+(load-theme 'doom-palenight t)
 ;; (load-theme 'doom-tomorrow-night t)
 ;; (setq srcery-invert-region nil)
 ;; (load-theme 'srcery t)
@@ -27,8 +28,11 @@
 (setq which-key-idle-delay 0.5)
 
 ;; font
-(setq doom-font (font-spec :family "Cascadia Mono" :size 12 :weight 'semi-light)
-      doom-variable-pitch-font (font-spec :family "Cascadia Mono" :size 12))
+(defvar p-font)
+;; (setq p-font "Cascadia Mono")
+(setq p-font "mononoki")
+(setq doom-font (font-spec :family p-font :size 13 :weight 'semi-light)
+      doom-variable-pitch-font (font-spec :family p-font :size 13))
 
 ;; column indicator
 (setq-default display-fill-column-indicator-column 80)
