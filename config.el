@@ -20,6 +20,15 @@
       company-abbrev)))
 
 
+;; eglot
+;; https://github.com/joaotavora/eglot/issues/334
+(setq eglot-ignored-server-capabilites '(:documentHighlightProvider))
+;; https://github.com/joaotavora/eglot/issues/324
+(setq eglot-stay-out-of '(company))
+;; https://github.com/joaotavora/eglot/pull/459
+(setq eldoc-echo-area-use-multiline-p nil)
+
+
 ;; Visual-regexp ---------------------------------------
 (after! visual-regexp
   (require 'visual-regexp))
