@@ -20,6 +20,8 @@
   (define-key evil-normal-state-map (kbd "C-c J") 'scroll-other-window)
   (define-key evil-normal-state-map (kbd "C-c k") (lambda() (interactive) (scroll-other-window-down 2)))
   (define-key evil-normal-state-map (kbd "C-c K") 'scroll-other-window-down)
+  (define-key evil-normal-state-map (kbd "gon") 'evil-multiedit-match-symbol-and-next)
+  (define-key evil-normal-state-map (kbd "gop") 'evil-multiedit-match-symbol-and-prev)
   (define-key evil-visual-state-map (kbd "C-e") 'evil-end-of-line)
   (define-key evil-visual-state-map (kbd "v")   'er/expand-region)
   (define-key evil-visual-state-map (kbd "gl") 'evil-shift-right)
