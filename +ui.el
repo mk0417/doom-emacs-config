@@ -51,7 +51,7 @@
    '(company-tooltip
      ((t (:background "#fff3ac" :foreground "black"))))
    '(company-tooltip-selection
-     ((t (:background "#8fa7bb" :foreground "white"))))
+     ((t (:background "#69adc6" :foreground "white"))))
    '(company-tooltip-common
      ((((type x)) (:inherit company-tooltip :weight bold))
       (t (:inherit company-tooltip))))
@@ -79,65 +79,111 @@
                  " %b"))))
 
 ;; modeline
+;; doom-modeline
 ;; (after! doom-modeline
 ;;   (setq doom-modeline-major-mode-icon t)
 ;;   (setq doom-modeline-modal-icon nil))
 
+;; custom modeline: version 1
 ;; http://emacs-fu.blogspot.com/2011/08/customizing-mode-line.html
 ;; https://emacs.stackexchange.com/questions/38969/how-to-display-window-number-in-my-mode-line
-(setq-default mode-line-format
-  (list
-   " "
-   '(:eval (window-parameter (selected-window) 'ace-window-path))
-   evil-mode-line-tag
-   ;; the buffer name; the file name as a tool tip
-   '(:eval (propertize "%b " 'face 'font-lock-keyword-face
-       'help-echo (buffer-file-name)))
-   ;; line and column
-   "(" ;; '%02' to set to 2 chars at least; prevents flickering
-   (propertize "%02l" 'face 'font-lock-type-face) ","
-   (propertize "%02c" 'face 'font-lock-type-face)
-   ") "
-   ;; relative position, size of file
-   "["
-   (propertize "%p" 'face 'font-lock-constant-face) ;; % above top
-   "/"
-   (propertize "%I" 'face 'font-lock-constant-face) ;; size
-   "] "
-   ;; git branch
-   '(vc-mode vc-mode)
-   " "
-   ;; the current major mode for the buffer.
-   "["
-   '(:eval (propertize "%m" 'face 'font-lock-string-face
-       'help-echo buffer-file-coding-system))
-   "] "
-   ;; insert vs overwrite mode, input-method in a tooltip
-   "["
-   '(:eval (propertize (if overwrite-mode "Ovr" "Ins")
-       'face 'font-lock-preprocessor-face
-       'help-echo (concat "Buffer is in "
-  (if overwrite-mode "overwrite" "insert") " mode")))
+;; (setq-default mode-line-format
+;;   (list
+;;    " "
+;;    '(:eval (window-parameter (selected-window) 'ace-window-path))
+;;    evil-mode-line-tag
+;;    ;; the buffer name; the file name as a tool tip
+;;    '(:eval (propertize "%b " 'face 'font-lock-keyword-face
+;;        'help-echo (buffer-file-name)))
+;;    ;; line and column
+;;    "(" ;; '%02' to set to 2 chars at least; prevents flickering
+;;    (propertize "%02l" 'face 'font-lock-type-face) ","
+;;    (propertize "%02c" 'face 'font-lock-type-face)
+;;    ") "
+;;    ;; relative position, size of file
+;;    "["
+;;    (propertize "%p" 'face 'font-lock-constant-face) ;; % above top
+;;    "/"
+;;    (propertize "%I" 'face 'font-lock-constant-face) ;; size
+;;    "] "
+;;    ;; git branch
+;;    '(vc-mode vc-mode)
+;;    " "
+;;    ;; the current major mode for the buffer.
+;;    "["
+;;    '(:eval (propertize "%m" 'face 'font-lock-string-face
+;;        'help-echo buffer-file-coding-system))
+;;    "] "
+;;    ;; insert vs overwrite mode, input-method in a tooltip
+;;    "["
+;;    '(:eval (propertize (if overwrite-mode "Ovr" "Ins")
+;;        'face 'font-lock-preprocessor-face
+;;        'help-echo (concat "Buffer is in "
+;;   (if overwrite-mode "overwrite" "insert") " mode")))
 
-   ;; was this buffer modified since the last save?
-   '(:eval (when (buffer-modified-p)
-     (concat ","  (propertize "Mod"
-      'face 'font-lock-warning-face
-      'help-echo "Buffer has been modified"))))
-   ;; is this buffer read-only?
-   '(:eval (when buffer-read-only
-             (concat ","  (propertize "RO"
-      'face 'font-lock-type-face
-      'help-echo "Buffer is read-only"))))
-   "] "
-    ;; add the time, with the date and the emacs uptime in the tooltip
-    ;; '(:eval (propertize (format-time-string "%H:%M %a-%d-%m-%Y")
-    ;;           'help-echo
-    ;;           (concat (format-time-string "%c; ")
-    ;;                   (emacs-uptime "Uptime:%hh"))))
-    " --"
-    ;; minor-mode-alist
-    "%-"))
+;;    ;; was this buffer modified since the last save?
+;;    '(:eval (when (buffer-modified-p)
+;;      (concat ","  (propertize "Mod"
+;;       'face 'font-lock-warning-face
+;;       'help-echo "Buffer has been modified"))))
+;;    ;; is this buffer read-only?
+;;    '(:eval (when buffer-read-only
+;;              (concat ","  (propertize "RO"
+;;       'face 'font-lock-type-face
+;;       'help-echo "Buffer is read-only"))))
+;;    "] "
+;;     ;; add the time, with the date and the emacs uptime in the tooltip
+;;     ;; '(:eval (propertize (format-time-string "%H:%M %a-%d-%m-%Y")
+;;     ;;           'help-echo
+;;     ;;           (concat (format-time-string "%c; ")
+;;     ;;                   (emacs-uptime "Uptime:%hh"))))
+;;     " --"
+;;     ;; minor-mode-alist
+;;     "%-"))
+
+
+;; custom modeline: version 2
+(setq-default mode-line-format
+              (list
+               " "
+               '(:eval (window-parameter (selected-window) 'ace-window-path))
+               evil-mode-line-tag
+               ;; the buffer name; the file name as a tool tip
+               '(:eval (propertize "%b "
+                                   'help-echo (buffer-file-name)))
+               ;; line and column
+               "(" ;; '%02' to set to 2 chars at least; prevents flickering
+               (propertize "%02l") ","
+               (propertize "%02c")
+               ") "
+               ;; relative position, size of file
+               "["
+               (propertize "%p") ;; % above top
+               "/"
+               (propertize "%I") ;; size
+               "] "
+               ;; git branch
+               '(vc-mode vc-mode)
+               " "
+               ;; the current major mode for the buffer.
+               "["
+               '(:eval (propertize "%m"
+                                   'help-echo buffer-file-coding-system))
+               "] "
+               ;; was this buffer modified since the last save?
+               '(:eval (when (buffer-modified-p)
+                         (propertize "Mod"
+                                     'help-echo "Buffer has been modified")))
+               " "
+               ;; is this buffer read-only?
+               '(:eval (when buffer-read-only
+                         (propertize "RO"
+                                     'help-echo "Buffer is read-only")))
+               "--"))
+
+(set-face-attribute 'mode-line nil
+                    :underline t
+                    :overline t)
 
 
 ;; Transparency
