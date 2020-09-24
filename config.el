@@ -20,7 +20,7 @@
       company-abbrev)))
 
 
-;; eglot
+;; Eglot --------------------------------------------------
 ;; https://github.com/joaotavora/eglot/issues/334
 (setq eglot-ignored-server-capabilites '(:documentHighlightProvider))
 ;; https://github.com/joaotavora/eglot/issues/324
