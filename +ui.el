@@ -49,9 +49,9 @@
    '(company-preview-common
      ((t (:inherit company-preview))))
    '(company-tooltip
-     ((t (:background "#ffee89" :foreground "black"))))
+     ((t (:background "#fff3ac" :foreground "black"))))
    '(company-tooltip-selection
-     ((t (:background "steelblue" :foreground "white"))))
+     ((t (:background "#8fa7bb" :foreground "white"))))
    '(company-tooltip-common
      ((((type x)) (:inherit company-tooltip :weight bold))
       (t (:inherit company-tooltip))))
