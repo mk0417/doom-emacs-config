@@ -13,7 +13,7 @@
 ;; (load-theme 'srcery t)
 
 ;; selected text color
-(set-face-attribute 'region nil :background "#666666" :foreground "#ffffa3")
+(set-face-attribute 'region nil :background "#666666")
 
 ;; maximize window at startup
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
@@ -178,8 +178,7 @@
                ;; is this buffer read-only?
                '(:eval (when buffer-read-only
                          (propertize "RO"
-                                     'help-echo "Buffer is read-only")))
-               "--"))
+                                     'help-echo "Buffer is read-only")))))
 
 (set-face-attribute 'mode-line nil
                     :underline t
