@@ -51,6 +51,15 @@
 (setq user-full-name "Peng"
       user-mail-address "pengdata1@gmail.com")
 
+;; from https://blog.sumtypeofway.com/posts/emacs-config.html
+(setq make-backup-files nil
+      auto-save-default nil
+      create-lockfiles nil)
+
+(setq custom-file (make-temp-file ""))
+(setq custom-safe-themes t)
+(setq require-final-newline t)
+
 ;; dashboard default directory
 (setq +doom-dashboard-pwd-policy "~/")
 
