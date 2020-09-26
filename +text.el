@@ -2,6 +2,8 @@
 
 ;; Org ---------------------------------------------------
 
+;; To modify org-directory it must be set before org has loaded
+;; https://github.com/hlissner/doom-emacs/tree/develop/modules/lang/org
 (setq org-directory "~/org/agenda"
       org-agenda-files '("~/org/agenda/meeting.org" "~/org/agenda/todo.org")
       org-roam-directory "~/org/roam/"
@@ -11,17 +13,17 @@
       org-journal-file-type 'monthly
       org-journal-enable-agenda-integration t)
 
-(defun p-org-presentation-on ()
-  (interactive)
-  (progn
-    (org-tree-slide-mode 1)
-    (olivetti-mode 1)))
+;; (defun p-org-presentation-on ()
+;;   (interactive)
+;;   (progn
+;;     (org-tree-slide-mode 1)
+;;     (olivetti-mode 1)))
 
-(defun p-org-presentation-off ()
-  (interactive)
-  (progn
-    (org-tree-slide-mode -1)
-    (olivetti-mode -1)))
+;; (defun p-org-presentation-off ()
+;;   (interactive)
+;;   (progn
+;;     (org-tree-slide-mode -1)
+;;     (olivetti-mode -1)))
 
 (after! org
   (setq org-superstar-remove-leading-stars t
@@ -30,21 +32,21 @@
         '((?+ . ?•)
           (?* . ?➤)
           (?- . ?–)))
-  (setq org-tree-slide-breadcrumbs nil
-        org-tree-slide-header nil
-        org-tree-slide-slide-in-effect nil
-        org-tree-slide-heading-emphasis nil
-        org-tree-slide-cursor-init t
-        org-tree-slide-modeline-display nil
-        org-tree-slide-skip-done nil
-        org-tree-slide-skip-comments t
-        org-tree-slide-fold-subtrees-skipped t
-        org-tree-slide-skip-outline-level 8
-        org-tree-slide-never-touch-face t
-        org-tree-slide-activate-message
-        (propertize "Presentation mode ON" 'face 'success)
-        org-tree-slide-deactivate-message
-        (propertize "Presentation mode OFF" 'face 'error))
+  ;; (setq org-tree-slide-breadcrumbs nil
+  ;;       org-tree-slide-header nil
+  ;;       org-tree-slide-slide-in-effect nil
+  ;;       org-tree-slide-heading-emphasis nil
+  ;;       org-tree-slide-cursor-init t
+  ;;       org-tree-slide-modeline-display nil
+  ;;       org-tree-slide-skip-done nil
+  ;;       org-tree-slide-skip-comments t
+  ;;       org-tree-slide-fold-subtrees-skipped t
+  ;;       org-tree-slide-skip-outline-level 8
+  ;;       org-tree-slide-never-touch-face t
+  ;;       org-tree-slide-activate-message
+  ;;       (propertize "Presentation mode ON" 'face 'success)
+  ;;       org-tree-slide-deactivate-message
+  ;;       (propertize "Presentation mode OFF" 'face 'error))
   (setq org-roam-server-host "127.0.0.1"
         org-roam-server-port 8080
         org-roam-server-authenticate nil
@@ -77,8 +79,8 @@
          ;; presentation mode
          :desc "next slide"                             "l"         #'org-tree-slide-move-next-tree
          :desc "next slide"                             "h"         #'org-tree-slide-move-previous-tree
-         :desc "presentation mode on"                   "j"         #'p-org-presentation-on
-         :desc "presentation mode off"                  "J"         #'p-org-presentation-off
+         ;; :desc "presentation mode on"                   "j"         #'p-org-presentation-on
+         ;; :desc "presentation mode off"                  "J"         #'p-org-presentation-off
          ;; flyspell
          :prefix ("w" . "flyspell")
          :desc "flyspell-buffer"                        "b"         #'flyspell-buffer

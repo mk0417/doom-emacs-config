@@ -16,7 +16,7 @@
 (package! visual-regexp)
 (package! iedit)
 (package! evil-matchit)
-(package! org-tree-slide)
+;; (package! org-tree-slide)
 (package! olivetti)
 (package! org-roam-server)
 (package! pandoc-mode)
