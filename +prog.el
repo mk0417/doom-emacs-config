@@ -23,6 +23,7 @@
   ;; https://stackoverflow.com/questions/45214116/how-to-disable-emacs-elpy-vertical-guide-lines-for-indentation
   (add-hook 'elpy-mode-hook (lambda () (highlight-indentation-mode -1)))
   (add-hook 'python-mode-hook 'display-fill-column-indicator-mode)
+  (add-hook 'eglot-managed-mode-hook (lambda () (flymake-mode -1)))
   ;; Send current line
   (defun p-elpy-shell-send-line ()
     (interactive)
@@ -65,11 +66,7 @@
 ;; ESS ---------------------------------------------------
 (after! ess
   (setq ess-ask-for-ess-directory nil)
-  (general-create-definer p-ess-leader-def
-    :prefix ","
-    :states '(normal visual)
-    :keymaps 'ess-mode-map)
-  (p-ess-leader-def
-    "rl" 'ess-eval-line
-    "rr" 'ess-eval-region
-    "a" 'ess-cycle-assign))
+  (add-hook 'eglot-managed-mode-hook (lambda () (flymake-mode -1)))
+  (map! :localleader
+        (:map ess-mode-map
+         :desc "remove-overlay"      "a"      #'ess-cycle-assign)))
