@@ -7,6 +7,36 @@
       ns-right-option-modifier 'meta)
 
 ;; non-leader keybindings
+;; https://stackoverflow.com/questions/2951797/wrapping-selecting-text-in-enclosing-characters-in-emacs
+(defun p-surround-parens ()
+  (interactive)
+  (if (region-active-p)
+      (insert-pair 1 ?( ?))
+    (backward-char)))
+
+(defun p-surround-brackets ()
+  (interactive)
+  (if (region-active-p)
+      (insert-pair 1 ?[ ?])
+    (backward-char)))
+
+(defun p-surround-curly ()
+  (interactive)
+  (if (region-active-p)
+      (insert-pair 1 ?{ ?})
+    (backward-char)))
+
+;; https://emacs.stackexchange.com/questions/54659/how-to-delete-surrounding-brackets
+(defun p-delete-parens ()
+  (interactive)
+  (save-excursion
+    (backward-up-list)
+    (let ((beg (point)))
+      (forward-list)
+      (delete-backward-char 1)
+      (goto-char beg)
+      (delete-char 1))))
+
 (after! evil
   (define-key evil-normal-state-map (kbd "C-e") 'evil-end-of-line)
   (define-key evil-normal-state-map (kbd "C-j") 'transpose-words)
@@ -22,10 +52,14 @@
   (define-key evil-normal-state-map (kbd "C-c K") 'scroll-other-window-down)
   (define-key evil-normal-state-map (kbd "gon") 'evil-multiedit-match-symbol-and-next)
   (define-key evil-normal-state-map (kbd "gop") 'evil-multiedit-match-symbol-and-prev)
+  (define-key evil-normal-state-map (kbd "god") 'p-delete-parens)
   (define-key evil-visual-state-map (kbd "C-e") 'evil-end-of-line)
   (define-key evil-visual-state-map (kbd "v")   'er/expand-region)
   (define-key evil-visual-state-map (kbd "gl") 'evil-shift-right)
-  (define-key evil-visual-state-map (kbd "gh") 'evil-shift-left))
+  (define-key evil-visual-state-map (kbd "gh") 'evil-shift-left)
+  (define-key evil-visual-state-map (kbd "gok") 'p-surround-parens)
+  (define-key evil-visual-state-map (kbd "gof") 'p-surround-brackets)
+  (define-key evil-visual-state-map (kbd "goh") 'p-surround-curly))
 
 (after! dired
   (define-key dired-mode-map (kbd "C-c <return>") 'p-open-in-external-app))
