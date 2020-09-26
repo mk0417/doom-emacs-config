@@ -81,6 +81,7 @@
 ;; modeline
 ;; doom-modeline
 ;; (after! doom-modeline
+;;   (setq doom-modeline-height 13)
 ;;   (setq doom-modeline-major-mode-icon t)
 ;;   (setq doom-modeline-modal-icon nil))
 
@@ -147,7 +148,7 @@
               (list
                " "
                '(:eval (window-parameter (selected-window) 'ace-window-path))
-               evil-mode-line-tag
+               ;; evil-mode-line-tag
                ;; the buffer name; the file name as a tool tip
                '(:eval (propertize "%b "
                                    'help-echo (buffer-file-name)))
