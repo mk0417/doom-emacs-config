@@ -16,12 +16,13 @@
 (package! visual-regexp)
 (package! iedit)
 (package! evil-matchit)
-;; (package! org-tree-slide)
+(package! org-tree-slide)
 (package! olivetti)
 (package! org-roam-server)
 (package! pandoc-mode)
 (package! jupyter)
 (package! berrys-theme)
+(package! ox-reveal)
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
