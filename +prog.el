@@ -67,6 +67,7 @@
 (after! ess
   (setq ess-ask-for-ess-directory nil)
   (add-hook 'eglot-managed-mode-hook (lambda () (flymake-mode -1)))
+  (add-hook 'ess-mode-hook 'display-fill-column-indicator-mode)
   (map! :localleader
         (:map ess-mode-map
-         :desc "remove-overlay"      "a"      #'ess-cycle-assign)))
+         :desc "ess-cycle-assign"      "a"      #'ess-cycle-assign)))
