@@ -31,8 +31,8 @@
 (defvar p-font)
 ;; (setq p-font "Cascadia Mono")
 (setq p-font "mononoki")
-(setq doom-font (font-spec :family p-font :size 13 :weight 'semi-light)
-      doom-variable-pitch-font (font-spec :family p-font :size 13))
+(setq doom-font (font-spec :family p-font :size 12)
+      doom-variable-pitch-font (font-spec :family p-font :size 12))
 
 ;; column indicator
 (setq-default display-fill-column-indicator-column 80)
