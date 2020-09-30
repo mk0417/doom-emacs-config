@@ -72,6 +72,7 @@
   (add-hook 'text-mode-hook 'pandoc-mode)
   ;; org-reveal
   (setq org-reveal-mathjax t)
+  (setq plantuml-jar-path (expand-file-name "~/plantuml.jar"))
   ;; keybindings
   ;; cause warning of `failed to load org package incrementally' if move out of after! org
   (map! :localleader
