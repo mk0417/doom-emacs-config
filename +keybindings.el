@@ -11,13 +11,13 @@
 (defun p-surround-parens ()
   (interactive)
   (if (region-active-p)
-      (insert-pair 1 ?( ?))
+      (insert-pair 1 ?\( ?\))
     (backward-char)))
 
 (defun p-surround-brackets ()
   (interactive)
   (if (region-active-p)
-      (insert-pair 1 ?[ ?])
+      (insert-pair 1 ?\[ ?\])
     (backward-char)))
 
 (defun p-surround-curly ()
