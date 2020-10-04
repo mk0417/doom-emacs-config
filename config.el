@@ -74,8 +74,8 @@
       delete-by-moving-to-trash t)
 
 ;; maximum number of recent saved items
-(setq-default recentf-max-saved-items 50)
-(setq-default recentf-max-menu-items 50)
+(after! recentf
+  (setq recentf-max-saved-items 50))
 
 ;; snippets
 (setq yas-snippet-dirs '("~/.emacs.snippets"))
