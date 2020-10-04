@@ -30,7 +30,8 @@
 ;; font
 (defvar p-font)
 ;; (setq p-font "Cascadia Mono")
-(setq p-font "mononoki")
+;; (setq p-font "mononoki")
+(setq p-font "Iosevka Fixed SS12")
 (setq doom-font (font-spec :family p-font :size 12)
       doom-variable-pitch-font (font-spec :family p-font :size 12))
 
@@ -81,8 +82,6 @@
 ;; modeline
 ;; doom-modeline
 ;; (after! doom-modeline
-;;   (setq doom-modeline-height 13)
-;;   (setq doom-modeline-major-mode-icon t)
 ;;   (setq doom-modeline-modal-icon nil))
 
 ;; custom modeline: version 1

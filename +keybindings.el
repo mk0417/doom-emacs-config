@@ -59,8 +59,7 @@
   (define-key evil-visual-state-map (kbd "gh") 'evil-shift-left)
   (define-key evil-visual-state-map (kbd "gok") 'p-surround-parens)
   (define-key evil-visual-state-map (kbd "gof") 'p-surround-brackets)
-  (define-key evil-visual-state-map (kbd "goh") 'p-surround-curly)
-  (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char))
+  (define-key evil-visual-state-map (kbd "goh") 'p-surround-curly))
 
 (after! dired
   (define-key dired-mode-map (kbd "C-c <return>") 'p-open-in-external-app))
