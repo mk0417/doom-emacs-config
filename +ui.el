@@ -163,7 +163,9 @@
                (propertize "%I") ;; size
                "] "
                ;; git branch
-               '(vc-mode vc-mode)
+               ;; '(vc-mode vc-mode)
+               '(:eval (when-let (vc vc-mode)
+                         (list "⎇-" (propertize (substring vc 5) 'face '(:weight bold)) "-")))
                " "
                ;; the current major mode for the buffer.
                "["
@@ -181,8 +183,8 @@
                                      'help-echo "Buffer is read-only")))))
 
 (set-face-attribute 'mode-line nil
-                    :underline t
-                    :overline t)
+                    :underline "#898c8a"
+                    :overline "#898c8a")
 
 
 ;; Transparency
