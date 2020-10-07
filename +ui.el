@@ -165,7 +165,7 @@
                ;; git branch
                ;; '(vc-mode vc-mode)
                '(:eval (when-let (vc vc-mode)
-                         (list "⎇-" (propertize (substring vc 5)) "-")))
+                         (list "Git⎇-" (propertize (substring vc 5)) "-")))
                " "
                ;; the current major mode for the buffer.
                "["
