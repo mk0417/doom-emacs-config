@@ -86,7 +86,10 @@
          :prefix ("w" . "flyspell")
          :desc "flyspell-buffer"                        "b"         #'flyspell-buffer
          :desc "evil-next-flyspell-error"               "n"         #'evil-next-flyspell-error
-         :desc "evil-prev-flyspell-error"               "p"         #'evil-prev-flyspell-error))
+         :desc "evil-prev-flyspell-error"               "p"         #'evil-prev-flyspell-error
+         ;; tag match
+         :prefix ("s")
+         :desc "org-tags-sparse-tree"                   "t"         #'org-tags-sparse-tree))
   ;; latex
   (unless (boundp 'org-export-latex-classes)
     (setq org-export-latex-classes nil))
