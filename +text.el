@@ -5,7 +5,9 @@
 ;; To modify org-directory it must be set before org has loaded
 ;; https://github.com/hlissner/doom-emacs/tree/develop/modules/lang/org
 (setq org-directory "~/org/agenda"
-      org-agenda-files '("~/org/agenda/meeting.org" "~/org/agenda/todo.org")
+      org-agenda-files '("~/org/agenda/meeting.org"
+                         "~/org/agenda/todo.org"
+                         "~/org/agenda/routine.org")
       org-roam-directory "~/org/roam/"
       org-journal-dir "~/org/journal"
       org-journal-date-format "%A, %d %B %Y"
@@ -64,7 +66,10 @@
            "* %^{Scope of meeting|Event: |Research discussion: |Staff meeting: |Student meeting: } %^{Title} %^g\nSCHEDULED: %^t\n")
           ("t" "TODO" entry
            (file+headline "todo.org" "Todo and task")
-           "* TODO [#A] %^{Title} \nSCHEDULED: %^t\n")))
+           "* TODO %^{Title} \nSCHEDULED: %^t\n")
+          ("r" "Routine" entry
+           (file+headline "routine.org" "Routine")
+           "* TODO %^{Title} \nSCHEDULED: %^t\n :PROPERTIES:\n :STYLE:    habit\n :END:\n")))
   (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
   ;; disable line number in org mode
   ;; https://github.com/hlissner/doom-emacs/issues/827#issuecomment-653784466
@@ -73,6 +78,8 @@
   ;; org-reveal
   (setq org-reveal-mathjax t)
   (setq plantuml-jar-path (expand-file-name "~/plantuml.jar"))
+  ;; org-habit
+  (add-to-list 'org-modules 'org-habit)
   ;; keybindings
   ;; cause warning of `failed to load org package incrementally' if move out of after! org
   (map! :localleader
