@@ -138,7 +138,8 @@
   ;; parenthesis
   (defun p-insert-paren ()
     (interactive)
-    (insert "()"))
+    (insert "()")
+    (backward-char 1))
   (general-imap "k"
     (general-key-dispatch 'self-insert-command
       :timeout 0.25
@@ -146,7 +147,8 @@
   ;; curly brackets
   (defun p-insert-cbracket ()
     (interactive)
-    (insert "{}"))
+    (insert "{}")
+    (backward-char 1))
   (general-imap "h"
     (general-key-dispatch 'self-insert-command
       :timeout 0.25
