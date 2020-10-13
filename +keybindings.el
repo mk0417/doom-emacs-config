@@ -272,7 +272,7 @@
   (general-imap "w"
     (general-key-dispatch 'self-insert-command
       :timeout 0.25
-      "n" 'p-insert-question))
+      "w" 'p-insert-question))
   ;; r assign
   (defun p-insert-r-assign ()
     (interactive)
