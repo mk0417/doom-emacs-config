@@ -82,8 +82,23 @@
 
 ;; modeline
 ;; doom-modeline
-;; (after! doom-modeline
-;;   (setq doom-modeline-modal-icon nil))
+(after! doom-modeline
+  (setq doom-modeline-modal-icon nil
+        all-the-icons-scale-factor 0.9
+        doom-modeline-height 21
+        doom-modeline-major-mode-icon t
+        doom-modeline--buffer-file-icon t)
+  (setq evil-normal-state-tag   (propertize "[Normal]")
+        evil-insert-state-tag   (propertize "[Insert]")
+        evil-visual-state-tag   (propertize "[Visual]")
+        evil-motion-state-tag   (propertize "[Motion]")
+        evil-operator-state-tag (propertize "[Operator]")
+        evil-emacs-state-tag    (propertize "[Emacs]")))
+
+(custom-set-faces!
+  '(mode-line :height 1)
+  '(mode-line-inactive :height 1))
+
 
 ;; custom modeline: version 1
 ;; http://emacs-fu.blogspot.com/2011/08/customizing-mode-line.html
@@ -144,45 +159,45 @@
 
 
 ;; custom modeline: version 2
-(setq-default mode-line-format
-              (list
-               " "
-               '(:eval (window-parameter (selected-window) 'ace-window-path))
-               ;; evil state indicator
-               '(:eval (propertize evil-mode-line-tag))
-               ;; the buffer name; the file name as a tool tip
-               '(:eval (propertize "%b " 'help-echo (buffer-file-name)))
-               ;; line and column
-               "(" ;; '%02' to set to 2 chars at least; prevents flickering
-               (propertize "%02l") ","
-               (propertize "%02c")
-               ") "
-               ;; relative position, size of file
-               "["
-               (propertize "%p") ;; % above top
-               "/"
-               (propertize "%I") ;; size
-               "] "
-               ;; git branch
-               ;; '(vc-mode vc-mode)
-               '(:eval (when-let (vc vc-mode)
-                         (list "Git⎇-" (propertize (substring vc 5)) "-")))
-               " "
-               ;; the current major mode for the buffer.
-               "["
-               '(:eval (propertize "%m" 'help-echo buffer-file-coding-system))
-               "] "
-               ;; was this buffer modified since the last save?
-               '(:eval (when (buffer-modified-p)
-                         (propertize "Mod" 'help-echo "Buffer has been modified")))
-               " "
-               ;; is this buffer read-only?
-               '(:eval (when buffer-read-only
-                         (propertize "RO" 'help-echo "Buffer is read-only")))))
+;; (setq-default mode-line-format
+;;               (list
+;;                " "
+;;                '(:eval (window-parameter (selected-window) 'ace-window-path))
+;;                ;; evil state indicator
+;;                '(:eval (propertize evil-mode-line-tag))
+;;                ;; the buffer name; the file name as a tool tip
+;;                '(:eval (propertize "%b " 'help-echo (buffer-file-name)))
+;;                ;; line and column
+;;                "(" ;; '%02' to set to 2 chars at least; prevents flickering
+;;                (propertize "%02l") ","
+;;                (propertize "%02c")
+;;                ") "
+;;                ;; relative position, size of file
+;;                "["
+;;                (propertize "%p") ;; % above top
+;;                "/"
+;;                (propertize "%I") ;; size
+;;                "] "
+;;                ;; git branch
+;;                ;; '(vc-mode vc-mode)
+;;                '(:eval (when-let (vc vc-mode)
+;;                          (list "Git⎇-" (propertize (substring vc 5)) "-")))
+;;                " "
+;;                ;; the current major mode for the buffer.
+;;                "["
+;;                '(:eval (propertize "%m" 'help-echo buffer-file-coding-system))
+;;                "] "
+;;                ;; was this buffer modified since the last save?
+;;                '(:eval (when (buffer-modified-p)
+;;                          (propertize "Mod" 'help-echo "Buffer has been modified")))
+;;                " "
+;;                ;; is this buffer read-only?
+;;                '(:eval (when buffer-read-only
+;;                          (propertize "RO" 'help-echo "Buffer is read-only")))))
 
-(set-face-attribute 'mode-line nil
-                    :underline "#898c8a"
-                    :overline "#898c8a")
+;; (set-face-attribute 'mode-line nil
+;;                     :underline "#898c8a"
+;;                     :overline "#898c8a")
 
 
 ;; Transparency
