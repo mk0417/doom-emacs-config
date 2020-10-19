@@ -80,6 +80,11 @@
   (setq plantuml-jar-path (expand-file-name "~/plantuml.jar"))
   ;; org-habit
   (add-to-list 'org-modules 'org-habit)
+  ;; sorce block template
+  (require 'org-tempo)
+  (add-to-list 'org-structure-template-alist '("b" . "src shell"))
+  (add-to-list 'org-structure-template-alist '("y" . "src python"))
+  (add-to-list 'org-structure-template-alist '("p" . "src elisp"))
   ;; keybindings
   ;; cause warning of `failed to load org package incrementally' if move out of after! org
   (map! :localleader
