@@ -6,9 +6,8 @@
 ;; use `load-theme' instead of `setq doom-theme'
 ;; otherwise `set-face-attribute' does not work
 ;; https://github.com/hlissner/doom-emacs/issues/2194#issuecomment-565844321
-;; (load-theme 'doom-one t)
-(load-theme 'doom-palenight t)
-;; (load-theme 'doom-tomorrow-night t)
+(load-theme 'doom-one t)
+;; (load-theme 'doom-palenight t)
 ;; (setq srcery-invert-region nil)
 ;; (load-theme 'srcery t)
 
@@ -85,7 +84,7 @@
 (after! doom-modeline
   (setq doom-modeline-modal-icon nil
         all-the-icons-scale-factor 0.9
-        doom-modeline-height 21
+        doom-modeline-height 16
         doom-modeline-major-mode-icon t
         doom-modeline--buffer-file-icon t)
   (setq evil-normal-state-tag   (propertize "[Normal]")
