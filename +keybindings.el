@@ -224,7 +224,7 @@
   (general-imap "u"
     (general-key-dispatch 'self-insert-command
       :timeout 0.25
-      "d" 'p-insert-underscore))
+      "u" 'p-insert-underscore))
   ;; plus
   (defun p-insert-plus ()
     (interactive)
