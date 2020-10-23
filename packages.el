@@ -18,7 +18,6 @@
 (package! evil-matchit)
 (package! org-tree-slide)
 (package! olivetti)
-(package! org-roam-server)
 (package! pandoc-mode)
 (package! jupyter)
 (package! berrys-theme)
