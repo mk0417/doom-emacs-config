@@ -6,10 +6,12 @@
 ;; use `load-theme' instead of `setq doom-theme'
 ;; otherwise `set-face-attribute' does not work
 ;; https://github.com/hlissner/doom-emacs/issues/2194#issuecomment-565844321
-(load-theme 'doom-one t)
+;; (load-theme 'doom-one t)
 ;; (load-theme 'doom-palenight t)
 ;; (setq srcery-invert-region nil)
 ;; (load-theme 'srcery t)
+(load-theme 'modus-vivendi t)
+;; (load-theme 'modus-operandi t)
 
 ;; selected text color
 (set-face-attribute 'region nil :background "#666666")
