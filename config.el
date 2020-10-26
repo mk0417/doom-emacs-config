@@ -11,6 +11,8 @@
 
 ;; Company -------------------------------------------------
 (after! company
+  (setq company-idle-delay 0
+        company-minimum-prefix-length 1)
   (set-company-backend! '(prog-mode text-mode conf-mode)
     '(company-files
       company-capf
