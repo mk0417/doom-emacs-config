@@ -143,7 +143,7 @@
   (general-imap "k"
     (general-key-dispatch 'self-insert-command
       :timeout 0.25
-      "h" 'p-insert-paren))
+      "k" 'p-insert-paren))
   ;; curly brackets
   (defun p-insert-cbracket ()
     (interactive)
@@ -152,7 +152,7 @@
   (general-imap "h"
     (general-key-dispatch 'self-insert-command
       :timeout 0.25
-      "k" 'p-insert-cbracket))
+      "h" 'p-insert-cbracket))
   ;; exclamation
   (defun p-insert-exc ()
     (interactive)
@@ -176,7 +176,7 @@
   (general-imap "y"
     (general-key-dispatch 'self-insert-command
       :timeout 0.25
-      "b" 'p-insert-pound))
+      "y" 'p-insert-pound))
   ;; dollar
   (defun p-insert-dollar ()
     (interactive)
@@ -208,7 +208,7 @@
   (general-imap "a"
     (general-key-dispatch 'self-insert-command
       :timeout 0.25
-      "h" 'p-insert-and))
+      "a" 'p-insert-and))
   ;; asterisk
   (defun p-insert-asterisk ()
     (interactive)
@@ -232,7 +232,7 @@
   (general-imap "j"
     (general-key-dispatch 'self-insert-command
       :timeout 0.25
-      "i" 'p-insert-plus))
+      "j" 'p-insert-plus))
   ;; pipe
   (defun p-insert-pipe ()
     (interactive)
