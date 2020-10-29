@@ -8,8 +8,6 @@
 ;; https://github.com/hlissner/doom-emacs/issues/2194#issuecomment-565844321
 (load-theme 'doom-one t)
 ;; (load-theme 'doom-palenight t)
-;; (setq srcery-invert-region nil)
-;; (load-theme 'srcery t)
 ;; (load-theme 'modus-vivendi t)
 ;; (load-theme 'modus-operandi t)
 
@@ -52,7 +50,7 @@
    '(company-preview-common
      ((t (:inherit company-preview))))
    '(company-tooltip
-     ((t (:background "#fff3ac" :foreground "black"))))
+     ((t (:background "#fff9bb" :foreground "black"))))
    '(company-tooltip-selection
      ((t (:background "#69adc6" :foreground "white"))))
    '(company-tooltip-common
@@ -85,8 +83,8 @@
 ;; doom-modeline
 (after! doom-modeline
   (setq doom-modeline-modal-icon nil
-        all-the-icons-scale-factor 0.9
-        doom-modeline-height 16
+        all-the-icons-scale-factor 0.5
+        doom-modeline-height 8
         doom-modeline-major-mode-icon t
         doom-modeline--buffer-file-icon t)
   (setq evil-normal-state-tag   (propertize "[Normal]")
