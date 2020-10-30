@@ -44,6 +44,12 @@
       evil-insert-state-cursor '(bar "#cf5a65")
       evil-visual-state-cursor '(hollow "#cf5a65"))
 
+;; highlight brackets
+(after! paren
+       (setq show-paren-delay 0
+             show-paren-style 'parenthesis)
+       (set-face-attribute 'show-paren-match nil :weight 'bold :background "#349cd9"))
+
 ;; company tooltip color
 (after! company
   (custom-set-faces
