@@ -131,6 +131,12 @@
        :desc "dired-mark-files-containing-regexp"         "c"      #'dired-mark-files-containing-regexp
        :desc "dired-up-directory"                         "p"      #'dired-up-directory))
 
+;; latex mode
+(map! :map LaTeX-mode-map
+      :localleader
+      :desc "latex-preview-pane-mode"                    "p"      #'latex-preview-pane-mode
+      :desc "latex-preview-pane-update"                  "u"      #'latex-preview-pane-update)
+
 
 ;; Efficient typing -------------------------------------
 (after! general
