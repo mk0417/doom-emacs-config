@@ -66,18 +66,21 @@
      ((((type x)) (:inherit company-tooltip-selection :weight bold))
       (t (:inherit company-tooltip-selection))))))
 
-;; banner
-(defun doom-dashboard-widget-banner ()
-  (let ((point (point)))
-    (mapc (lambda (line)
-            (insert (propertize (+doom-dashboard--center +doom-dashboard--width line)
-                                'face 'doom-dashboard-banner) " ")
-            (insert "\n"))
-          '("Hello Peng, welcome to EMACS\n\n\n"))))
+;; initial scratch buffer message
+(setq initial-scratch-message ";;; Hello Peng, welcome to EMACS\n")
 
-(defun doom-dashboard-widget-footer ()
-  (insert "\n"))
-(remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
+;; banner
+;; (defun doom-dashboard-widget-banner ()
+;;   (let ((point (point)))
+;;     (mapc (lambda (line)
+;;             (insert (propertize (+doom-dashboard--center +doom-dashboard--width line)
+;;                                 'face 'doom-dashboard-banner) " ")
+;;             (insert "\n"))
+;;           '("Hello Peng, welcome to EMACS\n\n\n"))))
+
+;; (defun doom-dashboard-widget-footer ()
+;;   (insert "\n"))
+;; (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
 
 ;; frame title
 (setq frame-title-format
@@ -92,7 +95,8 @@
         ;; doom-modeline-major-mode-icon t
         ;; doom-modeline--buffer-file-icon t
         ;; all-the-icons-scale-factor 0.5
-        doom-modeline-height 8)
+        doom-modeline-buffer-modification-icon nil
+        doom-modeline-height 6)
   (setq evil-normal-state-tag   (propertize "[Normal]")
         evil-insert-state-tag   (propertize "[Insert]")
         evil-visual-state-tag   (propertize "[Visual]")
