@@ -89,10 +89,10 @@
 ;; doom-modeline
 (after! doom-modeline
   (setq doom-modeline-modal-icon nil
-        all-the-icons-scale-factor 0.5
-        doom-modeline-height 8
-        doom-modeline-major-mode-icon t
-        doom-modeline--buffer-file-icon t)
+        ;; doom-modeline-major-mode-icon t
+        ;; doom-modeline--buffer-file-icon t
+        ;; all-the-icons-scale-factor 0.5
+        doom-modeline-height 8)
   (setq evil-normal-state-tag   (propertize "[Normal]")
         evil-insert-state-tag   (propertize "[Insert]")
         evil-visual-state-tag   (propertize "[Visual]")
@@ -200,9 +200,9 @@
 ;;                '(:eval (when buffer-read-only
 ;;                          (propertize "RO" 'help-echo "Buffer is read-only")))))
 
-;; (set-face-attribute 'mode-line nil
-;;                     :underline "#898c8a"
-;;                     :overline "#898c8a")
+(set-face-attribute 'mode-line nil
+                    :underline "#898c8a"
+                    :overline "#898c8a")
 
 
 ;; Transparency
