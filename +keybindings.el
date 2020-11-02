@@ -134,8 +134,9 @@
 ;; latex mode
 (map! :map LaTeX-mode-map
       :localleader
-      :desc "latex-preview-pane-mode"                    "p"      #'latex-preview-pane-mode
-      :desc "latex-preview-pane-update"                  "u"      #'latex-preview-pane-update)
+      :desc "latex-preview-pane-mode"                    "j"      #'latex-preview-pane-mode
+      :desc "latex-preview-pane-update"                  "u"      #'latex-preview-pane-update
+      :desc "latex-preview-update"                       "p"      #'latex-preview-update)
 
 
 ;; Efficient typing -------------------------------------
