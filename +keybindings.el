@@ -103,7 +103,6 @@
       (:prefix-map ("e" . "text")
        :desc "beginning-of-defun"                  "b"      #'beginning-of-defun
        :desc "end-of-defun"                        "e"      #'end-of-defun
-       :desc "vr/replace"                          "r"      #'vr/replace
        :desc "evilmi-select-items"                 "s"      #'evilmi-select-items)
       (:prefix-map ("s" . "search")
        :desc "swiper-isearch-thing-at-point"       "S"      #'swiper-isearch-thing-at-point

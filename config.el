@@ -31,11 +31,6 @@
 (setq eldoc-echo-area-use-multiline-p nil)
 
 
-;; Visual-regexp ---------------------------------------
-(after! visual-regexp
-  (require 'visual-regexp))
-
-
 ;; Ivy -------------------------------------------------
 (setq ivy-read-action-function #'ivy-hydra-read-action)
 
