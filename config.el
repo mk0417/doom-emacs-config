@@ -62,6 +62,9 @@
 (setq custom-safe-themes t)
 (setq require-final-newline t)
 
+;; use home as default directory
+(setq default-directory "~/")
+
 ;; dashboard default directory
 (setq +doom-dashboard-pwd-policy "~/")
 
