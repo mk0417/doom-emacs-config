@@ -37,6 +37,15 @@
       (goto-char beg)
       (delete-char 1))))
 
+;; ex-evil replace
+(defun p-ex-evil-buffer-replace ()
+  (interactive)
+  (evil-ex (concat "%s/")))
+
+(defun p-ex-evil-selection-replace ()
+  (interactive)
+  (evil-ex (concat "'<,'>s/")))
+
 (after! evil
   (define-key evil-normal-state-map (kbd "C-e") 'evil-end-of-line)
   (define-key evil-normal-state-map (kbd "C-j") 'transpose-words)
@@ -53,13 +62,15 @@
   (define-key evil-normal-state-map (kbd "gon") 'evil-multiedit-match-symbol-and-next)
   (define-key evil-normal-state-map (kbd "gop") 'evil-multiedit-match-symbol-and-prev)
   (define-key evil-normal-state-map (kbd "god") 'p-delete-parens)
+  (define-key evil-normal-state-map (kbd "gor") 'p-ex-evil-buffer-replace)
   (define-key evil-visual-state-map (kbd "C-e") 'evil-end-of-line)
-  (define-key evil-visual-state-map (kbd "v")   'er/expand-region)
+  (define-key evil-visual-state-map (kbd "v") 'er/expand-region)
   (define-key evil-visual-state-map (kbd "gl") 'evil-shift-right)
   (define-key evil-visual-state-map (kbd "gh") 'evil-shift-left)
   (define-key evil-visual-state-map (kbd "gok") 'p-surround-parens)
   (define-key evil-visual-state-map (kbd "gof") 'p-surround-brackets)
-  (define-key evil-visual-state-map (kbd "goh") 'p-surround-curly))
+  (define-key evil-visual-state-map (kbd "goh") 'p-surround-curly)
+  (define-key evil-visual-state-map (kbd "gor") 'p-ex-evil-selection-replace))
 
 (after! dired
   (define-key dired-mode-map (kbd "C-c <return>") 'p-open-in-external-app))
