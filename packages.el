@@ -10,10 +10,9 @@
 ;(package! some-package)
 
 (package! elpy)
-(package! srcery-theme)
 (package! activity-watch-mode)
 (package! org-superstar)
-(package! visual-regexp)
+;; (package! visual-regexp)
 (package! iedit)
 (package! evil-matchit)
 (package! org-tree-slide)
