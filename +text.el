@@ -85,6 +85,13 @@
   (add-to-list 'org-structure-template-alist '("b" . "src shell"))
   (add-to-list 'org-structure-template-alist '("y" . "src python"))
   (add-to-list 'org-structure-template-alist '("p" . "src elisp"))
+  (add-to-list 'org-structure-template-alist '("j" . "src jupyter-python :session py :async yes"))
+  ;; org jupyter
+  (use-package jupyter)
+  (use-package ob-jupyter)
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '(jupyter . t))
   ;; keybindings
   ;; cause warning of `failed to load org package incrementally' if move out of after! org
   (map! :localleader
