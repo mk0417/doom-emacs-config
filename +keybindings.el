@@ -143,11 +143,9 @@
        :desc "dired-up-directory"                         "p"      #'dired-up-directory))
 
 ;; latex mode
-(map! :map LaTeX-mode-map
-      :localleader
-      :desc "latex-preview-pane-mode"                    "j"      #'latex-preview-pane-mode
-      :desc "latex-preview-pane-update"                  "u"      #'latex-preview-pane-update
-      :desc "latex-preview-update"                       "p"      #'latex-preview-update)
+;; (map! :map LaTeX-mode-map
+;;       :localleader
+;;       :desc "latex-preview-pane-mode"                    "j"      #'latex-preview-pane-mode)
 
 
 ;; Efficient typing -------------------------------------
