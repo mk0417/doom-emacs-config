@@ -12,7 +12,6 @@
 (package! elpy)
 (package! activity-watch-mode)
 (package! org-superstar)
-;; (package! visual-regexp)
 (package! iedit)
 (package! evil-matchit)
 (package! org-tree-slide)
@@ -21,8 +20,6 @@
 (package! jupyter)
 (package! berrys-theme)
 (package! ox-reveal)
-(package! modus-operandi-theme)
-(package! modus-vivendi-theme)
 (package! doom-themes)
 
 ;; To install a package directly from a remote git repo, you must specify a
