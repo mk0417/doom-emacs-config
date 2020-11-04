@@ -59,11 +59,11 @@
    '(company-preview-common
      ((t (:inherit company-preview))))
    '(company-tooltip
-     ((t (:background "#fff9bb" :foreground "black"))))
+     ((t (:background "#ffeead" :foreground "black"))))
    '(company-tooltip-selection
      ((t (:background "#69adc6" :foreground "white"))))
    '(company-tooltip-common
-     ((((type x)) (:inherit company-tooltip :weight bold))
+     ((((type x)) (:inherit company-tooltip :weight normal))
       (t (:inherit company-tooltip))))
    '(company-tooltip-common-selection
      ((((type x)) (:inherit company-tooltip-selection :weight bold))
