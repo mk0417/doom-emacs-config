@@ -228,7 +228,8 @@
                       (t p-default-color))))
     (set-face-background 'mode-line (car color))
     (set-face-foreground 'mode-line (cdr color))
-    (set-face-bold 'mode-line t)))
+    (set-face-bold 'mode-line t)
+    (set-face-attribute 'mode-line nil :font "Fira Code-11")))
 (add-hook 'post-command-hook #'p-show-evil-state)
 
 
