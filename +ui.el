@@ -35,6 +35,9 @@
 (setq doom-font (font-spec :family p-font :size 12)
       doom-variable-pitch-font (font-spec :family p-font :size 12))
 
+;; line spaceing
+(setq-default line-spacing 0)
+
 ;; column indicator
 (setq-default display-fill-column-indicator-column 80)
 
@@ -90,23 +93,23 @@
 
 ;; modeline
 ;; doom-modeline
-(after! doom-modeline
-  (setq doom-modeline-modal-icon nil
-        ;; doom-modeline-major-mode-icon t
-        ;; doom-modeline--buffer-file-icon t
-        ;; all-the-icons-scale-factor 0.5
-        doom-modeline-buffer-modification-icon nil
-        doom-modeline-height 6)
-  (setq evil-normal-state-tag   (propertize "[Normal]")
-        evil-insert-state-tag   (propertize "[Insert]")
-        evil-visual-state-tag   (propertize "[Visual]")
-        evil-motion-state-tag   (propertize "[Motion]")
-        evil-operator-state-tag (propertize "[Operator]")
-        evil-emacs-state-tag    (propertize "[Emacs]")))
+;; (after! doom-modeline
+;;   (setq doom-modeline-modal-icon nil
+;;         ;; doom-modeline-major-mode-icon t
+;;         ;; doom-modeline--buffer-file-icon t
+;;         ;; all-the-icons-scale-factor 0.5
+;;         doom-modeline-buffer-modification-icon nil
+;;         doom-modeline-height 6)
+;;   (setq evil-normal-state-tag   (propertize "[Normal]")
+;;         evil-insert-state-tag   (propertize "[Insert]")
+;;         evil-visual-state-tag   (propertize "[Visual]")
+;;         evil-motion-state-tag   (propertize "[Motion]")
+;;         evil-operator-state-tag (propertize "[Operator]")
+;;         evil-emacs-state-tag    (propertize "[Emacs]")))
 
-(custom-set-faces!
-  '(mode-line :height 1)
-  '(mode-line-inactive :height 1))
+;; (custom-set-faces!
+;;   '(mode-line :height 1)
+;;   '(mode-line-inactive :height 1))
 
 
 ;; custom modeline: version 1
@@ -168,45 +171,65 @@
 
 
 ;; custom modeline: version 2
-;; (setq-default mode-line-format
-;;               (list
-;;                " "
-;;                '(:eval (window-parameter (selected-window) 'ace-window-path))
-;;                ;; evil state indicator
-;;                '(:eval (propertize evil-mode-line-tag))
-;;                ;; the buffer name; the file name as a tool tip
-;;                '(:eval (propertize "%b " 'help-echo (buffer-file-name)))
-;;                ;; line and column
-;;                "(" ;; '%02' to set to 2 chars at least; prevents flickering
-;;                (propertize "%02l") ","
-;;                (propertize "%02c")
-;;                ") "
-;;                ;; relative position, size of file
-;;                "["
-;;                (propertize "%p") ;; % above top
-;;                "/"
-;;                (propertize "%I") ;; size
-;;                "] "
-;;                ;; git branch
-;;                ;; '(vc-mode vc-mode)
-;;                '(:eval (when-let (vc vc-mode)
-;;                          (list "Git⎇-" (propertize (substring vc 5)) "-")))
-;;                " "
-;;                ;; the current major mode for the buffer.
-;;                "["
-;;                '(:eval (propertize "%m" 'help-echo buffer-file-coding-system))
-;;                "] "
-;;                ;; was this buffer modified since the last save?
-;;                '(:eval (when (buffer-modified-p)
-;;                          (propertize "Mod" 'help-echo "Buffer has been modified")))
-;;                " "
-;;                ;; is this buffer read-only?
-;;                '(:eval (when buffer-read-only
-;;                          (propertize "RO" 'help-echo "Buffer is read-only")))))
+(setq-default mode-line-format
+              (list
+               " "
+               '(:eval (window-parameter (selected-window) 'ace-window-path))
+               ;; evil state indicator
+               '(:eval (propertize evil-mode-line-tag))
+               ;; the buffer name; the file name as a tool tip
+               '(:eval (propertize "%b " 'help-echo (buffer-file-name)))
+               ;; line and column
+               "(" ;; '%02' to set to 2 chars at least; prevents flickering
+               (propertize "%02l") ","
+               (propertize "%02c")
+               ") "
+               ;; relative position, size of file
+               "["
+               (propertize "%p") ;; % above top
+               "/"
+               (propertize "%I") ;; size
+               "] "
+               ;; git branch
+               ;; '(vc-mode vc-mode)
+               '(:eval (when-let (vc vc-mode)
+                         (list "Git:*" (propertize (substring vc 5)) "*")))
+               " "
+               ;; the current major mode for the buffer.
+               "["
+               '(:eval (propertize "%m" 'help-echo buffer-file-coding-system))
+               "] "
+               ;; was this buffer modified since the last save?
+               '(:eval (when (buffer-modified-p)
+                         (propertize "Mod" 'help-echo "Buffer has been modified")))
+               " "
+               ;; is this buffer read-only?
+               '(:eval (when buffer-read-only
+                         (propertize "RO" 'help-echo "Buffer is read-only")))))
 
-(set-face-attribute 'mode-line nil
-                    :underline "#898c8a"
-                    :overline "#898c8a")
+;; (set-face-attribute 'mode-line nil
+;;                     ;; :underline "#898c8a"
+;;                     ;; :overline "#898c8a"
+;;                     :foreground "black"
+;;                     :weight 'bold
+;;                     :background "#898c8a")
+
+;; Change modeline color based on evil state
+;; https://github.com/redguardtoo/emacs.d/blob/master/lisp/init-evil.el
+(defconst p-default-color (cons (face-background 'mode-line)
+                                (face-foreground 'mode-line)))
+(defun p-show-evil-state ()
+  (let* ((color (cond ((minibufferp) p-default-color)
+                      ((evil-normal-state-p) '("grey70"  . "black"))
+                      ((evil-insert-state-p) '("coral1"  . "#ffffff"))
+                      ((evil-visual-state-p) '("#006fa0" . "#ffffff"))
+                      ((evil-emacs-state-p)  '("#444488" . "#ffffff"))
+                      ((buffer-modified-p)   '("#006fa0" . "#ffffff"))
+                      (t p-default-color))))
+    (set-face-background 'mode-line (car color))
+    (set-face-foreground 'mode-line (cdr color))
+    (set-face-bold 'mode-line t)))
+(add-hook 'post-command-hook #'p-show-evil-state)
 
 
 ;; Transparency
