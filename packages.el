@@ -23,6 +23,7 @@
 (package! ox-reveal)
 (package! modus-operandi-theme)
 (package! modus-vivendi-theme)
+(package! doom-themes)
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
