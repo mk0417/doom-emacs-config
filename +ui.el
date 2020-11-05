@@ -178,34 +178,36 @@
                ;; evil state indicator
                '(:eval (propertize evil-mode-line-tag))
                ;; the buffer name; the file name as a tool tip
-               '(:eval (propertize "%b " 'help-echo (buffer-file-name)))
+               " "
+               '(:eval (propertize "%b  " 'help-echo (buffer-file-name)))
                ;; line and column
                "(" ;; '%02' to set to 2 chars at least; prevents flickering
                (propertize "%02l") ","
                (propertize "%02c")
-               ") "
+               ")  "
                ;; relative position, size of file
-               "["
+               ;; "["
                (propertize "%p") ;; % above top
                "/"
                (propertize "%I") ;; size
-               "] "
+               ;; "] "
+               "  "
                ;; git branch
                ;; '(vc-mode vc-mode)
                '(:eval (when-let (vc vc-mode)
                          (list "Git:*" (propertize (substring vc 5)) "*")))
-               " "
+               "  "
                ;; the current major mode for the buffer.
-               "["
+               ;; "["
                '(:eval (propertize "%m" 'help-echo buffer-file-coding-system))
-               "] "
+               ;; "] "
+               "  "
                ;; was this buffer modified since the last save?
                '(:eval (when (buffer-modified-p)
-                         (propertize "Mod" 'help-echo "Buffer has been modified")))
-               " "
+                         (propertize "(Mod)" 'help-echo "Buffer has been modified")))
                ;; is this buffer read-only?
                '(:eval (when buffer-read-only
-                         (propertize "RO" 'help-echo "Buffer is read-only")))))
+                         (propertize "(RO)" 'help-echo "Buffer is read-only")))))
 
 ;; (set-face-attribute 'mode-line nil
 ;;                     ;; :underline "#898c8a"
