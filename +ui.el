@@ -6,10 +6,10 @@
 ;; use `load-theme' instead of `setq doom-theme'
 ;; otherwise `set-face-attribute' does not work
 ;; https://github.com/hlissner/doom-emacs/issues/2194#issuecomment-565844321
-(load-theme 'doom-one t)
+;; (load-theme 'doom-one t)
 ;; (load-theme 'doom-palenight t)
-;; (load-theme 'modus-vivendi t)
-;; (load-theme 'modus-operandi t)
+(setq srcery-invert-region nil)
+(load-theme 'srcery t)
 
 ;; selected text color
 (set-face-attribute 'region nil :background "#666666")
@@ -195,8 +195,7 @@
                ;; git branch
                ;; '(vc-mode vc-mode)
                '(:eval (when-let (vc vc-mode)
-                         (list "Git:*" (propertize (substring vc 5)) "*")))
-               "  "
+                         (list "Git:*" (propertize (substring vc 5)) "*  ")))
                ;; the current major mode for the buffer.
                ;; "["
                '(:eval (propertize "%m" 'help-echo buffer-file-coding-system))
