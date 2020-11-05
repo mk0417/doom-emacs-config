@@ -64,7 +64,8 @@
      ((t (:background "#69adc6" :foreground "white"))))
    '(company-tooltip-common
      ((((type x)) (:inherit company-tooltip :weight normal))
-      (t (:inherit company-tooltip))))
+      ;; (t (:inherit company-tooltip))
+      (t (:background "#ffeead" :foreground "black"))))
    '(company-tooltip-common-selection
      ((((type x)) (:inherit company-tooltip-selection :weight bold))
       (t (:inherit company-tooltip-selection))))))
