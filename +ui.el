@@ -6,10 +6,8 @@
 ;; use `load-theme' instead of `setq doom-theme'
 ;; otherwise `set-face-attribute' does not work
 ;; https://github.com/hlissner/doom-emacs/issues/2194#issuecomment-565844321
-;; (load-theme 'doom-one t)
+(load-theme 'doom-one t)
 ;; (load-theme 'doom-palenight t)
-(setq srcery-invert-region nil)
-(load-theme 'srcery t)
 
 ;; selected text color
 (set-face-attribute 'region nil :background "#666666")
@@ -64,8 +62,7 @@
      ((t (:background "#69adc6" :foreground "white"))))
    '(company-tooltip-common
      ((((type x)) (:inherit company-tooltip :weight normal))
-      ;; (t (:inherit company-tooltip))
-      (t (:background "#ffeead" :foreground "black"))))
+      (t (:inherit company-tooltip))))
    '(company-tooltip-common-selection
      ((((type x)) (:inherit company-tooltip-selection :weight bold))
       (t (:inherit company-tooltip-selection))))))
