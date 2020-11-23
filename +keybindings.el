@@ -49,8 +49,6 @@
 (after! evil
   (define-key evil-normal-state-map (kbd "C-e") 'evil-end-of-line)
   (define-key evil-normal-state-map (kbd "C-j") 'transpose-words)
-  (define-key evil-normal-state-map (kbd "C-;") 'iedit-mode-toggle-on-function)
-  (define-key evil-normal-state-map (kbd "s-;") 'iedit-mode)
   (define-key evil-normal-state-map (kbd "gn") 'git-gutter:next-hunk)
   (define-key evil-normal-state-map (kbd "gp") 'git-gutter:previous-hunk)
   (define-key evil-normal-state-map (kbd "gl") 'evil-shift-right)
@@ -110,7 +108,7 @@
        :desc "counsel-file-jump"                   "g"      #'counsel-file-jump
        :desc "counsel-yank-pop"                    "h"      #'counsel-yank-pop)
       (:prefix-map ("n" . "notes")
-       :desc "new deft file"                       "D"      #'deft-new-file
+       ;; :desc "new deft file"                       "D"      #'deft-new-file
        :desc "olivetti"                            "O"      #'olivetti-mode
        :desc "org-tree-slide-mode"                 "P"      #'org-tree-slide-mode
        :desc "open journal file"                   "jo"     #'org-journal-open-current-journal-file
