@@ -9,6 +9,7 @@
                          "~/org/agenda/todo.org"
                          "~/org/agenda/routine.org")
       org-roam-directory "~/org/roam/"
+      org-roam-db-location "~/org/roam/org-roam.db"
       org-journal-dir "~/org/journal"
       org-journal-date-format "%A, %d %B %Y"
       org-journal-file-format "%Y-%m-%d.org"
@@ -85,13 +86,15 @@
   (add-to-list 'org-structure-template-alist '("b" . "src shell"))
   (add-to-list 'org-structure-template-alist '("y" . "src python"))
   (add-to-list 'org-structure-template-alist '("p" . "src elisp"))
-  (add-to-list 'org-structure-template-alist '("j" . "src jupyter-python :session py :async yes"))
+  (add-to-list 'org-structure-template-alist '("j" . "src jupyter-python :session py"))
+  ;; (setq ob-async-no-async-languages-alist 'jupyter-python)
   ;; org jupyter
   (use-package jupyter)
   (use-package ob-jupyter)
   (org-babel-do-load-languages
    'org-babel-load-languages
-   '(jupyter . t))
+   '((python . t)
+     (jupyter . t)))
   ;; keybindings
   ;; cause warning of `failed to load org package incrementally' if move out of after! org
   (map! :localleader
@@ -146,15 +149,15 @@
 
 
 ;; Deft -------------------------------------------------
-(setq deft-directory "~/org/journal"
-    deft-use-filename-as-title nil
-    deft-use-filter-string-for-filename t
-    deft-auto-save-interval -1
-    deft-extensions '("org" "txt" "md")
-    deft-file-naming-rules
-    '((noslash . "-")
-    (nospace . "-")
-    (case-fn . downcase)))
+;; (setq deft-directory "~/org/journal"
+;;     deft-use-filename-as-title nil
+;;     deft-use-filter-string-for-filename t
+;;     deft-auto-save-interval -1
+;;     deft-extensions '("org" "txt" "md")
+;;     deft-file-naming-rules
+;;     '((noslash . "-")
+;;     (nospace . "-")
+;;     (case-fn . downcase)))
 
 
 ;; olivetti ------------------------------------------------------------------
