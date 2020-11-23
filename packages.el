@@ -9,7 +9,7 @@
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
 
-(package! elpy)
+;; (package! elpy)
 (package! activity-watch-mode)
 (package! org-superstar)
 (package! iedit)
@@ -41,6 +41,10 @@
 ;; (disable-packages!
 ;;  anaconda-mode
 ;;  company-anaconda)
+
+;; disable ob-async which causes problem of jupter-python in org mode
+(disable-packages!
+ ob-async)
 
 ;; You can override the recipe of a built in package without having to specify
 ;; all the properties for `:recipe'. These will inherit the rest of its recipe
