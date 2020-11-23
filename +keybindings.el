@@ -191,7 +191,7 @@
   (general-imap "y"
     (general-key-dispatch 'self-insert-command
       :timeout 0.25
-      "y" 'p-insert-pound))
+      "b" 'p-insert-pound))
   ;; dollar
   (defun p-insert-dollar ()
     (interactive)
