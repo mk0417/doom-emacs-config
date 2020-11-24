@@ -23,7 +23,7 @@
 (defun p-surround-curly ()
   (interactive)
   (if (region-active-p)
-      (insert-pair 1 ?{ ?})
+      (insert-pair 1 ?\{ ?\})
     (backward-char)))
 
 ;; https://emacs.stackexchange.com/questions/54659/how-to-delete-surrounding-brackets
