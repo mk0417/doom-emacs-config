@@ -6,49 +6,12 @@
 (setq ns-option-modifier nil
       ns-right-option-modifier 'meta)
 
+;; evil-escape
+(setq-default evil-escape-key-sequence "fd")
+
 ;; non-leader keybindings
-;; https://stackoverflow.com/questions/2951797/wrapping-selecting-text-in-enclosing-characters-in-emacs
-(defun p-surround-parens ()
-  (interactive)
-  (if (region-active-p)
-      (insert-pair 1 ?\( ?\))
-    (backward-char)))
-
-(defun p-surround-brackets ()
-  (interactive)
-  (if (region-active-p)
-      (insert-pair 1 ?\[ ?\])
-    (backward-char)))
-
-(defun p-surround-curly ()
-  (interactive)
-  (if (region-active-p)
-      (insert-pair 1 ?\{ ?\})
-    (backward-char)))
-
-;; https://emacs.stackexchange.com/questions/54659/how-to-delete-surrounding-brackets
-(defun p-delete-parens ()
-  (interactive)
-  (save-excursion
-    (backward-up-list)
-    (let ((beg (point)))
-      (forward-list)
-      (delete-backward-char 1)
-      (goto-char beg)
-      (delete-char 1))))
-
-;; ex-evil replace
-(defun p-ex-evil-buffer-replace ()
-  (interactive)
-  (evil-ex (concat "%s/")))
-
-(defun p-ex-evil-selection-replace ()
-  (interactive)
-  (evil-ex (concat "'<,'>s/")))
-
 (after! evil
   (define-key evil-normal-state-map (kbd "C-e") 'evil-end-of-line)
-  (define-key evil-normal-state-map (kbd "C-j") 'transpose-words)
   (define-key evil-normal-state-map (kbd "gn") 'git-gutter:next-hunk)
   (define-key evil-normal-state-map (kbd "gp") 'git-gutter:previous-hunk)
   (define-key evil-normal-state-map (kbd "gl") 'evil-shift-right)
@@ -70,14 +33,19 @@
   (define-key evil-visual-state-map (kbd "goh") 'p-surround-curly)
   (define-key evil-visual-state-map (kbd "gor") 'p-ex-evil-selection-replace))
 
-(after! dired
-  (define-key dired-mode-map (kbd "C-c <return>") 'p-open-in-external-app))
-
+(global-set-key (kbd "C-w o") 'delete-other-windows)
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
+(global-set-key (kbd "C-x K") 'kill-buffer-and-window)
 (global-set-key (kbd "C-c c") 'org-capture)
 (global-set-key (kbd "s-C-i") (lambda () (interactive) (p-adjust-opacity nil -2)))
 (global-set-key (kbd "s-C-o") (lambda () (interactive) (p-adjust-opacity nil 2)))
 (global-set-key (kbd "s-C-u") (lambda () (interactive) (modify-frame-parameters nil `((alpha . 100)))))
+
+(after! company
+  (define-key company-active-map (kbd "C-j") #'company-complete-selection))
+
+(after! dired
+  (define-key dired-mode-map (kbd "C-c <return>") 'p-open-in-external-app))
 
 ;; leader key
 (map! :leader
@@ -157,6 +125,15 @@
     (general-key-dispatch 'self-insert-command
       :timeout 0.25
       "k" 'p-insert-paren))
+  ;; square brackets
+  (defun p-insert-sbracket ()
+    (interactive)
+    (insert "[]")
+    (backward-char 1))
+  (general-imap "i"
+    (general-key-dispatch 'self-insert-command
+      :timeout 0.25
+      "i" 'p-insert-sbracket))
   ;; curly brackets
   (defun p-insert-cbracket ()
     (interactive)

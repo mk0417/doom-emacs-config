@@ -3,10 +3,10 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
-(load! "+prog")
-(load! "+ui")
-(load! "+text")
-(load! "+keybindings")
+(load! "prog")
+(load! "ui")
+(load! "text")
+(load! "keybindings")
 
 
 ;; Company -------------------------------------------------
@@ -42,6 +42,10 @@
 ;; evil-matchit ----------------------------------------
 (setq evilmi-shortcut "m")
 (add-hook 'prog-mode-hook 'evil-matchit-mode)
+
+
+;; popwin ----------------------------------------------
+(popwin-mode 1)
 
 
 ;; Misc ------------------------------------------------
@@ -80,6 +84,81 @@
 ;; snippets
 (setq yas-snippet-dirs '("~/.emacs.snippets"))
 
+;; world time
+(setq display-time-world-list
+  '(("America/Los_Angeles" "Seattle")
+    ("America/New_York" "New York")
+    ("Europe/London" "London")
+    ("Europe/Paris" "Paris")
+    ("Asia/Shanghai" "Shanghai")
+    ("Asia/Tokyo" "Tokyo")
+    ("Pacific/Auckland" "Auckland")))
+(setq display-time-world-time-format "%a, %d %b %I:%M %p %Z")
+
+
+;; Functions
+;; https://stackoverflow.com/questions/2951797/wrapping-selecting-text-in-enclosing-characters-in-emacs
+(defun p-surround-parens ()
+  (interactive)
+  (if (region-active-p)
+      (progn
+        (insert-pair 1 ?\( ?\))
+        (backward-char))
+    (progn
+      (forward-sexp)
+      (backward-sexp)
+      (mark-sexp)
+      (insert-pair 1 ?\( ?\)))))
+
+(defun p-surround-brackets ()
+  (interactive)
+  (if (region-active-p)
+      (progn
+        (insert-pair 1 ?\[ ?\])
+        (backward-char))
+    (progn
+      (forward-sexp)
+      (backward-sexp)
+      (mark-sexp)
+      (insert-pair 1 ?\[ ?\]))))
+
+(defun p-surround-curly ()
+  (interactive)
+  (if (region-active-p)
+      (progn
+        (insert-pair 1 ?\{ ?\})
+        (backward-char))
+    (progn
+      (forward-sexp)
+      (backward-sexp)
+      (mark-sexp)
+      (insert-pair 1 ?\{ ?\}))))
+
+;; https://emacs.stackexchange.com/questions/54659/how-to-delete-surrounding-brackets
+(defun p-delete-parens ()
+  (interactive)
+  (save-excursion
+    (backward-up-list)
+    (let ((beg (point)))
+      (forward-list)
+      (delete-backward-char 1)
+      (goto-char beg)
+      (delete-char 1))))
+
+;; ex-evil replace
+(defun p-ex-evil-buffer-replace ()
+  (interactive)
+  (evil-ex (concat "%s/")))
+
+(defun p-ex-evil-selection-replace ()
+  (interactive)
+  (evil-ex (concat "'<,'>s/")))
+
+;; switch to scratch buffer
+(defun p-switch-to-scratch ()
+  (interactive)
+  (switch-to-buffer "*scratch*"))
+
 ;; insert date
 (defun p-insert-uk-date ()
   (interactive)
@@ -89,12 +168,65 @@
   (interactive)
   (insert (format-time-string "%Y-%m-%d")))
 
-;; open from external app (Xah Lee)
+;; insert current buffer name
+(defun p-insert-file-name ()
+  (interactive)
+  (insert (buffer-file-name)))
+
+;; backward kill to the beginning of line
+(defun p-kill-to-begin-of-line ()
+  (interactive)
+  (kill-line 0))
+
+;; counsel find my literature
+(defun p-counsel-find-literature ()
+  (interactive)
+  (counsel-find-file "~/Dropbox/roam_literature"))
+
+;; dired open my literature
+(defun p-dired-jump-literature ()
+  (interactive)
+  (dired "~/Dropbox/roam_literature"))
+
+;; delete to tab
+(defun p-delete-backward-to-tab ()
+  (interactive)
+  (kill-line 0)
+  (insert "    "))
+
+;; select functions
+(defun p-select-function ()
+  (interactive)
+  (beginning-of-defun)
+  (evilmi-select-items))
+
+;; google search
+;; https://emacsredux.com/blog/2013/03/28/google/
+(defun p-google-search ()
+  (interactive)
+  (browse-url
+   (concat
+    "http://www.google.com/search?ie=utf-8&oe=utf-8&q="
+    (url-hexify-string (if mark-active
+                           (buffer-substring (region-beginning) (region-end))
+                         (read-string "Google: "))))))
+
+;; youtube search
+;; https://emacsredux.com/blog/2013/08/26/search-youtube/
+(defun p-youtube-search ()
+  (interactive)
+  (browse-url
+   (concat
+    "http://www.youtube.com/results?search_query="
+    (url-hexify-string (if mark-active
+                           (buffer-substring (region-beginning) (region-end))
+                         (read-string "Search YouTube: "))))))
+
+;; open using external app in dired
 ;; http://ergoemacs.org/emacs/emacs_dired_open_file_in_ext_apps.html
 (defun p-open-in-external-app (&optional @fname)
   (interactive)
-  (let* (
-         ($file-list
+  (let* (($file-list
           (if @fname
               (progn (list @fname))
             (if (string-equal major-mode "dired-mode")
@@ -105,11 +237,22 @@
                      (y-or-n-p "Open more than 5 files? "))))
     (when $do-it-p
       (cond
+       ((string-equal system-type "windows-nt")
+        (mapc
+         (lambda ($fpath)
+           (w32-shell-execute "open" $fpath))
+         $file-list))
        ((string-equal system-type "darwin")
         (mapc
          (lambda ($fpath)
            (shell-command
-            (concat "open " (shell-quote-argument $fpath))))  $file-list))))))
+            (concat "open " (shell-quote-argument $fpath))))
+         $file-list))
+       ((string-equal system-type "gnu/linux")
+        (mapc
+         (lambda ($fpath) (let ((process-connection-type nil))
+                            (start-process "" nil "xdg-open" $fpath)))
+         $file-list))))))
 
 
 ;; First input delay ------------------------------------

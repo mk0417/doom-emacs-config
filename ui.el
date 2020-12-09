@@ -6,8 +6,14 @@
 ;; use `load-theme' instead of `setq doom-theme'
 ;; otherwise `set-face-attribute' does not work
 ;; https://github.com/hlissner/doom-emacs/issues/2194#issuecomment-565844321
-(load-theme 'doom-one t)
+;; (load-theme 'doom-one t)
 ;; (load-theme 'doom-palenight t)
+(setq srcery-invert-region nil)
+(load-theme 'srcery t)
+
+;; fringe-mode
+;; make sure to display change indicator
+(add-hook 'git-gutter-mode-hook (lambda () (fringe-mode '(nil . 0))))
 
 ;; selected text color
 (set-face-attribute 'region nil :background "#666666")
@@ -29,7 +35,8 @@
 ;; (setq p-font "Cascadia Mono")
 ;; (setq p-font "mononoki")
 ;; (setq p-font "Iosevka Fixed SS12")
-(setq p-font "Fira Code")
+;; (setq p-font "Fira Code")
+(setq p-font "Roboto Mono")
 (setq doom-font (font-spec :family p-font :size 12)
       doom-variable-pitch-font (font-spec :family p-font :size 12))
 
@@ -61,11 +68,7 @@
    '(company-tooltip-selection
      ((t (:background "#69adc6" :foreground "white"))))
    '(company-tooltip-common
-     ((((type x)) (:inherit company-tooltip :weight normal))
-      (t (:inherit company-tooltip))))
-   '(company-tooltip-common-selection
-     ((((type x)) (:inherit company-tooltip-selection :weight bold))
-      (t (:inherit company-tooltip-selection))))))
+     ((t (:background "#ffeead" :foreground "black"))))))
 
 ;; initial scratch buffer message
 (setq initial-scratch-message ";;; Hello Peng, welcome to EMACS\n")
@@ -219,7 +222,7 @@
                                 (face-foreground 'mode-line)))
 (defun p-show-evil-state ()
   (let* ((color (cond ((minibufferp) p-default-color)
-                      ((evil-normal-state-p) '("grey70"  . "black"))
+                      ((evil-normal-state-p) '("grey80"  . "black"))
                       ((evil-insert-state-p) '("coral1"  . "#ffffff"))
                       ((evil-visual-state-p) '("#006fa0" . "#ffffff"))
                       ((evil-emacs-state-p)  '("#444488" . "#ffffff"))

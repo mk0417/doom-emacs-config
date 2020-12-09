@@ -5,6 +5,33 @@
 ;; enable elpy after python mode
 ;; startup time is reduced to 1.5s from 2.5s
 (after! python
+  ;; column indicator
+  (add-hook 'python-mode-hook 'display-fill-column-indicator-mode)
+  (add-hook 'eglot-managed-mode-hook (lambda () (flymake-mode -1)))
+  (setq python-indent-guess-indent-offset-verbose nil
+        python-indent-guess-indent-offset nil)
+  ;; jupyter
+  (setq jupyter-eval-use-overlays t)
+  (push '("*jupyter-output*" :position right :width 60 :noselect t) popwin:special-display-config)
+  (defun p-jupyter-remove-line-overlay ()
+    (interactive)
+    (evil-open-below 0)
+    (kill-whole-line)
+    (evil-escape)
+    (previous-line))
+  (map! :localleader
+        (:map python-mode-map
+         :prefix ("j" . "jupyter")
+         :desc "run-jupyter"                     "j"         #'jupyter-run-repl
+         :desc "eval-def"                        "f"         #'jupyter-eval-defun
+         :desc "eval-line-or-region"             "r"         #'jupyter-eval-line-or-region
+         :desc "restart-kernel"                  "R"         #'jupyter-repl-restart-kernel
+         :desc "clear-cells"                     "C"         #'jupyter-repl-clear-cells
+         :desc "interrupt-kernel"                "I"         #'jupyter-interrupt-kernel
+         :desc "inspect"                         "i"         #'jupyter-inspect-at-point
+         :desc "remove-overlay"                  "C"         #'jupyter-eval-remove-overlays
+         :desc "remove-overlay"                  "c"         #'p-jupyter-remove-line0overlay))
+
   ;; ;; elppy
   ;; (elpy-enable)
   ;; ;; Solve issue: send-region shows ^G
@@ -46,22 +73,7 @@
   ;;   :keymaps 'python-mode-map)
   ;; (p-python-leader-visual-def
   ;;   "rr" 'elpy-shell-send-region-or-buffer)
-
-  (add-hook 'python-mode-hook 'display-fill-column-indicator-mode)
-  (add-hook 'eglot-managed-mode-hook (lambda () (flymake-mode -1)))
-  ;; jupyter
-  (setq jupyter-eval-use-overlays t)
-  (map! :localleader
-        (:map python-mode-map
-         :prefix ("j" . "jupyter")
-         :desc "run-jupyter"                     "j"         #'jupyter-run-repl
-         :desc "eval-def"                        "f"         #'jupyter-eval-defun
-         :desc "eval-line-or-region"             "r"         #'jupyter-eval-line-or-region
-         :desc "restart-kernel"                  "R"         #'jupyter-repl-restart-kernel
-         :desc "clear-cells"                     "C"         #'jupyter-repl-clear-cells
-         :desc "interrupt-kernel"                "I"         #'jupyter-interrupt-kernel
-         :desc "inspect"                         "i"         #'jupyter-inspect-at-point
-         :desc "remove-overlay"                  "c"         #'jupyter-eval-remove-overlays)))
+  )
 
 
 ;; ESS ---------------------------------------------------
