@@ -73,6 +73,12 @@
 ;; initial scratch buffer message
 (setq initial-scratch-message ";;; Hello Peng, welcome to EMACS\n")
 
+;; frame title
+(setq frame-title-format
+      '((:eval (if (buffer-file-name)
+                   (concat " " (abbreviate-file-name (buffer-file-name)))
+                 " %b"))))
+
 ;; banner
 ;; (defun doom-dashboard-widget-banner ()
 ;;   (let ((point (point)))
@@ -85,12 +91,6 @@
 ;; (defun doom-dashboard-widget-footer ()
 ;;   (insert "\n"))
 ;; (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
-
-;; frame title
-(setq frame-title-format
-      '((:eval (if (buffer-file-name)
-                   (concat " " (abbreviate-file-name (buffer-file-name)))
-                 " %b"))))
 
 ;; modeline
 ;; doom-modeline

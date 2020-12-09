@@ -44,10 +44,6 @@
 (add-hook 'prog-mode-hook 'evil-matchit-mode)
 
 
-;; popwin ----------------------------------------------
-(popwin-mode 1)
-
-
 ;; Misc ------------------------------------------------
 (setq user-full-name "Peng"
       user-mail-address "pengdata1@gmail.com")
@@ -167,16 +163,6 @@
 (defun p-insert-date ()
   (interactive)
   (insert (format-time-string "%Y-%m-%d")))
-
-;; insert current buffer name
-(defun p-insert-file-name ()
-  (interactive)
-  (insert (buffer-file-name)))
-
-;; backward kill to the beginning of line
-(defun p-kill-to-begin-of-line ()
-  (interactive)
-  (kill-line 0))
 
 ;; counsel find my literature
 (defun p-counsel-find-literature ()

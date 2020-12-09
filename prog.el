@@ -12,7 +12,8 @@
         python-indent-guess-indent-offset nil)
   ;; jupyter
   (setq jupyter-eval-use-overlays t)
-  (push '("*jupyter-output*" :position right :width 60 :noselect t) popwin:special-display-config)
+  ;; @see https://github.com/nnicandro/emacs-jupyter/issues/270#issuecomment-697348350
+  (set-popup-rule! "*jupyter-output*" :side 'right :size .35 :vslot 2)
   (defun p-jupyter-remove-line-overlay ()
     (interactive)
     (evil-open-below 0)

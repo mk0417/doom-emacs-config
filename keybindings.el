@@ -10,6 +10,14 @@
 (setq-default evil-escape-key-sequence "fd")
 
 ;; non-leader keybindings
+(global-set-key (kbd "C-i") 'p-delete-backward-to-tab)
+(global-set-key (kbd "C-x k") 'kill-this-buffer)
+(global-set-key (kbd "C-x K") 'kill-buffer-and-window)
+(global-set-key (kbd "C-c c") 'org-capture)
+(global-set-key (kbd "s-C-i") (lambda () (interactive) (p-adjust-opacity nil -2)))
+(global-set-key (kbd "s-C-o") (lambda () (interactive) (p-adjust-opacity nil 2)))
+(global-set-key (kbd "s-C-u") (lambda () (interactive) (modify-frame-parameters nil `((alpha . 100)))))
+
 (after! evil
   (define-key evil-normal-state-map (kbd "C-e") 'evil-end-of-line)
   (define-key evil-normal-state-map (kbd "gn") 'git-gutter:next-hunk)
@@ -28,18 +36,14 @@
   (define-key evil-visual-state-map (kbd "v") 'er/expand-region)
   (define-key evil-visual-state-map (kbd "gl") 'evil-shift-right)
   (define-key evil-visual-state-map (kbd "gh") 'evil-shift-left)
+  (define-key evil-visual-state-map (kbd "fd") 'evil-escape)
   (define-key evil-visual-state-map (kbd "gok") 'p-surround-parens)
   (define-key evil-visual-state-map (kbd "gof") 'p-surround-brackets)
   (define-key evil-visual-state-map (kbd "goh") 'p-surround-curly)
   (define-key evil-visual-state-map (kbd "gor") 'p-ex-evil-selection-replace))
 
-(global-set-key (kbd "C-w o") 'delete-other-windows)
-(global-set-key (kbd "C-x k") 'kill-this-buffer)
-(global-set-key (kbd "C-x K") 'kill-buffer-and-window)
-(global-set-key (kbd "C-c c") 'org-capture)
-(global-set-key (kbd "s-C-i") (lambda () (interactive) (p-adjust-opacity nil -2)))
-(global-set-key (kbd "s-C-o") (lambda () (interactive) (p-adjust-opacity nil 2)))
-(global-set-key (kbd "s-C-u") (lambda () (interactive) (modify-frame-parameters nil `((alpha . 100)))))
+(after! ivy
+  (define-key ivy-minibuffer-map (kbd "C-j") 'ivy-alt-done))
 
 (after! company
   (define-key company-active-map (kbd "C-j") #'company-complete-selection))
@@ -59,24 +63,25 @@
        (:when (featurep! :ui workspaces)
         :desc "Switch workspace buffer"            "B"      #'persp-switch-to-buffer
         :desc "Switch buffer"                      "b"      #'switch-to-buffer)
-       :desc "narrow region"                       "n"      #'+evil:narrow-buffer
-       :desc "widen"                               "w"      #'widen
+        :desc "narrow region"                      "n"      #'+evil:narrow-buffer
+        :desc "widen"                              "w"      #'widen
        (:unless (featurep! :ui workspaces)
         :desc "Switch buffer"                      "b"      #'switch-to-buffer)
-       :desc "eval buffer"                         "e"      #'eval-buffer
-       :desc "switch to dashboard"                 "s"      #'+doom-dashboard/open
-       :desc "kill buffer and window"              "D"      #'kill-buffer-and-window)
+        :desc "eval buffer"                        "e"      #'eval-buffer
+        :desc "switch to dashboard"                "s"      #'+doom-dashboard/open
+        :desc "kill buffer and window"             "D"      #'kill-buffer-and-window)
       (:prefix-map ("e" . "text")
        :desc "beginning-of-defun"                  "b"      #'beginning-of-defun
        :desc "end-of-defun"                        "e"      #'end-of-defun
+       :desc "p-select-functoin"                   "f"      #'p-select-function
        :desc "evilmi-select-items"                 "s"      #'evilmi-select-items)
       (:prefix-map ("s" . "search")
        :desc "swiper-isearch-thing-at-point"       "S"      #'swiper-isearch-thing-at-point
        :desc "search-project-at-point"             "a"      #'+default/search-project-for-symbol-at-point
-       :desc "counsel-file-jump"                   "g"      #'counsel-file-jump
+       :desc "p-google-search"                     "g"      #'p-google-search
+       :desc "p-youtube-search"                    "y"      #'p-youtube-search
        :desc "counsel-yank-pop"                    "h"      #'counsel-yank-pop)
       (:prefix-map ("n" . "notes")
-       ;; :desc "new deft file"                       "D"      #'deft-new-file
        :desc "olivetti"                            "O"      #'olivetti-mode
        :desc "org-tree-slide-mode"                 "P"      #'org-tree-slide-mode
        :desc "open journal file"                   "jo"     #'org-journal-open-current-journal-file
@@ -89,6 +94,9 @@
        :desc "insert uk date"                      "k"      #'p-insert-uk-date
        :desc "insert date"                         "d"      #'p-insert-date)
       (:prefix-map ("f" . "file")
+       :desc "locate file"                         "g"      #'locate-file
+       :desc "p-counsel-find-literature"           "l"      #'p-counsel-find-literature
+       :desc "p-dired-jump-literature"             "L"      #'p-dired-jump-literature
        :desc "dired jump"                          "j"      #'dired-jump)
       (:prefix-map ("t" . "toggle")
        :desc "maximize frame"                      "m"      #'toggle-frame-maximized))
