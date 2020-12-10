@@ -148,18 +148,6 @@
                   "\\end{frame}"))))
 
 
-;; Deft -------------------------------------------------
-;; (setq deft-directory "~/org/journal"
-;;     deft-use-filename-as-title nil
-;;     deft-use-filter-string-for-filename t
-;;     deft-auto-save-interval -1
-;;     deft-extensions '("org" "txt" "md")
-;;     deft-file-naming-rules
-;;     '((noslash . "-")
-;;     (nospace . "-")
-;;     (case-fn . downcase)))
-
-
 ;; olivetti ------------------------------------------------------------------
 (setq olivetti-body-width 0.7
       olivetti-minimum-body-width 80
