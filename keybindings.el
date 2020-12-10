@@ -62,14 +62,15 @@
       (:prefix-map ("b" . "buffer")
        (:when (featurep! :ui workspaces)
         :desc "Switch workspace buffer"            "B"      #'persp-switch-to-buffer
-        :desc "Switch buffer"                      "b"      #'switch-to-buffer)
-        :desc "narrow region"                      "n"      #'+evil:narrow-buffer
-        :desc "widen"                              "w"      #'widen
+       :desc "Switch buffer"                       "b"      #'switch-to-buffer)
+       :desc "narrow region"                       "n"      #'+evil:narrow-buffer
+       :desc "widen"                               "w"      #'widen
        (:unless (featurep! :ui workspaces)
         :desc "Switch buffer"                      "b"      #'switch-to-buffer)
-        :desc "eval buffer"                        "e"      #'eval-buffer
-        :desc "switch to dashboard"                "s"      #'+doom-dashboard/open
-        :desc "kill buffer and window"             "D"      #'kill-buffer-and-window)
+       :desc "eval buffer"                         "e"      #'eval-buffer
+       :desc "switch to dashboard"                 "a"      #'+doom-dashboard/open
+       :desc "switch to scratch"                   "s"      #'p-switch-to-scratch
+       :desc "kill buffer and window"              "D"      #'kill-buffer-and-window)
       (:prefix-map ("e" . "text")
        :desc "beginning-of-defun"                  "b"      #'beginning-of-defun
        :desc "end-of-defun"                        "e"      #'end-of-defun
@@ -99,6 +100,7 @@
        :desc "p-dired-jump-literature"             "L"      #'p-dired-jump-literature
        :desc "dired jump"                          "j"      #'dired-jump)
       (:prefix-map ("t" . "toggle")
+       :desc "World time"                          "W"      #'display-time-world
        :desc "maximize frame"                      "m"      #'toggle-frame-maximized))
 
 ;; local-leader
