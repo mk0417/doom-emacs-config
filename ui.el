@@ -8,7 +8,8 @@
 ;; https://github.com/hlissner/doom-emacs/issues/2194#issuecomment-565844321
 ;; (load-theme 'doom-one t)
 ;; (load-theme 'doom-palenight t)
-(load-theme 'doom-wilmersdorf t)
+;; (load-theme 'doom-wilmersdorf t)
+(load-theme 'doom-tomorrow-night t)
 
 ;; fringe-mode
 ;; make sure to display diff indicator on left only
