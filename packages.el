@@ -17,11 +17,8 @@
 (package! olivetti)
 (package! pandoc-mode)
 (package! jupyter)
-(package! berrys-theme)
 (package! ox-reveal)
 (package! doom-themes)
-(package! srcery-theme)
-;; (package! popwin)
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
