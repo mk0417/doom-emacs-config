@@ -8,11 +8,10 @@
 ;; https://github.com/hlissner/doom-emacs/issues/2194#issuecomment-565844321
 ;; (load-theme 'doom-one t)
 ;; (load-theme 'doom-palenight t)
-(setq srcery-invert-region nil)
-(load-theme 'srcery t)
+(load-theme 'doom-wilmersdorf t)
 
 ;; fringe-mode
-;; make sure to display change indicator
+;; make sure to display diff indicator on left only
 (add-hook 'git-gutter-mode-hook (lambda () (fringe-mode '(nil . 0))))
 
 ;; selected text color
@@ -61,17 +60,17 @@
 ;; company tooltip color
 (after! company
   (custom-set-faces
-   '(company-preview-common
-     ((t (:inherit company-preview))))
    '(company-tooltip
      ((t (:background "#ffeead" :foreground "black"))))
    '(company-tooltip-selection
      ((t (:background "#69adc6" :foreground "white"))))
    '(company-tooltip-common
-     ((t (:background "#ffeead" :foreground "black"))))))
+     ((t (:background "#ffeead" :foreground "black"))))
+   '(company-tooltip-common-selection
+     ((t (:background "#69adc6" :foreground "red"))))))
 
 ;; initial scratch buffer message
-(setq initial-scratch-message ";;; Hello Peng, welcome to EMACS\n")
+(setq initial-scratch-message ";; Hello Peng, welcome to EMACS\n")
 
 ;; frame title
 (setq frame-title-format
