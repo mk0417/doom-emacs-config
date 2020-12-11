@@ -84,17 +84,8 @@
   ;; sorce block template
   (require 'org-tempo)
   (add-to-list 'org-structure-template-alist '("b" . "src shell"))
-  (add-to-list 'org-structure-template-alist '("y" . "src python"))
   (add-to-list 'org-structure-template-alist '("p" . "src elisp"))
   (add-to-list 'org-structure-template-alist '("j" . "src jupyter-python :session py"))
-  ;; (setq ob-async-no-async-languages-alist 'jupyter-python)
-  ;; org jupyter
-  (use-package jupyter)
-  (use-package ob-jupyter)
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((python . t)
-     (jupyter . t)))
   ;; keybindings
   ;; cause warning of `failed to load org package incrementally' if move out of after! org
   (map! :localleader
