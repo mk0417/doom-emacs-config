@@ -10,7 +10,6 @@
 (setq-default evil-escape-key-sequence "fd")
 
 ;; non-leader keybindings
-(global-set-key (kbd "C-i") 'p-delete-backward-to-tab)
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 (global-set-key (kbd "C-x K") 'kill-buffer-and-window)
 (global-set-key (kbd "C-c c") 'org-capture)
@@ -40,7 +39,8 @@
   (define-key evil-visual-state-map (kbd "gok") 'p-surround-parens)
   (define-key evil-visual-state-map (kbd "gof") 'p-surround-brackets)
   (define-key evil-visual-state-map (kbd "goh") 'p-surround-curly)
-  (define-key evil-visual-state-map (kbd "gor") 'p-ex-evil-selection-replace))
+  (define-key evil-visual-state-map (kbd "gor") 'p-ex-evil-selection-replace)
+  (define-key evil-insert-state-map (kbd "C-l") 'p-delete-backward-to-tab))
 
 (after! ivy
   (define-key ivy-minibuffer-map (kbd "C-j") 'ivy-alt-done))
