@@ -31,7 +31,7 @@
          :desc "interrupt-kernel"                "I"         #'jupyter-interrupt-kernel
          :desc "inspect"                         "i"         #'jupyter-inspect-at-point
          :desc "remove-overlay"                  "C"         #'jupyter-eval-remove-overlays
-         :desc "remove-overlay"                  "c"         #'p-jupyter-remove-line0overlay))
+         :desc "remove-overlay"                  "c"         #'p-jupyter-remove-line-overlay))
 
   ;; ;; elppy
   ;; (elpy-enable)
