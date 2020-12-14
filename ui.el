@@ -35,8 +35,7 @@
 ;; (setq p-font "Cascadia Mono")
 ;; (setq p-font "mononoki")
 ;; (setq p-font "Iosevka Fixed SS12")
-;; (setq p-font "Fira Code")
-(setq p-font "Roboto Mono")
+(setq p-font "Fira Code")
 (setq doom-font (font-spec :family p-font :size 12)
       doom-variable-pitch-font (font-spec :family p-font :size 12))
 
