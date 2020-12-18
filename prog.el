@@ -28,7 +28,7 @@
          :desc "eval-line-or-region"             "r"         #'jupyter-eval-line-or-region
          :desc "restart-kernel"                  "R"         #'jupyter-repl-restart-kernel
          :desc "clear-cells"                     "C"         #'jupyter-repl-clear-cells
-         :desc "interrupt-kernel"                "I"         #'jupyter-interrupt-kernel
+         :desc "interrupt-kernel"                "I"         #'jupyter-repl-interrupt-kernel
          :desc "inspect"                         "i"         #'jupyter-inspect-at-point
          :desc "remove-all-overlay"              "C"         #'jupyter-eval-remove-overlays
          :desc "remove-line-overlay"             "c"         #'p-jupyter-remove-line-overlay))
