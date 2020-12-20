@@ -19,7 +19,8 @@
 (set-face-attribute 'region nil :background "#666666")
 
 ;; maximize window at startup
-(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+;; diable it if uisng yabai to manage window
+;; (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
 ;; prevents some cases of Emacs flickering
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
