@@ -79,6 +79,10 @@
                    (concat " " (abbreviate-file-name (buffer-file-name)))
                  " %b"))))
 
+;; minibuffer height
+(after! ivy
+  (setq ivy-height 9))
+
 ;; banner
 ;; (defun doom-dashboard-widget-banner ()
 ;;   (let ((point (point)))
