@@ -36,9 +36,10 @@
 ;; If you'd like to disable a package included with Doom, you can do so here
 ;; with the `:disable' property:
 ;(package! builtin-package :disable t)
-;; (disable-packages!
-;;  anaconda-mode
-;;  company-anaconda)
+(disable-packages!
+ ;; company-anaconda
+ anaconda-mode
+ )
 
 ;; disable ob-async which causes problem of jupter-python in org mode
 ;; (disable-packages!)
