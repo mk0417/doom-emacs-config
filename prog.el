@@ -20,14 +20,21 @@
     (kill-whole-line)
     (evil-escape)
     (previous-line))
+  (defun p-jupyter-eval-block ()
+    (interactive)
+    (p-select-block)
+    (let (beg end)
+      (setq beg (region-beginning) end (region-end))
+      (jupyter-eval-region beg end)))
   (map! :localleader
         (:map python-mode-map
          :prefix ("j" . "jupyter")
          :desc "run-jupyter"                     "j"         #'jupyter-run-repl
          :desc "eval-def"                        "f"         #'jupyter-eval-defun
          :desc "eval-line-or-region"             "r"         #'jupyter-eval-line-or-region
+         :desc "eval-block"                      "e"         #'p-jupyter-eval-block
          :desc "restart-kernel"                  "R"         #'jupyter-repl-restart-kernel
-         :desc "clear-cells"                     "C"         #'jupyter-repl-clear-cells
+         :desc "clear-cells"                     "K"         #'jupyter-repl-clear-cells
          :desc "interrupt-kernel"                "I"         #'jupyter-repl-interrupt-kernel
          :desc "inspect"                         "i"         #'jupyter-inspect-at-point
          :desc "remove-all-overlay"              "C"         #'jupyter-eval-remove-overlays
