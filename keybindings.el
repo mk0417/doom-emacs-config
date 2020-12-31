@@ -31,6 +31,8 @@
   (define-key evil-normal-state-map (kbd "gop") 'evil-multiedit-match-symbol-and-prev)
   (define-key evil-normal-state-map (kbd "god") 'p-delete-parens)
   (define-key evil-normal-state-map (kbd "gor") 'p-ex-evil-buffer-replace)
+  (define-key evil-normal-state-map (kbd "goi") 'p-select-text-in-quote)
+  (define-key evil-normal-state-map (kbd "gos") 'p-select-block)
   (define-key evil-visual-state-map (kbd "C-e") 'evil-end-of-line)
   (define-key evil-visual-state-map (kbd "v") 'er/expand-region)
   (define-key evil-visual-state-map (kbd "gl") 'evil-shift-right)
