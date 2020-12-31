@@ -186,6 +186,32 @@
   (beginning-of-defun)
   (evilmi-select-items))
 
+;; select text in qutoe: Xah Lee
+;; http://ergoemacs.org/emacs/modernization_mark-word.html
+(defun p-select-text-in-quote ()
+  (interactive)
+  (let (($skipChars "^'\"`<>(){}[]“”‘’‹›«»「」『』【】〖〗《》〈〉〔〕（）
+        〘〙")
+        $p1)
+    (skip-chars-backward $skipChars)
+    (setq $p1 (point))
+    (skip-chars-forward $skipChars)
+    (set-mark $p1)))
+
+;; select block between blank lines: Xah Lee
+;; http://ergoemacs.org/emacs/modernization_mark-word.html
+(defun p-select-block ()
+  (interactive)
+  (if (region-active-p)
+      (re-search-forward "\n[ \t]*\n" nil "move")
+    (progn
+      (skip-chars-forward " \n\t")
+      (when (re-search-backward "\n[ \t]*\n" nil "move")
+        (re-search-forward "\n[ \t]*\n"))
+      (push-mark (point) t t)
+      (re-search-forward "\n[ \t]*\n" nil "move")
+      (forward-line -1))))
+
 ;; google search
 ;; https://emacsredux.com/blog/2013/03/28/google/
 (defun p-google-search ()
