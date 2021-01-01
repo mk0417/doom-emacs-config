@@ -9,7 +9,8 @@
 ;; (load-theme 'doom-one t)
 ;; (load-theme 'doom-palenight t)
 ;; (load-theme 'doom-wilmersdorf t)
-(load-theme 'doom-tomorrow-night t)
+;; (load-theme 'doom-tomorrow-night t)
+(setq doom-theme 'doom-nebula)
 
 ;; fringe-mode
 ;; make sure to display diff indicator on left only
