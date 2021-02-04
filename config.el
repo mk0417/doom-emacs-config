@@ -36,7 +36,7 @@
 
 
 ;; Projectile --------------------------------------------
-(setq projectile-project-search-path '("~/Git/" "~/project/" "~/working/"))
+(setq projectile-project-search-path '("~/Git/" "~/project/"))
 
 
 ;; evil-matchit ----------------------------------------
@@ -196,7 +196,8 @@
     (skip-chars-backward $skipChars)
     (setq $p1 (point))
     (skip-chars-forward $skipChars)
-    (set-mark $p1)))
+    (set-mark $p1)
+    (backward-char)))
 
 ;; select block between blank lines: Xah Lee
 ;; http://ergoemacs.org/emacs/modernization_mark-word.html

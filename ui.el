@@ -10,11 +10,26 @@
 ;; (load-theme 'doom-palenight t)
 ;; (load-theme 'doom-wilmersdorf t)
 ;; (load-theme 'doom-tomorrow-night t)
-(setq doom-theme 'doom-nebula)
+;; (setq srcery-invert-region nil)
+;; (setq srcery-invert-matches t)
+;; (load-theme 'srcery t)
+
+(require 'modus-themes)
+(setq modus-themes-syntax 'green-strings
+      modus-themes-links 'faint
+      modus-themes-prompts 'intense
+      modus-themes-intense-hl-line 't
+      modus-themes-region 'bg-only)
+(setq modus-themes-scale-headings t
+      modus-themes-scale-1 1.3
+      modus-themes-scale-2 1.1)
+(setq modus-themes-headings
+      '((t . rainbow-section)))
+(load-theme 'modus-vivendi t)
 
 ;; fringe-mode
 ;; make sure to display diff indicator on left only
-(add-hook 'git-gutter-mode-hook (lambda () (fringe-mode '(nil . 0))))
+;; (add-hook 'git-gutter-mode-hook (lambda () (fringe-mode '(nil . 0))))
 
 ;; selected text color
 (set-face-attribute 'region nil :background "#666666")
@@ -37,7 +52,8 @@
 ;; (setq p-font "Cascadia Mono")
 ;; (setq p-font "mononoki")
 ;; (setq p-font "Iosevka Fixed SS12")
-(setq p-font "Fira Code")
+;; (setq p-font "Fira Code")
+(setq p-font "DejaVu Sans Mono")
 (setq doom-font (font-spec :family p-font :size 12)
       doom-variable-pitch-font (font-spec :family p-font :size 12))
 
@@ -62,14 +78,16 @@
 ;; company tooltip color
 (after! company
   (custom-set-faces
+   '(company-preview-common
+     ((t (:inherit company-preview))))
    '(company-tooltip
      ((t (:background "#ffeead" :foreground "black"))))
    '(company-tooltip-selection
      ((t (:background "#69adc6" :foreground "white"))))
+   '(company-tooltip-annotation
+     ((t (:background "#ffeead" :foreground "red"))))
    '(company-tooltip-common
-     ((t (:background "#ffeead" :foreground "black"))))
-   '(company-tooltip-common-selection
-     ((t (:background "#69adc6" :foreground "red"))))))
+     ((t (:background "#ffeead" :foreground "black"))))))
 
 ;; initial scratch buffer message
 (setq initial-scratch-message ";; Hello Peng, welcome to EMACS\n")
@@ -201,7 +219,8 @@
                ;; git branch
                ;; '(vc-mode vc-mode)
                '(:eval (when-let (vc vc-mode)
-                         (list "Git:*" (propertize (substring vc 5)) "*  ")))
+                         (list "Git:*" (propertize (substring vc 5) 'face "black") "*  ")))
+
                ;; the current major mode for the buffer.
                ;; "["
                '(:eval (propertize "%m" 'help-echo buffer-file-coding-system))
@@ -227,8 +246,8 @@
                                 (face-foreground 'mode-line)))
 (defun p-show-evil-state ()
   (let* ((color (cond ((minibufferp) p-default-color)
-                      ((evil-normal-state-p) '("grey80"  . "black"))
-                      ((evil-insert-state-p) '("coral1"  . "#ffffff"))
+                      ;; ((evil-normal-state-p) '("grey80"  . "black"))
+                      ((evil-insert-state-p) '("red"  . "#ffffff"))
                       ((evil-visual-state-p) '("#006fa0" . "#ffffff"))
                       ((evil-emacs-state-p)  '("#444488" . "#ffffff"))
                       ((buffer-modified-p)   '("#006fa0" . "#ffffff"))
@@ -236,7 +255,7 @@
     (set-face-background 'mode-line (car color))
     (set-face-foreground 'mode-line (cdr color))
     (set-face-bold 'mode-line t)
-    (set-face-attribute 'mode-line nil :font "Fira Code-11")))
+    (set-face-attribute 'mode-line nil :font "Menlo-12")))
 (add-hook 'post-command-hook #'p-show-evil-state)
 
 
