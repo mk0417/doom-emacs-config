@@ -17,14 +17,16 @@
 (require 'modus-themes)
 (setq modus-themes-syntax 'green-strings
       modus-themes-links 'faint
-      modus-themes-prompts 'intense
+      modus-themes-fringes 'intense
+      modus-themes-prompts 'intense-accented
       modus-themes-intense-hl-line 't
       modus-themes-region 'bg-only)
 (setq modus-themes-scale-headings t
       modus-themes-scale-1 1.3
-      modus-themes-scale-2 1.1)
+      modus-themes-scale-2 1.1
+      modus-themes-org-blocks 'grayscale)
 (setq modus-themes-headings
-      '((t . rainbow-section)))
+      '((t . line)))
 (load-theme 'modus-vivendi t)
 
 ;; fringe-mode
