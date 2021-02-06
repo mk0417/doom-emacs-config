@@ -71,6 +71,7 @@
           ("r" "Routine" entry
            (file+headline "routine.org" "Routine")
            "* TODO %^{Title} \nSCHEDULED: %^t\n :PROPERTIES:\n :STYLE:    habit\n :END:\n")))
+  (setq org-hide-emphasis-markers t)
   (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
   ;; disable line number in org mode
   ;; https://github.com/hlissner/doom-emacs/issues/827#issuecomment-653784466
