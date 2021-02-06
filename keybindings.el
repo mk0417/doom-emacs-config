@@ -56,7 +56,7 @@
 ;; symbol-overlay
 ;; https://github.com/wolray/symbol-overlay/issues/59
 (after! transient
-(define-transient-command symbol-overlay-transient ()
+(transient-define-prefix symbol-overlay-transient ()
   "Symbol Overlay transient"
   ["Symbol Overlay"
    ["Overlays"
