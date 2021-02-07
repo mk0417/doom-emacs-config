@@ -31,7 +31,8 @@
 
 ;; fringe-mode
 ;; make sure to display diff indicator on left only
-;; (add-hook 'git-gutter-mode-hook (lambda () (fringe-mode '(nil . 0))))
+;; (add-hook 'git-gutter-mode-hook (lambda () (fringe-mode '(4 . 0))))
+(fringe-mode '(4 . 0))
 
 ;; selected text color
 (set-face-attribute 'region nil :background "#666666")
