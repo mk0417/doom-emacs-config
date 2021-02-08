@@ -97,8 +97,9 @@
       (:prefix-map ("e" . "text")
        :desc "beginning-of-defun"                  "b"      #'beginning-of-defun
        :desc "end-of-defun"                        "e"      #'end-of-defun
-       :desc "p-select-functoin"                   "f"      #'p-select-function
-       :desc "evilmi-select-items"                 "s"      #'evilmi-select-items)
+       :desc "p-select-function"                   "f"      #'p-select-function
+       :desc "evilmi-select-items"                 "s"      #'evilmi-select-items
+       :desc "define-word"                         "d"      #'define-word-at-point)
       (:prefix-map ("s" . "search")
        :desc "swiper-isearch-thing-at-point"       "S"      #'swiper-isearch-thing-at-point
        :desc "search-project-at-point"             "a"      #'+default/search-project-for-symbol-at-point
