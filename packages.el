@@ -23,6 +23,7 @@
 (package! modus-themes)
 (package! code-cells)
 (package! symbol-overlay)
+(package! define-word)
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
