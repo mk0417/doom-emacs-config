@@ -96,6 +96,9 @@
          :desc "next slide"                             "h"         #'org-tree-slide-move-previous-tree
          :desc "presentation mode on"                   "j"         #'p-org-presentation-on
          :desc "presentation mode off"                  "J"         #'p-org-presentation-off
+         ;; narrow subtree
+         :prefix (";" . "narrow")
+         :desc "narrow subtree"                         "n"         #'org-toggle-narrow-to-subtree
          ;; flyspell
          :prefix ("w" . "flyspell")
          :desc "flyspell-buffer"                        "b"         #'flyspell-buffer
