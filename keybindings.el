@@ -120,6 +120,9 @@
        :desc "insert date"                         "d"      #'p-insert-date)
       (:prefix-map ("f" . "file")
        :desc "locate file"                         "g"      #'locate-file
+       :desc "find-dired"                          "d"      #'find-dired
+       :desc "find-name-dired"                     "n"      #'find-name-dired
+       :desc "find-lisp-find-dired"                "a"      #'find-lisp-find-dired
        :desc "p-counsel-find-literature"           "l"      #'p-counsel-find-literature
        :desc "p-dired-jump-literature"             "L"      #'p-dired-jump-literature
        :desc "dired jump"                          "j"      #'dired-jump)
