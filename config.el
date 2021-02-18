@@ -91,6 +91,10 @@
     ("Pacific/Auckland" "Auckland")))
 (setq display-time-world-time-format "%a, %d %b %I:%M %p %Z")
 
+;; better scrolling performance
+;; https://github.com/mpereira/.emacs.d/#a-fast-non-projectile-based-project-file-finder
+;; https://www.reddit.com/r/emacs/comments/gaub11/poor_scrolling_performance_in_doom_emacs/fp392eh/
+(setq jit-lock-defer-time 0)
 
 ;; Functions
 ;; https://stackoverflow.com/questions/2951797/wrapping-selecting-text-in-enclosing-characters-in-emacs
