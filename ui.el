@@ -206,6 +206,16 @@
                '(:eval (propertize evil-mode-line-tag))
                ;; the buffer name; the file name as a tool tip
                " "
+               ;; project root
+               (require 'projectile)
+               '(:eval
+                 (let ((face 'bold))
+                   (when (projectile-project-name)
+                     (concat
+                      (propertize "[" 'face face)
+                      (propertize (format "%s" (projectile-project-name)) 'face face)
+                      (propertize "] " 'face face)))))
+               " "
                '(:eval (propertize "%b  " 'help-echo (buffer-file-name)))
                ;; line and column
                "(" ;; '%02' to set to 2 chars at least; prevents flickering
