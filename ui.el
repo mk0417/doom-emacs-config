@@ -222,7 +222,8 @@
                ;; git branch
                ;; '(vc-mode vc-mode)
                '(:eval (when-let (vc vc-mode)
-                         (list "Git:*" (propertize (substring vc 5) 'face "black") "*  ")))
+                         ;; (list "Git:*" (propertize (substring vc 5) 'face "black") "*  ")))
+                         (list "Git@" (propertize (substring vc 5) 'face "black") "  ")))
 
                ;; the current major mode for the buffer.
                ;; "["
