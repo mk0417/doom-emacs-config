@@ -33,6 +33,7 @@
   (define-key evil-normal-state-map (kbd "gor") 'p-ex-evil-buffer-replace)
   (define-key evil-normal-state-map (kbd "goi") 'p-select-text-in-quote)
   (define-key evil-normal-state-map (kbd "gos") 'p-select-block)
+  (define-key evil-normal-state-map (kbd "goc") 'evilnc-copy-and-comment-lines)
   (define-key evil-visual-state-map (kbd "C-e") 'evil-end-of-line)
   (define-key evil-visual-state-map (kbd "v") 'er/expand-region)
   (define-key evil-visual-state-map (kbd "gl") 'evil-shift-right)
@@ -42,10 +43,12 @@
   (define-key evil-visual-state-map (kbd "gof") 'p-surround-brackets)
   (define-key evil-visual-state-map (kbd "goh") 'p-surround-curly)
   (define-key evil-visual-state-map (kbd "gor") 'p-ex-evil-selection-replace)
+  (define-key evil-visual-state-map (kbd "goc") 'evilnc-copy-and-comment-lines)
   (define-key evil-insert-state-map (kbd "C-l") 'p-delete-backward-to-tab))
 
 (after! ivy
-  (define-key ivy-minibuffer-map (kbd "C-j") 'ivy-alt-done))
+  (define-key ivy-minibuffer-map (kbd "C-j") 'ivy-alt-done)
+  (define-key ivy-switch-buffer-map (kbd "C-j") 'ivy-alt-done))
 
 (after! company
   (define-key company-active-map (kbd "C-j") #'company-complete-selection))
