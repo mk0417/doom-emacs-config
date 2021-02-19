@@ -86,6 +86,7 @@
   (require 'org-tempo)
   (add-to-list 'org-structure-template-alist '("b" . "src shell"))
   (add-to-list 'org-structure-template-alist '("p" . "src elisp"))
+  (add-to-list 'org-structure-template-alist '("r" . "src R :session r :eval no-export"))
   (add-to-list 'org-structure-template-alist '("j" . "src jupyter-python :session py :eval no-export"))
   ;; keybindings
   ;; cause warning of `failed to load org package incrementally' if move out of after! org
