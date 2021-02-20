@@ -92,4 +92,8 @@
   (add-hook 'ess-mode-hook 'display-fill-column-indicator-mode)
   (map! :localleader
         (:map ess-mode-map
-         :desc "ess-cycle-assign"      "a"      #'ess-cycle-assign)))
+         :desc "ess-cycle-assign"                "a"         #'ess-cycle-assign
+         :prefix ("j" . "ess-r")
+         :desc "eval-def"                        "f"         #'ess-eval-function
+         :desc "eval-line"                       "l"         #'ess-eval-line
+         :desc "eval-line-or-region"             "r"         #'ess-eval-region-or-line-and-step)))
