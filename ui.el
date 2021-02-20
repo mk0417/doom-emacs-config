@@ -42,7 +42,7 @@
 ;; (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
 ;; prevents some cases of Emacs flickering
-(add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
+;; (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
 
 ;; line number
 (setq display-line-numbers-type t)
