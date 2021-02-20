@@ -1,4 +1,4 @@
-;;; +python.el -*- lexical-binding: t; -*-
+;;; prog.el -*- lexical-binding: t; -*-
 
 ;; Python --------------------------------------------------
 

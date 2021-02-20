@@ -1,4 +1,4 @@
-;;; +org.el -*- lexical-binding: t; -*-
+;;; text.el -*- lexical-binding: t; -*-
 
 ;; Org ---------------------------------------------------
 
