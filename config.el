@@ -24,11 +24,11 @@
 
 ;; Eglot --------------------------------------------------
 ;; https://github.com/joaotavora/eglot/issues/334
-(setq eglot-ignored-server-capabilites '(:documentHighlightProvider))
+;; (setq eglot-ignored-server-capabilites '(:documentHighlightProvider))
 ;; https://github.com/joaotavora/eglot/issues/324
-(setq eglot-stay-out-of '(company))
+;; (setq eglot-stay-out-of '(company))
 ;; https://github.com/joaotavora/eglot/pull/459
-(setq eldoc-echo-area-use-multiline-p nil)
+;; (setq eldoc-echo-area-use-multiline-p nil)
 
 
 ;; Ivy -------------------------------------------------
@@ -274,4 +274,4 @@
 
 ;; First input delay ------------------------------------
 ;; https://github.com/hlissner/doom-emacs/issues/3399
-(run-hooks 'doom-first-input-hook)
+;; (run-hooks 'doom-first-input-hook)
