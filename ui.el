@@ -31,9 +31,28 @@
 (load-theme 'modus-vivendi t)
 
 ;; fringe-mode
-;; make sure to display diff indicator on left only
-;; (add-hook 'git-gutter-mode-hook (lambda () (fringe-mode '(4 . 0))))
-(fringe-mode '(4 . 0))
+;; disable fringe-mode to favor diff-hl
+(fringe-mode 0)
+(add-hook 'git-gutter-mode-hook (lambda () (fringe-mode '(0 . 0))))
+
+;; diff-hl
+;; https://www.reddit.com/r/emacs/comments/582yms/question_changing_the_colour_of_diffhl_indicators/d8x0fvd/
+;; (use-package! diff-hl
+;;   :init
+;;   (custom-set-faces
+;;    '(diff-hl-change ((t (:background "#3a81c3"))))
+;;    '(diff-hl-insert ((t (:background "#568f56"))))
+;;    '(diff-hl-delete ((t (:background "#ee6363")))))
+;;   (diff-hl-flydiff-mode)
+;;   (global-diff-hl-mode 1))
+
+(global-diff-hl-mode 1)
+(diff-hl-flydiff-mode)
+(after! diff-hl
+  (custom-set-faces
+   '(diff-hl-change ((t (:background "#3a81c3"))))
+   '(diff-hl-insert ((t (:background "#568f56"))))
+   '(diff-hl-delete ((t (:background "#ee6363"))))))
 
 ;; selected text color
 (set-face-attribute 'region nil :background "#666666")
