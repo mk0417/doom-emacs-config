@@ -1,4 +1,4 @@
-;;; text.el -*- lexical-binding: t; -*-
+;;; ~/.doom.d/text.el -*- lexical-binding: t; -*-
 
 ;; Org ---------------------------------------------------
 

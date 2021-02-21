@@ -1,4 +1,4 @@
-;;; keybindings.el -*- lexical-binding: t; -*-
+;;; ~/.doom.d/keybindings.el -*- lexical-binding: t; -*-
 
 ;; Keybindings --------------------------------------------
 

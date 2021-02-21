@@ -1,4 +1,4 @@
-;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
@@ -274,4 +274,4 @@
 
 ;; First input delay ------------------------------------
 ;; https://github.com/hlissner/doom-emacs/issues/3399
-;; (run-hooks 'doom-first-input-hook)
+(run-hooks 'doom-first-input-hook)

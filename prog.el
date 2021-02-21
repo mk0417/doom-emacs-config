@@ -1,4 +1,4 @@
-;;; prog.el -*- lexical-binding: t; -*-
+;;; ~/.doom.d/prog.el -*- lexical-binding: t; -*-
 
 ;; Python --------------------------------------------------
 

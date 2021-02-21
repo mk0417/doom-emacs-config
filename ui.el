@@ -1,4 +1,4 @@
-;;; ui.el -*- lexical-binding: t; -*-
+;;; ~/.doom.d/ui.el -*- lexical-binding: t; -*-
 
 ;; UI ----------------------------------------------------
 
@@ -10,6 +10,7 @@
 ;; (load-theme 'doom-palenight t)
 ;; (load-theme 'doom-wilmersdorf t)
 ;; (load-theme 'doom-tomorrow-night t)
+
 ;; (setq srcery-invert-region nil)
 ;; (setq srcery-invert-matches t)
 ;; (load-theme 'srcery t)
@@ -96,10 +97,13 @@
 (setq initial-scratch-message ";; Hello Peng, welcome to EMACS\n")
 
 ;; frame title
-(setq frame-title-format
-      '((:eval (if (buffer-file-name)
-                   (concat " " (abbreviate-file-name (buffer-file-name)))
-                 " %b"))))
+;; frame title color is invisible when using Emacs 28 native-comp
+;; (setq frame-title-format
+;;       '((:eval (if (buffer-file-name)
+;;                    (concat " " (abbreviate-file-name (buffer-file-name)))
+;;                  " %b"))))
+
+(setq frame-title-format nil)
 
 ;; minibuffer height
 (after! ivy
