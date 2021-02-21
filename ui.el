@@ -116,13 +116,15 @@
 (setq initial-scratch-message ";; Hello Peng, welcome to EMACS\n")
 
 ;; frame title
-;; frame title color is invisible when using Emacs 28 native-comp
-;; (setq frame-title-format
-;;       '((:eval (if (buffer-file-name)
-;;                    (concat " " (abbreviate-file-name (buffer-file-name)))
-;;                  " %b"))))
+;; frame title is invisible when using Emacs 28 native-comp
+;; build Emacs with no-titlebar
+;; display frame title in my spacebar
+(setq frame-title-format
+      '((:eval (if (buffer-file-name)
+                   (concat " " (abbreviate-file-name (buffer-file-name)))
+                 " %b"))))
 
-(setq frame-title-format nil)
+;; (setq frame-title-format nil)
 
 ;; minibuffer height
 (after! ivy
