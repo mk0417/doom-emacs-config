@@ -31,10 +31,12 @@
 (load-theme 'modus-vivendi t)
 
 ;; fringe-mode
-;; disable fringe-mode to favor diff-hl
-(fringe-mode 0)
-(add-hook 'git-gutter-mode-hook (lambda () (fringe-mode '(0 . 0))))
+(fringe-mode '(0 . 0))
+(add-hook 'git-gutter-mode-hook (lambda () (fringe-mode '(8 . 0))))
 
+;; disable fringe-mode to favor diff-hl, but has bug
+;; (fringe-mode 0)
+;; (add-hook 'git-gutter-mode-hook (lambda () (fringe-mode '(0 . 0))))
 ;; diff-hl
 ;; https://www.reddit.com/r/emacs/comments/582yms/question_changing_the_colour_of_diffhl_indicators/d8x0fvd/
 ;; (use-package! diff-hl
@@ -45,14 +47,6 @@
 ;;    '(diff-hl-delete ((t (:background "#ee6363")))))
 ;;   (diff-hl-flydiff-mode)
 ;;   (global-diff-hl-mode 1))
-
-(global-diff-hl-mode 1)
-(diff-hl-flydiff-mode)
-(after! diff-hl
-  (custom-set-faces
-   '(diff-hl-change ((t (:background "#3a81c3"))))
-   '(diff-hl-insert ((t (:background "#568f56"))))
-   '(diff-hl-delete ((t (:background "#ee6363"))))))
 
 ;; selected text color
 (set-face-attribute 'region nil :background "#666666")
@@ -113,7 +107,11 @@
      ((t (:background "#ffeead" :foreground "black"))))))
 
 ;; initial scratch buffer message
-(setq initial-scratch-message ";; Hello Peng, welcome to EMACS\n")
+(setq initial-scratch-message
+      (concat ";; Hello Peng, welcome to EMACS\n"
+              (format ";; Emacs version: %s\n" (car (split-string emacs-version)))
+              (format ";; Packages: %d\n" (- (length load-path) (length doom--initial-load-path)))
+              (format ";; System: %s\n" system-configuration)))
 
 ;; frame title
 ;; frame title is invisible when using Emacs 28 native-comp
