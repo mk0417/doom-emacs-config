@@ -102,7 +102,9 @@
        :desc "end-of-defun"                        "e"      #'end-of-defun
        :desc "p-select-function"                   "f"      #'p-select-function
        :desc "evilmi-select-items"                 "s"      #'evilmi-select-items
-       :desc "define-word"                         "d"      #'define-word-at-point)
+       :desc "define-word"                         "d"      #'define-word-at-point
+       :desc "vr/replace"                          "r"      #'vr/replace
+       :desc "vr/query-replace"                    "h"      #'vr/query-replace)
       (:prefix-map ("s" . "search")
        :desc "swiper-isearch-thing-at-point"       "S"      #'swiper-isearch-thing-at-point
        :desc "search-project-at-point"             "a"      #'+default/search-project-for-symbol-at-point
