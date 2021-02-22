@@ -9,6 +9,10 @@
 (load! "keybindings")
 
 
+;; https://www.masteringemacs.org/article/speed-up-emacs-libjansson-native-elisp-compilation
+(setq comp-deferred-compilation t)
+
+
 ;; Company -------------------------------------------------
 (after! company
   (setq company-idle-delay 0
@@ -61,7 +65,7 @@
 (setq default-directory "~/")
 
 ;; dashboard default directory
-(setq +doom-dashboard-pwd-policy "~/")
+;; (setq +doom-dashboard-pwd-policy "~/")
 
 ;; activity-watch
 (global-activity-watch-mode)
