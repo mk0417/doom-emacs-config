@@ -92,6 +92,7 @@
   ;; cause warning of `failed to load org package incrementally' if move out of after! org
   (map! :localleader
         (:map org-mode-map
+         :desc "toggle heading"                         "u"         #'org-toggle-heading
          ;; presentation mode
          :desc "next slide"                             "l"         #'org-tree-slide-move-next-tree
          :desc "next slide"                             "h"         #'org-tree-slide-move-previous-tree
@@ -105,6 +106,12 @@
          :desc "flyspell-buffer"                        "b"         #'flyspell-buffer
          :desc "evil-next-flyspell-error"               "n"         #'evil-next-flyspell-error
          :desc "evil-prev-flyspell-error"               "p"         #'evil-prev-flyspell-error
+         ;; tables
+         :prefix ("b" . "tables")
+         :desc "move row up"                           "k"          #'org-table-move-row-up
+         :desc "move row down"                         "j"          #'org-table-move-row-down
+         :desc "move column right"                     "l"          #'org-table-move-column-right
+         :desc "move column left"                      "h"          #'org-table-move-column-left
          ;; tag match
          :prefix ("s")
          :desc "org-tags-sparse-tree"                   "t"         #'org-tags-sparse-tree))
