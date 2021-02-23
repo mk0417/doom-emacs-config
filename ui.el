@@ -15,10 +15,9 @@
 ;; (setq srcery-invert-matches t)
 ;; (load-theme 'srcery t)
 
-(require 'modus-themes)
 (setq modus-themes-syntax 'green-strings
       modus-themes-links 'faint
-      modus-themes-fringes 'intense
+      ;; modus-themes-fringes 'intense
       modus-themes-prompts 'intense-accented
       modus-themes-intense-hl-line 't
       modus-themes-region 'bg-only)
@@ -30,23 +29,20 @@
       '((t . line)))
 (load-theme 'modus-vivendi t)
 
-;; fringe-mode
-(fringe-mode '(0 . 0))
-(add-hook 'git-gutter-mode-hook (lambda () (fringe-mode '(8 . 0))))
-
-;; disable fringe-mode to favor diff-hl, but has bug
-;; (fringe-mode 0)
-;; (add-hook 'git-gutter-mode-hook (lambda () (fringe-mode '(0 . 0))))
 ;; diff-hl
+;; diff-hl indicators disappear when using C-g to cancel popup windows
+;; remove the hook below to fix the issue
+(remove-hook '+popup-buffer-mode-hook #'+popup-adjust-margins-h)
+;; disable fringe since diff-hl indicator is enough
+;; (add-hook 'git-gutter-mode-hook (lambda () (fringe-mode '(0 . 0))))
 ;; https://www.reddit.com/r/emacs/comments/582yms/question_changing_the_colour_of_diffhl_indicators/d8x0fvd/
-;; (use-package! diff-hl
-;;   :init
-;;   (custom-set-faces
-;;    '(diff-hl-change ((t (:background "#3a81c3"))))
-;;    '(diff-hl-insert ((t (:background "#568f56"))))
-;;    '(diff-hl-delete ((t (:background "#ee6363")))))
-;;   (diff-hl-flydiff-mode)
-;;   (global-diff-hl-mode 1))
+(global-diff-hl-mode)
+(diff-hl-flydiff-mode)
+(after! diff-hl
+  (custom-set-faces
+   '(diff-hl-change ((t (:background "#3a81c3"))))
+   '(diff-hl-insert ((t (:background "#568f56"))))
+   '(diff-hl-delete ((t (:background "#ee6363"))))))
 
 ;; selected text color
 (set-face-attribute 'region nil :background "#666666")

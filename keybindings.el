@@ -19,8 +19,9 @@
 
 (after! evil
   (define-key evil-normal-state-map (kbd "C-e") 'evil-end-of-line)
-  (define-key evil-normal-state-map (kbd "gn") 'git-gutter:next-hunk)
-  (define-key evil-normal-state-map (kbd "gp") 'git-gutter:previous-hunk)
+  (define-key evil-normal-state-map (kbd "gn") 'diff-hl-next-hunk)
+  (define-key evil-normal-state-map (kbd "gp") 'diff-hl-previous-hunk)
+  (define-key evil-normal-state-map (kbd "gP") 'diff-hl-diff-goto-hunk)
   (define-key evil-normal-state-map (kbd "gl") 'evil-shift-right)
   (define-key evil-normal-state-map (kbd "gh") 'evil-shift-left)
   (define-key evil-normal-state-map (kbd "C-c j") (lambda() (interactive) (scroll-other-window 2)))
