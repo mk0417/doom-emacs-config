@@ -11,7 +11,7 @@
 
 ;; (package! elpy)
 (package! activity-watch-mode)
-(package! org-superstar)
+;; (package! org-superstar)
 (package! evil-matchit)
 (package! org-tree-slide)
 (package! olivetti)

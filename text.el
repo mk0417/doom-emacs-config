@@ -23,16 +23,6 @@
         '((?+ . ?•)
           (?* . ?➤)
           (?- . ?–)))
-  (defun p-org-presentation-on ()
-    (interactive)
-    (progn
-      (org-tree-slide-mode 1)
-      (olivetti-mode 1)))
-  (defun p-org-presentation-off ()
-    (interactive)
-    (progn
-      (org-tree-slide-mode -1)
-      (olivetti-mode -1)))
   (setq org-tree-slide-breadcrumbs nil
         org-tree-slide-header nil
         org-tree-slide-slide-in-effect nil
@@ -48,6 +38,10 @@
         (propertize "Presentation mode ON" 'face 'success)
         org-tree-slide-deactivate-message
         (propertize "Presentation mode OFF" 'face 'error))
+  ;; olivetti
+  (setq olivetti-body-width 0.7
+        olivetti-minimum-body-width 80
+        olivetti-recall-visual-line-mode-entry-state t)
   ;; (setq org-roam-server-host "127.0.0.1"
   ;;       org-roam-server-port 8080
   ;;       org-roam-server-authenticate nil
@@ -72,7 +66,6 @@
            (file+headline "routine.org" "Routine")
            "* TODO %^{Title} \nSCHEDULED: %^t\n :PROPERTIES:\n :STYLE:    habit\n :END:\n")))
   (setq org-hide-emphasis-markers t)
-  (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
   ;; disable line number in org mode
   ;; https://github.com/hlissner/doom-emacs/issues/827#issuecomment-653784466
   (add-hook! 'org-mode-hook #'doom-disable-line-numbers-h)
@@ -88,24 +81,35 @@
   (add-to-list 'org-structure-template-alist '("p" . "src elisp"))
   (add-to-list 'org-structure-template-alist '("r" . "src R :session r :eval no-export"))
   (add-to-list 'org-structure-template-alist '("j" . "src jupyter-python :session py :eval no-export"))
+  ;; presentation
+  (defun p-org-presentation-on ()
+    (interactive)
+    (progn
+      (org-tree-slide-mode 1)
+      (olivetti-mode 1)))
+  (defun p-org-presentation-off ()
+    (interactive)
+    (progn
+      (org-tree-slide-mode -1)
+      (olivetti-mode -1)))
   ;; keybindings
   ;; cause warning of `failed to load org package incrementally' if move out of after! org
   (map! :localleader
         (:map org-mode-map
-         :desc "toggle heading"                         "u"         #'org-toggle-heading
+         :desc "toggle heading"                        "u"          #'org-toggle-heading
          ;; presentation mode
-         :desc "next slide"                             "l"         #'org-tree-slide-move-next-tree
-         :desc "next slide"                             "h"         #'org-tree-slide-move-previous-tree
-         :desc "presentation mode on"                   "j"         #'p-org-presentation-on
-         :desc "presentation mode off"                  "J"         #'p-org-presentation-off
+         :desc "presentation mode on"                  "j"          #'p-org-presentation-on
+         :desc "presentation mode off"                 "J"          #'p-org-presentation-off
+         :desc "next slide"                            "l"          #'org-tree-slide-move-next-tree
+         :desc "previous slide"                        "h"          #'org-tree-slide-move-previous-tree
          ;; narrow subtree
          :prefix (";" . "narrow")
-         :desc "narrow subtree"                         "n"         #'org-toggle-narrow-to-subtree
+         :desc "narrow subtree"                        "n"          #'org-toggle-narrow-to-subtree
          ;; flyspell
          :prefix ("w" . "flyspell")
-         :desc "flyspell-buffer"                        "b"         #'flyspell-buffer
-         :desc "evil-next-flyspell-error"               "n"         #'evil-next-flyspell-error
-         :desc "evil-prev-flyspell-error"               "p"         #'evil-prev-flyspell-error
+         :desc "flyspell-buffer"                       "b"          #'flyspell-buffer
+         :desc "evil-next-flyspell-error"              "n"          #'evil-next-flyspell-error
+         :desc "evil-prev-flyspell-error"              "p"          #'evil-prev-flyspell-error
          ;; tables
          :prefix ("b" . "tables")
          :desc "move row up"                           "k"          #'org-table-move-row-up
@@ -149,9 +153,3 @@
                   "\\end{frame}"
                   "\\begin{frame}[fragile]\\frametitle{%s}"
                   "\\end{frame}"))))
-
-
-;; olivetti ------------------------------------------------------------------
-(setq olivetti-body-width 0.7
-      olivetti-minimum-body-width 80
-      olivetti-recall-visual-line-mode-entry-state t)
