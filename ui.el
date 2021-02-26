@@ -36,8 +36,12 @@
 ;; disable fringe since diff-hl indicator is enough
 ;; (add-hook 'git-gutter-mode-hook (lambda () (fringe-mode '(0 . 0))))
 ;; https://www.reddit.com/r/emacs/comments/582yms/question_changing_the_colour_of_diffhl_indicators/d8x0fvd/
-(global-diff-hl-mode)
-(diff-hl-flydiff-mode)
+(defun p-diff-hl-enable ()
+  (global-diff-hl-mode)
+  (diff-hl-flydiff-mode))
+(add-hook 'prog-mode-hook 'p-diff-hl-enable)
+(add-hook 'org-mode-hook 'p-diff-hl-enable)
+
 (after! diff-hl
   (custom-set-faces
    '(diff-hl-change ((t (:background "#3a81c3"))))
