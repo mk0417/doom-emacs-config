@@ -11,6 +11,7 @@
 
 ;; https://www.masteringemacs.org/article/speed-up-emacs-libjansson-native-elisp-compilation
 (setq comp-deferred-compilation t)
+(setq package-native-compile t)
 
 
 ;; Company -------------------------------------------------
@@ -68,7 +69,9 @@
 ;; (setq +doom-dashboard-pwd-policy "~/")
 
 ;; activity-watch
-(global-activity-watch-mode)
+;; disable global-activity-watch-mode to improve startup time
+(add-hook 'prog-mode-hook 'activity-watch-mode)
+(add-hook 'org-mode-hook 'activity-watch-mode)
 
 ;; disable flyspell for git commit
 (remove-hook! '(git-commit-mode-hook) #'flyspell-mode)
@@ -280,4 +283,4 @@
 
 ;; First input delay ------------------------------------
 ;; https://github.com/hlissner/doom-emacs/issues/3399
-(run-hooks 'doom-first-input-hook)
+;; (run-hooks 'doom-first-input-hook)

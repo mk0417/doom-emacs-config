@@ -55,7 +55,7 @@
 ;; (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
 
 ;; line number
-(setq display-line-numbers-type t)
+;; (setq display-line-numbers-type t)
 
 ;; which-key delay
 (setq which-key-idle-delay 0.5)
