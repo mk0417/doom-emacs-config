@@ -22,7 +22,6 @@
 (package! srcery-theme)
 (package! modus-themes)
 (package! code-cells)
-(package! symbol-overlay)
 (package! define-word)
 (package! eacl)
 (package! visual-regexp)

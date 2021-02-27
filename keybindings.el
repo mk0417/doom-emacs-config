@@ -57,27 +57,6 @@
 (after! dired
   (define-key dired-mode-map (kbd "C-c <return>") 'p-open-in-external-app))
 
-;; symbol-overlay
-;; https://github.com/wolray/symbol-overlay/issues/59
-(after! transient
-(transient-define-prefix symbol-overlay-transient ()
-  "Symbol Overlay transient"
-  ["Symbol Overlay"
-   ["Overlays"
-    ("." "Add/Remove at point" symbol-overlay-put)
-    ("k" "Remove All" symbol-overlay-remove-all)]
-   ["Move to Symbol"
-    ("d" "Definition" symbol-overlay-jump-to-definition)
-    ("n" "Next" symbol-overlay-switch-forward)
-    ("p" "Previous" symbol-overlay-switch-backward)]
-   ["Search/Replace"
-    ("f" "Rename" symbol-overlay-rename)
-    ("s" "Search" symbol-overlay-isearch-literally)
-    ("r" "Replace" symbol-overlay-query-replace)]
-   ["Other"
-    ("m" "Hightlight symbol-at-point" symbol-overlay-mode)]]))
-(global-set-key (kbd "C-,") 'symbol-overlay-transient)
-
 ;; leader key
 (map! :leader
       :desc "winum-select-window-1"                "1"      #'winum-select-window-1
