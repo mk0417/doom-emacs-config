@@ -87,13 +87,22 @@
 
 ;; ESS ---------------------------------------------------
 (after! ess
+  ;; R
   (setq ess-ask-for-ess-directory nil)
   (add-hook 'eglot-managed-mode-hook (lambda () (flymake-mode -1)))
   (add-hook 'ess-mode-hook 'display-fill-column-indicator-mode)
+  ;; Stata
+  ;; https://github.com/hieutkt/.doom.d/blob/master/config.el
+  (setq inferior-STA-start-args ""
+        inferior-STA-program (executable-find "stata")
+        ;; fix: Error running timer 'ess--idle-timer-function': (wrong-type-argument stringp nil)
+        ;; https://github.com/emacs-ess/ESS/issues/1102
+        ess-can-eval-in-background nil)
+  ;; keybindings
   (map! :localleader
         (:map ess-mode-map
          :desc "ess-cycle-assign"                "a"         #'ess-cycle-assign
-         :prefix ("j" . "ess-r")
+         :prefix ("j" . "ess-eval")
          :desc "eval-def"                        "f"         #'ess-eval-function
          :desc "eval-line"                       "l"         #'ess-eval-line
          :desc "eval-line-or-region"             "r"         #'ess-eval-region-or-line-and-step)))
