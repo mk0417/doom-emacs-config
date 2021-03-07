@@ -10,9 +10,10 @@
 
 
 ;; https://www.masteringemacs.org/article/speed-up-emacs-libjansson-native-elisp-compilation
-(setq comp-deferred-compilation t)
-(setq package-native-compile t)
-
+(if (>= emacs-major-version 28)
+    (setq comp-deferred-compilation t
+          package-native-compile t
+          load-prefer-newer t))
 
 ;; Company -------------------------------------------------
 (after! company
@@ -28,12 +29,16 @@
 
 
 ;; Eglot --------------------------------------------------
+;; disable highlight at point
 ;; https://github.com/joaotavora/eglot/issues/334
-;; (setq eglot-ignored-server-capabilites '(:documentHighlightProvider))
+(setq eglot-ignored-server-capabilites '(:documentHighlightProvider))
+;; Do not overwrite company-backends
 ;; https://github.com/joaotavora/eglot/issues/324
-;; (setq eglot-stay-out-of '(company))
+(setq eglot-stay-out-of '(company))
 ;; https://github.com/joaotavora/eglot/pull/459
-;; (setq eldoc-echo-area-use-multiline-p nil)
+(setq eldoc-echo-area-use-multiline-p nil)
+;; disable flymake
+(add-hook 'eglot-managed-mode-hook (lambda () (flymake-mode -1)))
 
 
 ;; Ivy -------------------------------------------------
@@ -41,7 +46,7 @@
 
 
 ;; Projectile --------------------------------------------
-(setq projectile-project-search-path '("~/Git/" "~/project/"))
+(setq projectile-project-search-path '("~/Git/"))
 
 
 ;; evil-matchit ----------------------------------------
@@ -101,9 +106,8 @@
 ;; better scrolling performance
 ;; https://github.com/mpereira/.emacs.d/#a-fast-non-projectile-based-project-file-finder
 ;; https://www.reddit.com/r/emacs/comments/gaub11/poor_scrolling_performance_in_doom_emacs/fp392eh/
-(setq jit-lock-defer-time 0)
+;; (setq jit-lock-defer-time 0)
 
-(setq load-prefer-newer t)
 
 ;; Functions
 ;; https://stackoverflow.com/questions/2951797/wrapping-selecting-text-in-enclosing-characters-in-emacs

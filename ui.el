@@ -35,6 +35,7 @@
 (remove-hook '+popup-buffer-mode-hook #'+popup-adjust-margins-h)
 ;; disable fringe since diff-hl indicator is enough
 ;; (add-hook 'git-gutter-mode-hook (lambda () (fringe-mode '(0 . 0))))
+(add-hook 'diff-hl-mode-hook (lambda () (fringe-mode '(0 . 0))))
 ;; https://www.reddit.com/r/emacs/comments/582yms/question_changing_the_colour_of_diffhl_indicators/d8x0fvd/
 (defun p-diff-hl-enable ()
   (global-diff-hl-mode)
@@ -52,8 +53,8 @@
 (set-face-attribute 'region nil :background "#666666")
 
 ;; maximize window at startup
-;; diable it if uisng yabai to manage window
-;; (add-to-list 'initial-frame-alist '(fullscreen . maximized))
+;; disable it if uisng yabai to manage window
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
 ;; prevents some cases of Emacs flickering
 ;; (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
@@ -117,16 +118,29 @@
 ;; frame title is invisible when using Emacs 28 native-comp
 ;; build Emacs with no-titlebar
 ;; display frame title in my spacebar
-(setq frame-title-format
-      '((:eval (if (buffer-file-name)
-                   (concat " " (abbreviate-file-name (buffer-file-name)))
-                 " %b"))))
+;; (setq frame-title-format
+;;       '((:eval (if (buffer-file-name)
+;;                    (concat " " (abbreviate-file-name (buffer-file-name)))
+;;                  " %b"))))
 
-;; (setq frame-title-format nil)
+;; clean frame title bar
+(setq frame-title-format nil)
+;; https://emacs.stackexchange.com/questions/33680/how-to-remove-the-icon-in-the-titlebar
+(setq us-use-proxy-icon nil)
 
 ;; minibuffer height
 (after! ivy
-  (setq ivy-height 9))
+  (setq ivy-height 12))
+
+;; ivy-postframe
+(after! ivy-posframe
+  (setq ivy-posframe-border-width 2
+        ivy-posframe-height 13
+        ivy-posframe-width 130))
+
+;; company-box
+(after! company-box
+  (setq company-box-doc-enable nil))
 
 ;; banner
 ;; (defun doom-dashboard-widget-banner ()
@@ -143,23 +157,23 @@
 
 ;; modeline
 ;; doom-modeline
-;; (after! doom-modeline
-;;   (setq doom-modeline-modal-icon nil
-;;         ;; doom-modeline-major-mode-icon t
-;;         ;; doom-modeline--buffer-file-icon t
-;;         ;; all-the-icons-scale-factor 0.5
-;;         doom-modeline-buffer-modification-icon nil
-;;         doom-modeline-height 6)
-;;   (setq evil-normal-state-tag   (propertize "[Normal]")
-;;         evil-insert-state-tag   (propertize "[Insert]")
-;;         evil-visual-state-tag   (propertize "[Visual]")
-;;         evil-motion-state-tag   (propertize "[Motion]")
-;;         evil-operator-state-tag (propertize "[Operator]")
-;;         evil-emacs-state-tag    (propertize "[Emacs]")))
-
-;; (custom-set-faces!
-;;   '(mode-line :height 1)
-;;   '(mode-line-inactive :height 1))
+(after! doom-modeline
+  (setq doom-modeline-modal-icon nil
+        doom-modeline-major-mode-icon t
+        doom-modeline--buffer-file-icon t
+        ;; all-the-icons-scale-factor 0.5
+        doom-modeline-height 8
+        doom-modeline-buffer-modification-icon t)
+  (setq evil-normal-state-tag   (propertize "[Normal]")
+        evil-insert-state-tag   (propertize "[Insert]")
+        evil-visual-state-tag   (propertize "[Visual]")
+        evil-motion-state-tag   (propertize "[Motion]")
+        evil-operator-state-tag (propertize "[Operator]")
+        evil-emacs-state-tag    (propertize "[Emacs]"))
+  (custom-set-faces!
+    '(mode-line :height 1)
+    '(mode-line-inactive :height 1))
+  )
 
 
 ;; custom modeline: version 1
@@ -221,54 +235,54 @@
 
 
 ;; custom modeline: version 2
-(setq-default mode-line-format
-              (list
-               " "
-               '(:eval (window-parameter (selected-window) 'ace-window-path))
-               ;; evil state indicator
-               '(:eval (propertize evil-mode-line-tag))
-               ;; the buffer name; the file name as a tool tip
-               " "
-               ;; project root
-               (require 'projectile)
-               '(:eval
-                 (let ((face 'bold))
-                   (when (projectile-project-name)
-                     (concat
-                      (propertize "[" 'face face)
-                      (propertize (format "%s" (projectile-project-name)) 'face face)
-                      (propertize "] " 'face face)))))
-               " "
-               '(:eval (propertize "%b  " 'help-echo (buffer-file-name)))
-               ;; line and column
-               "(" ;; '%02' to set to 2 chars at least; prevents flickering
-               (propertize "%02l") ","
-               (propertize "%02c")
-               ")  "
-               ;; relative position, size of file
-               ;; "["
-               (propertize "%p") ;; % above top
-               "/"
-               (propertize "%I") ;; size
-               ;; "] "
-               "  "
-               ;; git branch
-               ;; '(vc-mode vc-mode)
-               '(:eval (when-let (vc vc-mode)
-                         ;; (list "Git:*" (propertize (substring vc 5) 'face "black") "*  ")))
-                         (list "Git@" (propertize (substring vc 5) 'face "black") "  ")))
+;; (setq-default mode-line-format
+;;               (list
+;;                " "
+;;                '(:eval (window-parameter (selected-window) 'ace-window-path))
+;;                ;; evil state indicator
+;;                '(:eval (propertize evil-mode-line-tag))
+;;                ;; the buffer name; the file name as a tool tip
+;;                " "
+;;                ;; project root
+;;                (require 'projectile)
+;;                '(:eval
+;;                  (let ((face 'bold))
+;;                    (when (projectile-project-name)
+;;                      (concat
+;;                       (propertize "[" 'face face)
+;;                       (propertize (format "%s" (projectile-project-name)) 'face face)
+;;                       (propertize "] " 'face face)))))
+;;                " "
+;;                '(:eval (propertize "%b  " 'help-echo (buffer-file-name)))
+;;                ;; line and column
+;;                "(" ;; '%02' to set to 2 chars at least; prevents flickering
+;;                (propertize "%02l") ","
+;;                (propertize "%02c")
+;;                ")  "
+;;                ;; relative position, size of file
+;;                ;; "["
+;;                (propertize "%p") ;; % above top
+;;                "/"
+;;                (propertize "%I") ;; size
+;;                ;; "] "
+;;                "  "
+;;                ;; git branch
+;;                ;; '(vc-mode vc-mode)
+;;                '(:eval (when-let (vc vc-mode)
+;;                          ;; (list "Git:*" (propertize (substring vc 5) 'face "black") "*  ")))
+;;                          (list "Git@" (propertize (substring vc 5) 'face "black") "  ")))
 
-               ;; the current major mode for the buffer.
-               ;; "["
-               '(:eval (propertize "%m" 'help-echo buffer-file-coding-system))
-               ;; "] "
-               "  "
-               ;; was this buffer modified since the last save?
-               '(:eval (when (buffer-modified-p)
-                         (propertize "(Mod)" 'help-echo "Buffer has been modified")))
-               ;; is this buffer read-only?
-               '(:eval (when buffer-read-only
-                         (propertize "(RO)" 'help-echo "Buffer is read-only")))))
+;;                ;; the current major mode for the buffer.
+;;                ;; "["
+;;                '(:eval (propertize "%m" 'help-echo buffer-file-coding-system))
+;;                ;; "] "
+;;                "  "
+;;                ;; was this buffer modified since the last save?
+;;                '(:eval (when (buffer-modified-p)
+;;                          (propertize "(Mod)" 'help-echo "Buffer has been modified")))
+;;                ;; is this buffer read-only?
+;;                '(:eval (when buffer-read-only
+;;                          (propertize "(RO)" 'help-echo "Buffer is read-only")))))
 
 ;; (set-face-attribute 'mode-line nil
 ;;                     ;; :underline "#898c8a"
@@ -279,21 +293,21 @@
 
 ;; Change modeline color based on evil state
 ;; https://github.com/redguardtoo/emacs.d/blob/master/lisp/init-evil.el
-(defconst p-default-color (cons (face-background 'mode-line)
-                                (face-foreground 'mode-line)))
-(defun p-show-evil-state ()
-  (let* ((color (cond ((minibufferp) p-default-color)
-                      ;; ((evil-normal-state-p) '("grey80"  . "black"))
-                      ((evil-insert-state-p) '("red"  . "#ffffff"))
-                      ((evil-visual-state-p) '("#006fa0" . "#ffffff"))
-                      ((evil-emacs-state-p)  '("#444488" . "#ffffff"))
-                      ((buffer-modified-p)   '("#006fa0" . "#ffffff"))
-                      (t p-default-color))))
-    (set-face-background 'mode-line (car color))
-    (set-face-foreground 'mode-line (cdr color))
-    (set-face-bold 'mode-line t)
-    (set-face-attribute 'mode-line nil :font "Menlo-12")))
-(add-hook 'post-command-hook #'p-show-evil-state)
+;; (defconst p-default-color (cons (face-background 'mode-line)
+;;                                 (face-foreground 'mode-line)))
+;; (defun p-show-evil-state ()
+;;   (let* ((color (cond ((minibufferp) p-default-color)
+;;                       ;; ((evil-normal-state-p) '("grey80"  . "black"))
+;;                       ((evil-insert-state-p) '("red"  . "#ffffff"))
+;;                       ((evil-visual-state-p) '("#006fa0" . "#ffffff"))
+;;                       ((evil-emacs-state-p)  '("#444488" . "#ffffff"))
+;;                       ((buffer-modified-p)   '("#006fa0" . "#ffffff"))
+;;                       (t p-default-color))))
+;;     (set-face-background 'mode-line (car color))
+;;     (set-face-foreground 'mode-line (cdr color))
+;;     (set-face-bold 'mode-line t)
+;;     (set-face-attribute 'mode-line nil :font "Menlo-12")))
+;; (add-hook 'post-command-hook #'p-show-evil-state)
 
 
 ;; Transparency

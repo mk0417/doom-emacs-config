@@ -7,7 +7,6 @@
 (after! python
   ;; column indicator
   (add-hook 'python-mode-hook 'display-fill-column-indicator-mode)
-  (add-hook 'eglot-managed-mode-hook (lambda () (flymake-mode -1)))
   (setq python-indent-guess-indent-offset-verbose nil
         python-indent-guess-indent-offset nil)
   ;; jupyter
@@ -106,3 +105,7 @@
          :desc "eval-def"                        "f"         #'ess-eval-function
          :desc "eval-line"                       "l"         #'ess-eval-line
          :desc "eval-line-or-region"             "r"         #'ess-eval-region-or-line-and-step)))
+
+
+;; Go ---------------------------------------------------
+(setq lsp-go-gopls-server-path "/Users/ml/go/bin/gopls")

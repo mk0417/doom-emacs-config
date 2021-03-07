@@ -114,8 +114,11 @@
       (:prefix-map ("t" . "toggle")
        :desc "World time"                          "W"      #'display-time-world
        :desc "maximize frame"                      "m"      #'toggle-frame-maximized)
+      (:prefix-map ("o" . "open")
+       :desc "browser url at point"                "w"      #'browse-url-at-point
+       :desc "browser url"                         "W"      #'browse-url)
       (:prefix-map ("g" . "git")
-       :desc "Magit diff"                         "d"      #'magit-diff))
+       :desc "Magit diff"                          "d"      #'magit-diff))
 
 ;; local-leader
 (setq doom-localleader-key ";")

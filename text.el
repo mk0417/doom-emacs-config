@@ -104,6 +104,7 @@
         (:map org-mode-map
          :desc "toggle heading"                        "u"          #'org-toggle-heading
          ;; presentation mode
+         :prefix ("j" . "presentation")
          :desc "presentation mode on"                  "j"          #'p-org-presentation-on
          :desc "presentation mode off"                 "J"          #'p-org-presentation-off
          :desc "next slide"                            "l"          #'org-tree-slide-move-next-tree
