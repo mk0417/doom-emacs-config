@@ -16,6 +16,7 @@
 (global-set-key (kbd "s-C-i") (lambda () (interactive) (p-adjust-opacity nil -2)))
 (global-set-key (kbd "s-C-o") (lambda () (interactive) (p-adjust-opacity nil 2)))
 (global-set-key (kbd "s-C-u") (lambda () (interactive) (modify-frame-parameters nil `((alpha . 100)))))
+(global-set-key (kbd "C-,") #'grugru)
 
 (after! evil
   (define-key evil-normal-state-map (kbd "C-e") 'evil-end-of-line)
@@ -35,6 +36,9 @@
   (define-key evil-normal-state-map (kbd "goi") 'p-select-text-in-quote)
   (define-key evil-normal-state-map (kbd "gos") 'p-select-block)
   (define-key evil-normal-state-map (kbd "goc") 'evilnc-copy-and-comment-lines)
+  (define-key evil-normal-state-map (kbd "got") '+hydra/text-zoom/body)
+  (define-key evil-normal-state-map (kbd "gow") '+hydra/window-nav/body)
+  (define-key evil-normal-state-map (kbd "gom") 'imenu-list-smart-toggle)
   (define-key evil-visual-state-map (kbd "C-e") 'evil-end-of-line)
   (define-key evil-visual-state-map (kbd "v") 'er/expand-region)
   (define-key evil-visual-state-map (kbd "gl") 'evil-shift-right)

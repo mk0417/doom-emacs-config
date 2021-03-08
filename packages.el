@@ -29,6 +29,8 @@
   :recipe (:host github :repo "emacs-ess/ess-stata-mode"))
 (package! org-html-themify
   :recipe (:host github :repo "mk0417/org-html-themify" :branch "develop" :files ("*.el" "*.js" "*.css")))
+(package! imenu-list)
+(package! grugru)
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:

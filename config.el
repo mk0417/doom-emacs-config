@@ -54,6 +54,19 @@
 (add-hook 'prog-mode-hook 'evil-matchit-mode)
 
 
+;; grugru ----------------------------------------
+(grugru-define-global 'symbol '("True" "False"))
+(grugru-define-global 'symbol '("mean" "median"))
+(grugru-define-global 'symbol '("min" "max"))
+(grugru-define-global 'symbol '("<=" ">="))
+(grugru-define-global 'symbol '("<" ">"))
+(grugru-define-global 'symbol '("any" "all"))
+(grugru-define-global 'symbol '("int" "str"))
+(grugru-define-global 'symbol '("params" "tvalues" "pvalues"))
+(grugru-define-global 'word '("ew" "vw"))
+(grugru-define-global 'word '("EW" "VW"))
+
+
 ;; Misc ------------------------------------------------
 (setq user-full-name "Peng"
       user-mail-address "pengdata1@gmail.com")
