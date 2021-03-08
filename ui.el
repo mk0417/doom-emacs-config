@@ -19,7 +19,7 @@
       modus-themes-links 'faint
       ;; modus-themes-fringes 'intense
       modus-themes-prompts 'intense-accented
-      modus-themes-intense-hl-line 't
+      modus-themes-hl-line 'intense-background
       modus-themes-region 'bg-only)
 (setq modus-themes-scale-headings t
       modus-themes-scale-1 1.3
@@ -132,16 +132,6 @@
 (after! ivy
   (setq ivy-height 12))
 
-;; ivy-postframe
-(after! ivy-posframe
-  (setq ivy-posframe-border-width 2
-        ivy-posframe-height 13
-        ivy-posframe-width 130))
-
-;; company-box
-(after! company-box
-  (setq company-box-doc-enable nil))
-
 ;; banner
 ;; (defun doom-dashboard-widget-banner ()
 ;;   (let ((point (point)))
@@ -172,8 +162,7 @@
         evil-emacs-state-tag    (propertize "[Emacs]"))
   (custom-set-faces!
     '(mode-line :height 1)
-    '(mode-line-inactive :height 1))
-  )
+    '(mode-line-inactive :height 1)))
 
 
 ;; custom modeline: version 1
@@ -293,21 +282,22 @@
 
 ;; Change modeline color based on evil state
 ;; https://github.com/redguardtoo/emacs.d/blob/master/lisp/init-evil.el
-;; (defconst p-default-color (cons (face-background 'mode-line)
-;;                                 (face-foreground 'mode-line)))
-;; (defun p-show-evil-state ()
-;;   (let* ((color (cond ((minibufferp) p-default-color)
-;;                       ;; ((evil-normal-state-p) '("grey80"  . "black"))
-;;                       ((evil-insert-state-p) '("red"  . "#ffffff"))
-;;                       ((evil-visual-state-p) '("#006fa0" . "#ffffff"))
-;;                       ((evil-emacs-state-p)  '("#444488" . "#ffffff"))
-;;                       ((buffer-modified-p)   '("#006fa0" . "#ffffff"))
-;;                       (t p-default-color))))
-;;     (set-face-background 'mode-line (car color))
-;;     (set-face-foreground 'mode-line (cdr color))
-;;     (set-face-bold 'mode-line t)
-;;     (set-face-attribute 'mode-line nil :font "Menlo-12")))
-;; (add-hook 'post-command-hook #'p-show-evil-state)
+(defconst p-default-color (cons (face-background 'mode-line)
+                                (face-foreground 'mode-line)))
+(defun p-show-evil-state ()
+  (let* ((color (cond ((minibufferp) p-default-color)
+                      ;; ((evil-normal-state-p) '("grey80"  . "black"))
+                      ((evil-insert-state-p) '("red"  . "#ffffff"))
+                      ((evil-visual-state-p) '("#006fa0" . "#ffffff"))
+                      ((evil-emacs-state-p)  '("#444488" . "#ffffff"))
+                      ((buffer-modified-p)   '("#006fa0" . "#ffffff"))
+                      (t p-default-color))))
+    (set-face-background 'mode-line (car color))
+    (set-face-foreground 'mode-line (cdr color))
+    (set-face-bold 'mode-line t)
+    ;; (set-face-attribute 'mode-line nil :font "Menlo-8")
+    ))
+(add-hook 'post-command-hook #'p-show-evil-state)
 
 
 ;; Transparency
