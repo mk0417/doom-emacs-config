@@ -50,7 +50,7 @@
    '(diff-hl-delete ((t (:background "#ee6363"))))))
 
 ;; selected text color
-(set-face-attribute 'region nil :background "#666666")
+(set-face-attribute 'region nil :background "#a3a3a3")
 
 ;; maximize window at startup
 ;; disable it if uisng yabai to manage window
@@ -282,22 +282,22 @@
 
 ;; Change modeline color based on evil state
 ;; https://github.com/redguardtoo/emacs.d/blob/master/lisp/init-evil.el
-(defconst p-default-color (cons (face-background 'mode-line)
-                                (face-foreground 'mode-line)))
-(defun p-show-evil-state ()
-  (let* ((color (cond ((minibufferp) p-default-color)
-                      ;; ((evil-normal-state-p) '("grey80"  . "black"))
-                      ((evil-insert-state-p) '("red"  . "#ffffff"))
-                      ((evil-visual-state-p) '("#006fa0" . "#ffffff"))
-                      ((evil-emacs-state-p)  '("#444488" . "#ffffff"))
-                      ((buffer-modified-p)   '("#006fa0" . "#ffffff"))
-                      (t p-default-color))))
-    (set-face-background 'mode-line (car color))
-    (set-face-foreground 'mode-line (cdr color))
-    (set-face-bold 'mode-line t)
-    ;; (set-face-attribute 'mode-line nil :font "Menlo-8")
-    ))
-(add-hook 'post-command-hook #'p-show-evil-state)
+;; (defconst p-default-color (cons (face-background 'mode-line)
+;;                                 (face-foreground 'mode-line)))
+;; (defun p-show-evil-state ()
+;;   (let* ((color (cond ((minibufferp) p-default-color)
+;;                       ;; ((evil-normal-state-p) '("grey80"  . "black"))
+;;                       ((evil-insert-state-p) '("red"  . "#ffffff"))
+;;                       ((evil-visual-state-p) '("#006fa0" . "#ffffff"))
+;;                       ((evil-emacs-state-p)  '("#444488" . "#ffffff"))
+;;                       ((buffer-modified-p)   '("#006fa0" . "#ffffff"))
+;;                       (t p-default-color))))
+;;     (set-face-background 'mode-line (car color))
+;;     (set-face-foreground 'mode-line (cdr color))
+;;     (set-face-bold 'mode-line t)
+;;     ;; (set-face-attribute 'mode-line nil :font "Menlo-8")
+;;     ))
+;; (add-hook 'post-command-hook #'p-show-evil-state)
 
 
 ;; Transparency
