@@ -123,6 +123,7 @@
          :desc "move row down"                         "j"          #'org-table-move-row-down
          :desc "move column right"                     "l"          #'org-table-move-column-right
          :desc "move column left"                      "h"          #'org-table-move-column-left
+         :desc "convert region to table"               "C"          #'org-table-convert-region
          ;; tag match
          :prefix ("s")
          :desc "org-tags-sparse-tree"                   "t"         #'org-tags-sparse-tree))
