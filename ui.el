@@ -50,7 +50,7 @@
    '(diff-hl-delete ((t (:background "#ee6363"))))))
 
 ;; selected text color
-(set-face-attribute 'region nil :background "#a3a3a3")
+(set-face-attribute 'region nil :background "#696969")
 
 ;; maximize window at startup
 ;; disable it if uisng yabai to manage window
