@@ -56,6 +56,7 @@
 
 ;; grugru ----------------------------------------
 (grugru-define-global 'symbol '("True" "False"))
+(grugru-define-global 'symbol '("true" "false"))
 (grugru-define-global 'symbol '("mean" "median"))
 (grugru-define-global 'symbol '("min" "max"))
 (grugru-define-global 'symbol '("<=" ">="))
