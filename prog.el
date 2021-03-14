@@ -1,30 +1,35 @@
 ;;; ~/.doom.d/prog.el -*- lexical-binding: t; -*-
 
-;; Python --------------------------------------------------
+;; Functions
+(defun p-jupyter-remove-line-overlay ()
+  (interactive)
+  (evil-open-below 0)
+  (kill-whole-line)
+  (evil-escape)
+  (previous-line))
+(defun p-jupyter-eval-block ()
+  (interactive)
+  (p-select-block)
+  (let (beg end)
+    (setq beg (region-beginning) end (region-end))
+    (jupyter-eval-region beg end)))
 
+
+;; jupyter
+;; inline display
+(setq jupyter-eval-use-overlays t)
+
+
+;; Python --------------------------------------------------
 ;; enable elpy after python mode
 ;; startup time is reduced to 1.5s from 2.5s
 (after! python
-  ;; column indicator
   (add-hook 'python-mode-hook 'display-fill-column-indicator-mode)
+  ;; column indicator
   (setq python-indent-guess-indent-offset-verbose nil
         python-indent-guess-indent-offset nil)
-  ;; jupyter
-  (setq jupyter-eval-use-overlays t)
   ;; @see https://github.com/nnicandro/emacs-jupyter/issues/270#issuecomment-697348350
   (set-popup-rule! "*jupyter-output*" :side 'right :size .35 :vslot 2)
-  (defun p-jupyter-remove-line-overlay ()
-    (interactive)
-    (evil-open-below 0)
-    (kill-whole-line)
-    (evil-escape)
-    (previous-line))
-  (defun p-jupyter-eval-block ()
-    (interactive)
-    (p-select-block)
-    (let (beg end)
-      (setq beg (region-beginning) end (region-end))
-      (jupyter-eval-region beg end)))
   (map! :localleader
         (:map python-mode-map
          :prefix ("j" . "jupyter")
@@ -88,7 +93,6 @@
 (after! ess
   ;; R
   (setq ess-ask-for-ess-directory nil)
-  (add-hook 'eglot-managed-mode-hook (lambda () (flymake-mode -1)))
   (add-hook 'ess-mode-hook 'display-fill-column-indicator-mode)
   ;; Stata
   ;; https://github.com/hieutkt/.doom.d/blob/master/config.el
@@ -109,3 +113,31 @@
 
 ;; Go ---------------------------------------------------
 (setq lsp-go-gopls-server-path "/Users/ml/go/bin/gopls")
+
+
+;; Julia
+(after! julia-mode
+  ;; eglot-jl must know the environment in which it is installed
+  ;; https://github.com/hlissner/doom-emacs/tree/develop/modules/lang/julia
+  (setq eglot-jl-language-server-project "~/.julia/environments/v1.5")
+  ;; SymbolServer.jl takes a very long time to process project dependencies.
+  ;; This is a one-time process that shouldn’t cause issues once the dependencies are cached,
+  ;; however it can take over a minute to process each dependency
+  ;; Increase to 60s
+  ;; https://github.com/non-Jedi/eglot-jl
+  (setq eglot-connect-timeout 60)
+  (add-hook 'julia-mode-hook 'display-fill-column-indicator-mode)
+  (map! :localleader
+        (:map julia-mode-map
+         :prefix ("j" . "jupyter")
+         :desc "run-jupyter"                     "j"         #'jupyter-run-repl
+         :desc "eval-def"                        "f"         #'jupyter-eval-defun
+         :desc "eval-line-or-region"             "r"         #'jupyter-eval-line-or-region
+         :desc "eval-block"                      "e"         #'p-jupyter-eval-block
+         :desc "restart-kernel"                  "R"         #'jupyter-repl-restart-kernel
+         :desc "clear-cells"                     "K"         #'jupyter-repl-clear-cells
+         :desc "interrupt-kernel"                "I"         #'jupyter-repl-interrupt-kernel
+         :desc "inspect"                         "i"         #'jupyter-inspect-at-point
+         :desc "remove-all-overlay"              "C"         #'jupyter-eval-remove-overlays
+         :desc "remove-line-overlay"             "c"         #'p-jupyter-remove-line-overlay
+         :desc "pop-to-repl"                     "w"         #'jupyter-repl-pop-to-buffer)))

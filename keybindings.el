@@ -317,4 +317,20 @@
   (general-imap "v"
     (general-key-dispatch 'self-insert-command
       :timeout 0.25
-      "v" 'p-insert-hash)))
+      "v" 'p-insert-hash))
+  ;; julia pipe
+  (defun p-insert-julia-pipe ()
+    (interactive)
+    (insert "|>"))
+  (general-imap "n"
+    (general-key-dispatch 'self-insert-command
+      :timeout 0.25
+      "n" 'p-insert-julia-pipe))
+  ;; julia out
+  (defun p-insert-julia-out ()
+    (interactive)
+    (insert "=>"))
+  (general-imap "m"
+    (general-key-dispatch 'self-insert-command
+      :timeout 0.25
+      "m" 'p-insert-julia-out)))
