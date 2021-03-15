@@ -132,6 +132,17 @@
 (after! ivy
   (setq ivy-height 12))
 
+;; goggles
+(after! evil-goggles
+  (setq evil-goggles-duration 0.2
+        evil-goggles-enable-delete t)
+  (custom-set-faces
+    '(evil-goggles-default-face ((t (:background "#cf5a65"))))
+    '(evil-goggles-delete-face ((t (:background "#cf5a65"))))
+    '(evil-goggles-paste-face ((t (:background "#cf5a65"))))
+    '(evil-goggles-yank-face ((t (:background "#cf5a65"))))
+    '(evil-goggles-undo-redo-change-face ((t (:background "#cf5a65"))))))
+
 ;; banner
 ;; (defun doom-dashboard-widget-banner ()
 ;;   (let ((point (point)))
