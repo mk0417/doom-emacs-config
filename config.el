@@ -122,6 +122,8 @@
 ;; https://www.reddit.com/r/emacs/comments/gaub11/poor_scrolling_performance_in_doom_emacs/fp392eh/
 ;; (setq jit-lock-defer-time 0)
 
+;; https://github.com/Townk/doom-emacs-private/blob/master/config.org
+(setq ns-use-thin-smoothing t)
 
 ;; Functions
 ;; https://stackoverflow.com/questions/2951797/wrapping-selecting-text-in-enclosing-characters-in-emacs
