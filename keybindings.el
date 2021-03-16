@@ -325,7 +325,7 @@
   (general-imap "n"
     (general-key-dispatch 'self-insert-command
       :timeout 0.25
-      "n" 'p-insert-julia-pipe))
+      "j" 'p-insert-julia-pipe))
   ;; julia out
   (defun p-insert-julia-out ()
     (interactive)
@@ -333,4 +333,4 @@
   (general-imap "m"
     (general-key-dispatch 'self-insert-command
       :timeout 0.25
-      "m" 'p-insert-julia-out)))
+      "j" 'p-insert-julia-out)))
