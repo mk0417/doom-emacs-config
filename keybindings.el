@@ -20,6 +20,7 @@
 
 (after! evil
   (define-key evil-normal-state-map (kbd "C-e") 'evil-end-of-line)
+  (define-key evil-normal-state-map (kbd "g.") 'evil-jump-item)
   (define-key evil-normal-state-map (kbd "gn") 'diff-hl-next-hunk)
   (define-key evil-normal-state-map (kbd "gp") 'diff-hl-previous-hunk)
   (define-key evil-normal-state-map (kbd "gP") 'diff-hl-diff-goto-hunk)
@@ -108,6 +109,7 @@
        :desc "insert uk date"                      "k"      #'p-insert-uk-date
        :desc "insert date"                         "d"      #'p-insert-date)
       (:prefix-map ("f" . "file")
+       :desc "counsel-outline"                     "o"      #'counsel-outline
        :desc "locate file"                         "g"      #'locate-file
        :desc "find-dired"                          "d"      #'find-dired
        :desc "find-name-dired"                     "n"      #'find-name-dired
