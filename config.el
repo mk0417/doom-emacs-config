@@ -246,6 +246,12 @@
       (re-search-forward "\n[ \t]*\n" nil "move")
       (forward-line -1))))
 
+;; keep unique lines
+;; https://github.com/redguardtoo/emacs.d/blob/master/lisp/init-misc.el
+(defun p-uniq-lines (start end)
+  (interactive "*r")
+  (delete-duplicate-lines start end))
+
 ;; google search
 ;; https://emacsredux.com/blog/2013/03/28/google/
 (defun p-google-search ()
