@@ -10,7 +10,7 @@
 ;(package! some-package)
 
 ;; (package! elpy)
-(package! activity-watch-mode)
+;; (package! activity-watch-mode)
 ;; (package! org-superstar)
 (package! evil-matchit)
 (package! org-tree-slide)

@@ -89,8 +89,8 @@
 
 ;; activity-watch
 ;; disable global-activity-watch-mode to improve startup time
-(add-hook 'prog-mode-hook 'activity-watch-mode)
-(add-hook 'org-mode-hook 'activity-watch-mode)
+;; (add-hook 'prog-mode-hook 'activity-watch-mode)
+;; (add-hook 'org-mode-hook 'activity-watch-mode)
 
 ;; disable flyspell for git commit
 (remove-hook! '(git-commit-mode-hook) #'flyspell-mode)
@@ -101,7 +101,8 @@
 
 ;; maximum number of recent saved items
 (after! recentf
-  (setq recentf-max-saved-items 50))
+  (setq recentf-max-saved-items 50)
+  (add-to-list 'recentf-exclude "emacs-everywhere"))
 
 ;; snippets
 (setq yas-snippet-dirs '("~/.emacs.snippets"))
