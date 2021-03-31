@@ -82,11 +82,11 @@
   (add-to-list 'org-structure-template-alist '("r" . "src R :session r :eval no-export"))
   (add-to-list 'org-structure-template-alist '("j" . "src jupyter-python :session py :eval no-export"))
   ;; org-html-themify
-  (require 'org-html-themify)
-  (setq org-html-themify-themes
-        '((dark . modus-vivendi)
-          (light . modus-operandi)))
-  (add-hook 'org-mode-hook 'org-html-themify-mode)
+  ;; (require 'org-html-themify)
+  ;; (setq org-html-themify-themes
+  ;;       '((dark . modus-vivendi)
+  ;;         (light . modus-operandi)))
+  ;; (add-hook 'org-mode-hook 'org-html-themify-mode)
   ;; presentation
   (defun p-org-presentation-on ()
     (interactive)

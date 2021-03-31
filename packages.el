@@ -27,8 +27,8 @@
 (package! visual-regexp)
 (package! ess-stata-mode
   :recipe (:host github :repo "emacs-ess/ess-stata-mode"))
-(package! org-html-themify
-  :recipe (:host github :repo "mk0417/org-html-themify" :branch "develop" :files ("*.el" "*.js" "*.css")))
+;; (package! org-html-themify
+;;   :recipe (:host github :repo "mk0417/org-html-themify" :branch "develop" :files ("*.el" "*.js" "*.css")))
 (package! imenu-list)
 (package! grugru)
 
