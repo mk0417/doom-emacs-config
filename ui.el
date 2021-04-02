@@ -118,15 +118,15 @@
 ;; frame title is invisible when using Emacs 28 native-comp
 ;; build Emacs with no-titlebar
 ;; display frame title in my spacebar
-;; (setq frame-title-format
-;;       '((:eval (if (buffer-file-name)
-;;                    (concat " " (abbreviate-file-name (buffer-file-name)))
-;;                  " %b"))))
-
-;; clean frame title bar
-(setq frame-title-format nil)
-;; https://emacs.stackexchange.com/questions/33680/how-to-remove-the-icon-in-the-titlebar
-(setq us-use-proxy-icon nil)
+(if (< emacs-major-version 28)
+    (setq frame-title-format
+          '((:eval (if (buffer-file-name)
+                       (concat " " (abbreviate-file-name (buffer-file-name)))
+                     " %b"))))
+  ;; clean frame title bar
+  (setq frame-title-format nil
+        ;; https://emacs.stackexchange.com/questions/33680/how-to-remove-the-icon-in-the-titlebar
+        us-use-proxy-icon nil))
 
 ;; minibuffer height
 (after! ivy

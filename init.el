@@ -148,8 +148,7 @@
        ;;ocaml             ; an objective camel
        (org +journal
             +roam
-            +jupyter
-            +pretty)               ; organize your plain life in plain text
+            +jupyter)               ; organize your plain life in plain text
        ;;php               ; perl's insecure younger brother
        plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
@@ -178,7 +177,7 @@
 
        :app
        ;;calendar
-       everywhere        ; *leave* Emacs!? You must be joking
+       ;; everywhere        ; *leave* Emacs!? You must be joking
        ;;irc               ; how neckbeards socialize
        ;;(rss +org)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought

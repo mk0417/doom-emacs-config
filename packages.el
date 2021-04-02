@@ -10,13 +10,12 @@
 ;(package! some-package)
 
 ;; (package! elpy)
-;; (package! activity-watch-mode)
-;; (package! org-superstar)
+(package! org-superstar)
 (package! evil-matchit)
 (package! org-tree-slide)
 (package! olivetti)
 (package! pandoc-mode)
-(package! jupyter)
+;; (package! jupyter)
 (package! ox-reveal)
 (package! doom-themes)
 (package! srcery-theme)
@@ -27,8 +26,6 @@
 (package! visual-regexp)
 (package! ess-stata-mode
   :recipe (:host github :repo "emacs-ess/ess-stata-mode"))
-;; (package! org-html-themify
-;;   :recipe (:host github :repo "mk0417/org-html-themify" :branch "develop" :files ("*.el" "*.js" "*.css")))
 (package! imenu-list)
 (package! grugru)
 
