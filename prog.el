@@ -24,8 +24,8 @@
 ;; enable elpy after python mode
 ;; startup time is reduced to 1.5s from 2.5s
 (after! python
-  (add-hook 'python-mode-hook 'display-fill-column-indicator-mode)
   ;; column indicator
+  (add-hook 'python-mode-hook 'display-fill-column-indicator-mode)
   (setq python-indent-guess-indent-offset-verbose nil
         python-indent-guess-indent-offset nil)
   ;; @see https://github.com/nnicandro/emacs-jupyter/issues/270#issuecomment-697348350
