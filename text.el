@@ -17,6 +17,7 @@
       org-journal-enable-agenda-integration t)
 
 (after! org
+  (setq org-html-htmlize-output-type 'css)
   (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
   (setq org-superstar-remove-leading-stars t
         org-superstar-headline-bullets-list '("◉" "▷" "○")
