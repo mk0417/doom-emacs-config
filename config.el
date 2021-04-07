@@ -118,6 +118,9 @@
     ("Pacific/Auckland" "Auckland")))
 (setq display-time-world-time-format "%a, %d %b %I:%M %p %Z")
 
+;; yankpad
+(setq yankpad-file "~/org/yankpad.org")
+
 ;; better scrolling performance
 ;; https://github.com/mpereira/.emacs.d/#a-fast-non-projectile-based-project-file-finder
 ;; https://www.reddit.com/r/emacs/comments/gaub11/poor_scrolling_performance_in_doom_emacs/fp392eh/

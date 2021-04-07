@@ -106,6 +106,7 @@
         :desc "pandoc-set-output-directory"        "d"      #'pandoc-set-output-dir
         :desc "pandoc-run"                         "r"      #'pandoc-run-pandoc))
       (:prefix-map ("i" . "insert")
+       :desc "yankpad insert"                      "i"      #'yankpad-insert
        :desc "insert uk date"                      "k"      #'p-insert-uk-date
        :desc "insert date"                         "d"      #'p-insert-date)
       (:prefix-map ("f" . "file")
