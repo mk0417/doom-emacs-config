@@ -119,7 +119,8 @@
 (setq display-time-world-time-format "%a, %d %b %I:%M %p %Z")
 
 ;; yankpad
-(setq yankpad-file "~/org/yankpad.org")
+(after! yankpad
+  (setq yankpad-file "~/org/yankpad.org"))
 
 ;; better scrolling performance
 ;; https://github.com/mpereira/.emacs.d/#a-fast-non-projectile-based-project-file-finder
