@@ -17,6 +17,7 @@
 (global-set-key (kbd "s-C-o") (lambda () (interactive) (p-adjust-opacity nil 2)))
 (global-set-key (kbd "s-C-u") (lambda () (interactive) (modify-frame-parameters nil `((alpha . 100)))))
 (global-set-key (kbd "C-,") #'grugru)
+(global-set-key (kbd "C-;") #'p-insert-spaces)
 
 (after! evil
   (define-key evil-normal-state-map (kbd "C-e") 'evil-end-of-line)

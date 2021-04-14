@@ -257,6 +257,11 @@
   (interactive "*r")
   (delete-duplicate-lines start end))
 
+;; add four spaces
+(defun p-insert-spaces ()
+  (interactive)
+  (insert "    "))
+
 ;; google search
 ;; https://emacsredux.com/blog/2013/03/28/google/
 (defun p-google-search ()
