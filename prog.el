@@ -19,6 +19,8 @@
 ;; inline display
 (setq jupyter-eval-use-overlays t)
 
+;; @see https://github.com/nnicandro/emacs-jupyter/issues/270#issuecomment-697348350
+(set-popup-rule! "*jupyter-output*" :side 'right :size .35 :vslot 2)
 
 ;; Python --------------------------------------------------
 ;; enable elpy after python mode
@@ -28,8 +30,6 @@
   (add-hook 'python-mode-hook 'display-fill-column-indicator-mode)
   (setq python-indent-guess-indent-offset-verbose nil
         python-indent-guess-indent-offset nil)
-  ;; @see https://github.com/nnicandro/emacs-jupyter/issues/270#issuecomment-697348350
-  (set-popup-rule! "*jupyter-output*" :side 'right :size .35 :vslot 2)
   (map! :localleader
         (:map python-mode-map
          :prefix ("j" . "jupyter")
@@ -105,10 +105,22 @@
   (map! :localleader
         (:map ess-mode-map
          :desc "ess-cycle-assign"                "a"         #'ess-cycle-assign
-         :prefix ("j" . "ess-eval")
+         :prefix ("e" . "ess-eval")
          :desc "eval-def"                        "f"         #'ess-eval-function
          :desc "eval-line"                       "l"         #'ess-eval-line
-         :desc "eval-line-or-region"             "r"         #'ess-eval-region-or-line-and-step)))
+         :desc "eval-line-or-region"             "r"         #'ess-eval-region-or-line-and-step
+         :prefix ("j" . "jupyter")
+         :desc "run-jupyter"                     "j"         #'jupyter-run-repl
+         :desc "eval-def"                        "f"         #'jupyter-eval-defun
+         :desc "eval-line-or-region"             "r"         #'jupyter-eval-line-or-region
+         :desc "eval-block"                      "e"         #'p-jupyter-eval-block
+         :desc "restart-kernel"                  "R"         #'jupyter-repl-restart-kernel
+         :desc "clear-cells"                     "K"         #'jupyter-repl-clear-cells
+         :desc "interrupt-kernel"                "I"         #'jupyter-repl-interrupt-kernel
+         :desc "inspect"                         "i"         #'jupyter-inspect-at-point
+         :desc "remove-all-overlay"              "C"         #'jupyter-eval-remove-overlays
+         :desc "remove-line-overlay"             "c"         #'p-jupyter-remove-line-overlay
+         :desc "pop-to-repl"                     "w"         #'jupyter-repl-pop-to-buffer)))
 
 
 ;; Go ---------------------------------------------------
