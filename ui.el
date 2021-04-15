@@ -71,7 +71,8 @@
 ;; (setq p-font "mononoki")
 ;; (setq p-font "Iosevka Fixed SS12")
 ;; (setq p-font "Fira Code")
-(setq p-font "DejaVu Sans Mono")
+;; (setq p-font "DejaVu Sans Mono")
+(setq p-font "Hack")
 (setq doom-font (font-spec :family p-font :size 12)
       doom-variable-pitch-font (font-spec :family p-font :size 12))
 
