@@ -19,6 +19,12 @@
 (global-set-key (kbd "C-,") #'grugru)
 (global-set-key (kbd "C-;") #'p-insert-spaces)
 
+(defhydra +hydra/folder-nav ()
+  ("l" (dired "~/Dropbox/roam_literature") "literature")
+  ("t" (dired "~/Dropbox/teaching") "teaching")
+  ("r" (dired "~/org/research") "research notes")
+  ("d" (dired "~/Desktop") "desktop"))
+
 (after! evil
   (define-key evil-normal-state-map (kbd "C-e") 'evil-end-of-line)
   (define-key evil-normal-state-map (kbd "g.") 'evil-jump-item)
@@ -40,6 +46,7 @@
   (define-key evil-normal-state-map (kbd "goc") 'evilnc-copy-and-comment-lines)
   (define-key evil-normal-state-map (kbd "got") '+hydra/text-zoom/body)
   (define-key evil-normal-state-map (kbd "gow") '+hydra/window-nav/body)
+  (define-key evil-normal-state-map (kbd "gof") '+hydra/folder-nav/body)
   (define-key evil-normal-state-map (kbd "gom") 'imenu-list-smart-toggle)
   (define-key evil-visual-state-map (kbd "C-e") 'evil-end-of-line)
   (define-key evil-visual-state-map (kbd "v") 'er/expand-region)
