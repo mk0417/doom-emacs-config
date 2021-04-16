@@ -94,13 +94,9 @@
   ;; R
   (setq ess-ask-for-ess-directory nil)
   (add-hook 'ess-mode-hook 'display-fill-column-indicator-mode)
-  ;; Stata
-  ;; https://github.com/hieutkt/.doom.d/blob/master/config.el
-  (setq inferior-STA-start-args ""
-        inferior-STA-program (executable-find "stata")
-        ;; fix: Error running timer 'ess--idle-timer-function': (wrong-type-argument stringp nil)
-        ;; https://github.com/emacs-ess/ESS/issues/1102
-        ess-can-eval-in-background nil)
+  ;; fix: Error running timer 'ess--idle-timer-function': (wrong-type-argument stringp nil)
+  ;; https://github.com/emacs-ess/ESS/issues/1102
+  (setq ess-can-eval-in-background nil)
   ;; keybindings
   (map! :localleader
         (:map ess-mode-map
@@ -121,6 +117,14 @@
          :desc "remove-all-overlay"              "C"         #'jupyter-eval-remove-overlays
          :desc "remove-line-overlay"             "c"         #'p-jupyter-remove-line-overlay
          :desc "pop-to-repl"                     "w"         #'jupyter-repl-pop-to-buffer)))
+
+
+;; Stata
+;; https://github.com/hieutkt/.doom.d/blob/master/config.el
+(setq inferior-STA-start-args ""
+      inferior-STA-program (executable-find "stata")
+      ;; make stata src work in org
+      inferior-STA-program-name "")
 
 
 ;; Go ---------------------------------------------------

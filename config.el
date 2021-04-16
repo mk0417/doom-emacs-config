@@ -3,10 +3,11 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
-(load! "prog")
-(load! "ui")
-(load! "text")
-(load! "keybindings")
+(load "~/.doom.d/lisp/p-ui.el")
+(load "~/.doom.d/lisp/p-keybindings.el")
+(load "~/.doom.d/lisp/p-prog.el")
+(load "~/.doom.d/lisp/p-text.el")
+(load "~/.doom.d/lisp/p-abbrev.el")
 
 
 ;; https://www.masteringemacs.org/article/speed-up-emacs-libjansson-native-elisp-compilation
@@ -121,6 +122,19 @@
 ;; yankpad
 (after! yankpad
   (setq yankpad-file "~/org/yankpad.org"))
+
+;; connect to wrds database
+(setq sql-connection-alist
+      '((wrds-pg (sql-product 'postgres)
+                    (sql-username (with-temp-buffer (insert-file-contents "~/.pass/wrds/user.txt") (buffer-string)))
+                    (sql-password (with-temp-buffer (insert-file-contents "~/.pass/wrds/password.txt") (buffer-string)))
+                    (sql-server "wrds-pgdata.wharton.upenn.edu")
+                    (sql-port 9737)
+                    (sql-database "wrds")
+                    (sql-sslmode "require"))))
+
+;; abbrev mode
+(setq-default abbrev-mode t)
 
 ;; better scrolling performance
 ;; https://github.com/mpereira/.emacs.d/#a-fast-non-projectile-based-project-file-finder
