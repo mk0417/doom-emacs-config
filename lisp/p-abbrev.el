@@ -2,7 +2,6 @@
 
 ;; define global abbrev
 (clear-abbrev-table global-abbrev-table)
-
 (define-abbrev-table 'global-abbrev-table
   '(
     ("afaik" "As far as i know" )
@@ -19,10 +18,10 @@
 ;; define major mode abbrev
 (when (boundp 'org-mode-abbrev-table)
   (clear-abbrev-table org-mode-abbrev-table))
-
 (define-abbrev-table 'org-mode-abbrev-table
   '(
     ("tit" "#+TITLE:
+#+SUBTITLE:
 #+AUTHOR: Peng Li
 #+OPTIONS: toc:1
 #+HTML_HEAD: <style>
@@ -38,9 +37,12 @@
     ("shsrc" "#+begin_src sh
 #+end_src
 ")
-
+    ("stasrc"  "#+begin_src jupyter-stata :session stata :kernel stata :eval no-export
+#+end_src")
+    ("tab" "|   |   |
+|---+---|
+|   |   |
+")
     ))
-
-;; (set-default 'abbrev-mode t)
 
 (setq save-abbrevs nil)
