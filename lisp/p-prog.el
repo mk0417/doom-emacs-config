@@ -91,9 +91,11 @@
 
 ;; ESS ---------------------------------------------------
 (after! ess
-  ;; R
-  (setq ess-ask-for-ess-directory nil)
   (add-hook 'ess-mode-hook 'display-fill-column-indicator-mode)
+  ;; R
+  ;; disable flymake
+  (add-hook 'ess-r-mode-hook (lambda () (flymake-mode -1)))
+  (setq ess-ask-for-ess-directory nil)
   ;; fix: Error running timer 'ess--idle-timer-function': (wrong-type-argument stringp nil)
   ;; https://github.com/emacs-ess/ESS/issues/1102
   (setq ess-can-eval-in-background nil)
