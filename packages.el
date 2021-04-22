@@ -24,11 +24,22 @@
 (package! define-word)
 (package! eacl)
 (package! visual-regexp)
-(package! ess-stata-mode
-  :recipe (:host github :repo "emacs-ess/ess-stata-mode"))
 (package! imenu-list)
 (package! grugru)
 (package! yankpad)
+(package! exec-path-from-shell)
+
+(package! ess-stata-mode
+  :recipe (:host github :repo "emacs-ess/ess-stata-mode"))
+(package! color-rg
+  :recipe (:host github :repo "manateelazycat/color-rg"))
+
+(unpin! jupyter)
+
+(disable-packages!
+ ;; company-anaconda
+ anaconda-mode
+ )
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
@@ -46,10 +57,6 @@
 ;; If you'd like to disable a package included with Doom, you can do so here
 ;; with the `:disable' property:
 ;(package! builtin-package :disable t)
-(disable-packages!
- ;; company-anaconda
- anaconda-mode
- )
 
 ;; disable ob-async which causes problem of jupter-python in org mode
 ;; (disable-packages!)
@@ -74,7 +81,6 @@
 ;(unpin! pinned-package)
 ;; ...or multiple packages
 ;(unpin! pinned-package another-pinned-package)
-(unpin! jupyter)
 
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)

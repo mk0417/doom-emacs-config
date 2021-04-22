@@ -3,11 +3,11 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
-(load "~/.doom.d/lisp/p-ui.el")
-(load "~/.doom.d/lisp/p-keybindings.el")
-(load "~/.doom.d/lisp/p-prog.el")
-(load "~/.doom.d/lisp/p-text.el")
-(load "~/.doom.d/lisp/p-abbrev.el")
+(load "~/.doom.d/lisp/p-ui.el" t t)
+(load "~/.doom.d/lisp/p-keybindings.el" t t)
+(load "~/.doom.d/lisp/p-prog.el" t t)
+(load "~/.doom.d/lisp/p-text.el" t t)
+(load "~/.doom.d/lisp/p-abbrev.el" t t)
 
 
 ;; https://www.masteringemacs.org/article/speed-up-emacs-libjansson-native-elisp-compilation
@@ -15,6 +15,14 @@
     (setq comp-deferred-compilation t
           package-native-compile t
           load-prefer-newer t))
+
+;; don't GC during startup to save time
+;; https://github.com/redguardtoo/emacs.d/blob/master/init.el
+(setq gc-cons-percentage 0.6)
+(setq gc-cons-threshold most-positive-fixnum)
+
+(add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
+
 
 ;; Company -------------------------------------------------
 (after! company
@@ -135,6 +143,14 @@
 
 ;; abbrev mode
 (setq-default abbrev-mode t)
+
+;; color-rg
+;; also need exec-path-from-shell
+;; reduce exec-path-from-shell startup time
+(setq exec-path-from-shell-arguments nil)
+(require 'color-rg)
+;; https://emacs.stackexchange.com/questions/31244/how-can-i-disable-evil-in-help-mode
+(evil-set-initial-state 'color-rg-mode 'emacs)
 
 ;; better scrolling performance
 ;; https://github.com/mpereira/.emacs.d/#a-fast-non-projectile-based-project-file-finder

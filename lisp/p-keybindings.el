@@ -90,7 +90,7 @@
       (:prefix-map ("b" . "buffer")
        (:when (featurep! :ui workspaces)
         :desc "Switch workspace buffer"            "B"      #'persp-switch-to-buffer
-       :desc "Switch buffer"                       "b"      #'switch-to-buffer)
+        :desc "Switch buffer"                       "b"     #'switch-to-buffer)
        :desc "narrow region"                       "n"      #'+evil:narrow-buffer
        :desc "widen"                               "w"      #'widen
        (:unless (featurep! :ui workspaces)
@@ -100,6 +100,13 @@
        :desc "switch to scratch"                   "s"      #'p-switch-to-scratch
        :desc "kill buffer and window"              "D"      #'kill-buffer-and-window)
       (:prefix-map ("e" . "text")
+       (:prefix-map ("c" . "color-rg")
+        :desc "search-input-file"                  "c"      #'color-rg-search-input-in-current-file
+        :desc "search-symbol-file"                 "C"      #'color-rg-search-symbol-in-current-file
+        :desc "search-input-directory"             "d"      #'color-rg-search-input
+        :desc "search-symbol-directory"            "D"      #'color-rg-search-symbol
+        :desc "search-input-project"               "p"      #'color-rg-search-input-in-project
+        :desc "search-symbol-project"              "P"      #'color-rg-search-symbol-in-project)
        :desc "beginning-of-defun"                  "b"      #'beginning-of-defun
        :desc "end-of-defun"                        "e"      #'end-of-defun
        :desc "p-select-function"                   "f"      #'p-select-function
