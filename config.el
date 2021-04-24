@@ -152,6 +152,10 @@
 ;; https://emacs.stackexchange.com/questions/31244/how-can-i-disable-evil-in-help-mode
 (evil-set-initial-state 'color-rg-mode 'emacs)
 
+;; bookmark
+(setq bookmark-default-file "~/.doom.d/p-bookmarks"
+      bookmark-save-flag 1)
+
 ;; better scrolling performance
 ;; https://github.com/mpereira/.emacs.d/#a-fast-non-projectile-based-project-file-finder
 ;; https://www.reddit.com/r/emacs/comments/gaub11/poor_scrolling_performance_in_doom_emacs/fp392eh/
