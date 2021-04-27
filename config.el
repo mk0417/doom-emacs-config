@@ -13,13 +13,15 @@
 ;; https://www.masteringemacs.org/article/speed-up-emacs-libjansson-native-elisp-compilation
 (if (>= emacs-major-version 28)
     (setq comp-deferred-compilation t
+          comp-async-jobs-number 6
+          comp-async-report-warnings-errors nil
           package-native-compile t
           load-prefer-newer t))
 
 ;; don't GC during startup to save time
 ;; https://github.com/redguardtoo/emacs.d/blob/master/init.el
-(setq gc-cons-percentage 0.6)
-(setq gc-cons-threshold most-positive-fixnum)
+(setq gc-cons-percentage 0.6
+      gc-cons-threshold most-positive-fixnum)
 
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
 
