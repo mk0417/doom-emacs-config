@@ -56,12 +56,6 @@
 ;; disable it if uisng yabai to manage window
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
-;; prevents some cases of Emacs flickering
-;; (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
-
-;; line number
-;; (setq display-line-numbers-type t)
-
 ;; which-key delay
 (setq which-key-idle-delay 0.5)
 
